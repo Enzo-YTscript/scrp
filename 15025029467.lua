@@ -44,22 +44,13 @@ end)
 local dropdownOptions = {"water", "dog", "air", "bb", "airplane", "wohhho", "yeay", "delete", "garden"}
 local dropdown = tab2.newDropdown("Dropdown", "Select one of these options!", dropdownOptions, function(selectedOption)
     print(selectedOption)
-    if selectedOption == "garden" and toggle:GetState() then
-        local args = {
-            [1] = "player_gacha_pet",
-            [2] = {
-                ["1"] = 59,
-                ["3"] = {},
-                ["2"] = 1
-            }
-        }
-        game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunction"):InvokeServer(unpack(args))
+    if selectedOption == "garden" then
+        tab2:GetToggles()[1]:SetEnabled(true)
+    else
+        tab2:GetToggles()[1]:SetEnabled(false)
     end
 end)
-local toggle = tab2.newToggle("Toggle", "Toggle! (Run selected option)", false)
-
--- Add functionality to toggle
-toggle.callback = function(toggleState)
+local toggle = tab2.newToggle("Toggle", "Toggle! (Run selected option)", false, function(toggleState)
     if toggleState then
         local selectedOption = dropdown:GetValue()
         if selectedOption == "garden" then
@@ -76,4 +67,4 @@ toggle.callback = function(toggleState)
             print("Selected option:", selectedOption)
         end
     end
-end
+end)
