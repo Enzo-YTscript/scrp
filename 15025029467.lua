@@ -55,7 +55,7 @@ dropdown.callback = function(selectedOption)
 end
 toggle.callback = function(toggleState)
     if toggleState then
-        local selectedOption = dropdown:GetSelected()
+        local selectedOption = dropdown:GetValue()
         if selectedOption == "garden" then
             local args = {
                 [1] = "player_gacha_pet",
