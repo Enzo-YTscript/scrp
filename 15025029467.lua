@@ -57,7 +57,7 @@ local toggle = tab2.newToggle("Toggle", "Toggle! (Run selected option)", false, 
             local args = {
                 [1] = "player_gacha_pet",
                 [2] = {
-                    ["1"] = 59,
+                    ["1"] = 4,
                     ["3"] = {},
                     ["2"] = 1
                 }
