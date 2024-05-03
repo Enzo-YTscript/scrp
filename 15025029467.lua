@@ -44,11 +44,6 @@ end)
 local dropdownOptions = {"water", "dog", "air", "bb", "airplane", "wohhho", "yeay", "delete", "garden"}
 local dropdown = tab2.newDropdown("Dropdown", "Select one of these options!", dropdownOptions, function(selectedOption)
     print(selectedOption)
-    if selectedOption == "garden" then
-        tab2:GetToggles()[1]:SetEnabled(true)
-    else
-        tab2:GetToggles()[1]:SetEnabled(false)
-    end
 end)
 local toggle = tab2.newToggle("Toggle", "Toggle! (Run selected option)", false, function(toggleState)
     if toggleState then
@@ -68,3 +63,10 @@ local toggle = tab2.newToggle("Toggle", "Toggle! (Run selected option)", false, 
         end
     end
 end)
+dropdown.callback = function(selectedOption)
+    if selectedOption == "garden" then
+        toggle:SetEnabled(true)
+    else
+        toggle:SetEnabled(false)
+    end
+end
