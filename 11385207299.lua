@@ -1,4 +1,4 @@
-local ArrayField = loadstring(game:HttpGet("https://raw.githubusercontent.com/Enzo-YTscript/Ui-Library/main/ArrayfieldLibrary.lua"))()
+local ArrayField = loadstring(game:HttpGet("https://raw.githubusercontent.com/Enzo-YTscript/Ui-Library/main/ArrayfieldLibrary"))()
 
 local Window = ArrayField:CreateWindow({
         Name = "ArrayField Example Window",
