@@ -175,7 +175,7 @@ local function startAutoHatch()
 end
 -- TAB EGG
 	local Tab2 = Window:CreateTab("EGG", nil) -- Title, Image
-	local Egg = Tab:CreateSection("🥚 Auto EGG",false)
+	local Egg = Tab2:CreateSection("🥚 Auto EGG",false)
 
 local ManualAreasCyberverse = {"Cyber Town", "Robo Road", "Cyber Adventure", "Robo Expedition", "Cyber Kingdom", "Robo Life", "Cyber Expedition",  "Robo Forest", "Robo Land", "The Second Portal",}
 
@@ -184,7 +184,7 @@ local ManualAreasEarth = {"Town", "Frosty Kingdom", "Desert Adventure", "Jungle 
 local selectedCyberverseArea = nil
 local selectedEarthArea = nil
 
-local EarthAreaDropdown = Tab:CreateDropdown({
+local EarthAreaDropdown = Tab2:CreateDropdown({
         Name = "Select Area Earth",
 		SectionParent = Egg,
         Options = ManualAreasEarth,
@@ -200,7 +200,7 @@ local EarthAreaDropdown = Tab:CreateDropdown({
     end
 })
 
-local CyberverseAreaDropdown = Tab:CreateDropdown({
+local CyberverseAreaDropdown = Tab2:CreateDropdown({
     Name = "Select Area Cyberverse",
 	SectionParent = Egg,
     Options = ManualAreasCyberverse,
@@ -216,7 +216,7 @@ local CyberverseAreaDropdown = Tab:CreateDropdown({
     end
 })
 
-local HatchTypeDropdown = Tab:CreateDropdown({
+local HatchTypeDropdown = Tab2:CreateDropdown({
 	Name = "Select Hatch Type",
 	SectionParent = Egg,
     Options = {"1 Hatch", "3 Hatch"},
@@ -238,7 +238,7 @@ local HatchTypeDropdown = Tab:CreateDropdown({
     end
 })
 
-local TierDropdown = Tab:CreateDropdown({
+local TierDropdown = Tab2:CreateDropdown({
 	Name = "Select Tier",
 	SectionParent = Egg,
     Options = {"Tier_1", "Tier_2", "Tier_3", "Tier_4"},
@@ -280,7 +280,7 @@ local function startAutoHatch()
     end
 end
 
-local AutoHatchToggle = Tab:CreateToggle({
+local AutoHatchToggle = Tab2:CreateToggle({
     Name = "Auto Hatch Egg",
         SectionParent = Egg,
         CurrentValue = false,
@@ -297,10 +297,10 @@ local AutoHatchToggle = Tab:CreateToggle({
 
 --TAB TELEPORT
 	local Tab3 = Window:CreateTab("Teleport") -- Title, Image	
-	local Tele = Tab:CreateSection("Teleport", "note : Need Teleport Gempass")
+	local Tele = Tab3:CreateSection("Teleport", "note : Need Teleport Gempass")
 	
 -- Membuat dropdown Realm
-local RealmDropdown = Tab:CreateDropdown({
+local RealmDropdown = Tab3:CreateDropdown({
 	Name = "Select Realm",
     Options = {"Earth", "Cyberverse"},
 	SectionParent = Tele,	
@@ -312,7 +312,7 @@ local RealmDropdown = Tab:CreateDropdown({
 })
 
 -- Membuat dropdown Area untuk Earth
-local EarthAreaDropdown = Tab:CreateDropdown({
+local EarthAreaDropdown = Tab3:CreateDropdown({
 	Name = "Select Area Earth",
     Options = {"Town", "Frosty Kingdom", "Desert Adventure", "Jungle Expedition", "Pirate Cove", "Cerberus Realm",
     "Dinosaur Kingdom", "Farm Life", "Mountain Expedition", "Fantasy Forest", "Aqua Land", "Hydra Room", "The Portal"}, -- Ganti dengan daftar Area untuk Earth
@@ -327,7 +327,7 @@ Callback = function(Option)
 })
 
 -- Membuat dropdown Area untuk CyberTown
-local CyberTownAreaDropdown = Tab:CreateDropdown({
+local CyberTownAreaDropdown = Tab3:CreateDropdown({
 	Name = "Select Area CyberTown",
     Options = {"Cyber Town", "Robo Road", "Cyber Adventure", "Robo Expedition", "Cyborg Cerberus Room", "Cyber Kingdom",
     "Robo Life", "Cyber Expedition", "Robo Forest", "Robo Land", "Robo Hydra Room", "The Second Portal",}, -- Ganti dengan daftar Area untuk CyberTown
@@ -342,7 +342,7 @@ local CyberTownAreaDropdown = Tab:CreateDropdown({
 })
 
 -- Membuat tombol Teleport
-local TeleportButton = Tab:CreateButton({
+local TeleportButton = Tab3:CreateButton({
     Name = "Teleport",
     Callback = function()
 if getgenv().selectedRealm and ((getgenv().selectedRealm == "Earth" and getgenv().selectedAreaEarth) or (getgenv().selectedRealm == "Cyberverse" and getgenv().selectedAreaCyberTown)) then
@@ -360,10 +360,10 @@ if getgenv().selectedRealm and ((getgenv().selectedRealm == "Earth" and getgenv(
 
 --TAB F2PTab
 	local Tab4 = Window:CreateTab("F2PTab") -- Title, Image	
-	local F2PSec = Tab:CreateSection("F2P")
+	local F2PSec = Tab4:CreateSection("F2P")
 
 -- Membuat tombol untuk memicu aksi pertama
-local Booster1Button = Tab:CreateButton({
+local Booster1Button = Tab4:CreateButton({
 Name = "DropsBooster",
 SectionParent = F2P,
     Callback = function()
@@ -373,7 +373,7 @@ SectionParent = F2P,
 })
 
 -- Membuat tombol untuk memicu aksi kedua
-local Booster2Button = Tab:CreateButton({
+local Booster2Button = Tab4:CreateButton({
 Name = "PowerBooster",
 SectionParent = F2P,
     Callback = function()
@@ -383,7 +383,7 @@ SectionParent = F2P,
 })
 
 -- Membuat tombol untuk memicu aksi ketiga
-local Booster3Button = Tab:CreateButton({
+local Booster3Button = Tab4:CreateButton({
 Name = "MegaLuckBooster",
 SectionParent = F2P,
 Callback = function()
@@ -393,7 +393,7 @@ Callback = function()
 })
 
 -- Membuat tombol untuk memicu aksi keempat
-local Booster4Button = Tab:CreateButton({
+local Booster4Button = Tab4:CreateButton({
 Name = "LuckBooster",
 SectionParent = F2P,
 Callback = function()
@@ -406,10 +406,10 @@ Callback = function()
 	
 --TAB MISC
 	local Tab5 = Window:CreateTab("Misc") -- Title, Image
-	local MiscSec = Tab:CreateSection("MISC",false)	
+	local MiscSec = Tab5:CreateSection("MISC",false)	
 -- inf jump
 	local Misc = {}
-	Tab:CreateButton({
+	Tab5:CreateButton({
 	Name = "Infinite Jump",
 	SectionParent = MiscSec,
 	Callback = function()
@@ -441,7 +441,7 @@ end
 })
 
 --- speed
-Tab:CreateSpacing(nil,10)
+Tab5:CreateSpacing(nil,10)
     Misc.Slider = Tab:CreateSlider({
         Name = "Walk Speed",
 		SectionParent = MiscSec,
@@ -455,7 +455,7 @@ Tab:CreateSpacing(nil,10)
    end,
 })	
 
-    Misc.Keybind = Tab:CreateKeybind({
+    Misc.Keybind = Tab5:CreateKeybind({
         Name = "Keybind",
         CurrentKeybind = "Q",
 		SectionParent = MiscSec,
