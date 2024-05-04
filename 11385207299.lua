@@ -191,6 +191,7 @@ local selectedEarthArea = nil
 
 local EarthAreaDropdown = Egg:CreateDropdown({
     Name = "Select Area Earth",
+    SectionParent = Egg,
     Options = ManualAreasEarth,
     CurrentOption = {""},
     MultiSelection = false,
@@ -206,6 +207,7 @@ local EarthAreaDropdown = Egg:CreateDropdown({
 
 local CyberverseAreaDropdown = Egg:CreateDropdown({
     Name = "Select Area Cyberverse",
+    SectionParent = Egg,
     Options = ManualAreasCyberverse,
     CurrentOption = {""},
     MultiSelection = false,
@@ -221,6 +223,7 @@ local CyberverseAreaDropdown = Egg:CreateDropdown({
 
 local HatchTypeDropdown = Egg:CreateDropdown({
     Name = "Select Hatch Type",
+	SectionParent = Egg,
     Options = {"1 Hatch", "3 Hatch"},
     CurrentOption = {""},
     MultiSelection = false,
@@ -242,6 +245,7 @@ local HatchTypeDropdown = Egg:CreateDropdown({
 
 local TierDropdown = Egg:CreateDropdown({
     Name = "Select Tier",
+	SectionParent = Egg,
     Options = {"Tier_1", "Tier_2", "Tier_3", "Tier_4"},
     CurrentOption = {""},
     MultiSelection = false,
@@ -283,7 +287,7 @@ end
 
 local AutoHatchToggle = Egg:CreateToggle({
     Name = "Auto Hatch Egg",
-    SectionParent = Egg,
+	SectionParent = Egg,
     CurrentValue = false,
     Callback = function(value)
         getgenv().AutoHatchEgg = value
@@ -295,10 +299,11 @@ local AutoHatchToggle = Egg:CreateToggle({
 
 -- TAB TELEPORT
 local Tab3 = Window:CreateTab("Teleport")
-local Tele = Tab3:CreateSection("Teleport", "note : Need Teleport Gempass")
+local Tele = Tab3:CreateSection("Teleport", false)
 
 local RealmDropdown = Tele:CreateDropdown({
     Name = "Select Realm",
+	SectionParent = Tele,
     Options = {"Earth", "Cyberverse"},
     Flag = "Dropdown1",
     CurrentOption = {""},
