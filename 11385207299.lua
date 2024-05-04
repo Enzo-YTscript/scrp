@@ -1,4 +1,5 @@
-local ArrayField = loadstring(game:HttpGet('https://raw.githubusercontent.com/UI-Interface/ArrayField/main/Source'))()
+local ArrayField = loadstring(game:HttpGet('https://raw.githubusercontent.com/UI-Interface/ArrayField/main/Source.lua'))()
+
 local Window = ArrayField:CreateWindow({
         Name = "ArrayField Example Window",
         LoadingTitle = "ArrayField Interface Suite",
