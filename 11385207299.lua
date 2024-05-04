@@ -92,7 +92,6 @@ end
     end,
 })
 
-	Tab:CreateSpacing(nil,10)
 	local autoCollectToggle = {}
     Tab:CreateToggle({
 	Name = "Auto Collect",
