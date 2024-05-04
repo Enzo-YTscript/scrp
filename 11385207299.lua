@@ -1,7 +1,5 @@
 local ArrayField = loadstring(game:HttpGet("https://raw.githubusercontent.com/Enzo-YTscript/Ui-Library/main/ArrayfieldLibrary"))()
 
-
-
 local Window = ArrayField:CreateWindow({
         Name = "ArrayField Example Window",
         LoadingTitle = "ArrayField Interface Suite",
@@ -14,9 +12,9 @@ local Window = ArrayField:CreateWindow({
         Discord = {
             Enabled = false,
             Invite = "sirius", -- The Discord invite code, do not include discord.gg/
-            RememberJoins = false -- Set this to false to make them join the discord every time they load it up
+            RememberJoins = true -- Set this to false to make them join the discord every time they load it up
         },
-        KeySystem = false, -- Set this to true to use our key system
+        KeySystem = true, -- Set this to true to use our key system
         KeySettings = {
             Title = "ArrayField",
             Subtitle = "Key System",
