@@ -1,6 +1,6 @@
 local ArrayField = loadstring(game:HttpGet("https://raw.githubusercontent.com/Enzo-YTscript/Ui-Library/main/ArrayfieldLibrary"))()
 
-local Window = ArrayField:CreateWindow({
+local Window = Rayfield:CreateWindow({
     Name = "Toy Simulator Halloween 🎃",
     LoadingTitle = "SUBSCRIBE ENZO-YT",
     LoadingSubtitle = "by ENZO-YT",
