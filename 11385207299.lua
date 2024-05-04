@@ -454,15 +454,3 @@ Tab:CreateSpacing(nil,10)
           game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
    end,
 })	
-
-    Misc.Keybind = Tab:CreateKeybind({
-        Name = "Keybind Example",
-        CurrentKeybind = "Q",
-		SectionParent = MiscSec,
-        HoldToInteract = false,
-        SectionParent = LockTesting,
-        Flag = "Keybind2",
-        Callback = function(Keybind)
-
-        end,
-    })
