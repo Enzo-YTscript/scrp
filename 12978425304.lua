@@ -48,53 +48,55 @@ local Section = Tab:CreateSection("Farm", false)
 
 -- player
 local player = game.Players.LocalPlayer
-local isAutoFarming = false
+-- Auto Farm Coins
+local AutoFarmCoinsEnabled = false
 
-local function collectCoin(target)
-    local targetPosition = target.PrimaryPart.Position
-    local playerPosition = player.Character.HumanoidRootPart.Position
-    local distance = (targetPosition - playerPosition).Magnitude
+local function FireServerOnTarget(target)
+    game:GetService("ReplicatedStorage").Remotes.Hit:FireServer()
+end
 
-    if distance <= 1000 then
-        player.Character:SetPrimaryPartCFrame(target.PrimaryPart.CFrame * CFrame.new(0, 0, -3))
-        wait(0.5)
-        target:Destroy()
-        player.Character:SetPrimaryPartCFrame(playerStartCFrame)
+local function FindNearestTarget()
+    local nearestTarget = nil
+    local maxDistance = math.huge
+
+    for _, target in pairs(workspace.Misc.Items:GetChildren()) do
+        if target:IsA("Model") and target:FindFirstChild("ClickDetector") then
+            local distance = (target.PrimaryPart.Position - player.Character.HumanoidRootPart.Position).Magnitude
+            if distance < maxDistance then
+                maxDistance = distance
+                nearestTarget = target
+            end
+        end
+    end
+
+    return nearestTarget
+end
+
+local function AutoFarmCoins()
+    while AutoFarmCoinsEnabled do
+        local target = FindNearestTarget()
+        if target then
+            fireclickdetector(target.ClickDetector)
+            FireServerOnTarget(target)
+        else
+            print("No objects with ClickDetector nearby.")
+        end
+        wait(1)  -- Adjust the wait time as needed
     end
 end
 
-local function fireclickdetector(clickDetector)
-    clickDetector:FireServer()
-end
-
-local AutoFarm = {}
 Tab:CreateToggle({
     Name = "Auto Farm Coins",
     SectionParent = Section,
     CurrentValue = false,
-    Callback = function(v)
-        isAutoFarming = v
-        while isAutoFarming do
-            local target = nil
-            local maxdistance = math.huge
-            for i, v in pairs(workspace.Misc.Items:GetChildren()) do
-                if not v:FindFirstChild("ClickDetector") then continue end
-                local dist = (v.PrimaryPart.Position - player.Character.HumanoidRootPart.Position).Magnitude
-                if dist > maxdistance then continue end
-
-                target = v
-                maxdistance = dist
-            end
-            if target then
-                fireclickdetector(target.ClickDetector)
-                game:GetService("ReplicatedStorage").Remotes.Hit:FireServer()
-            else
-                print("No object with ClickDetector nearby")
-            end
-            wait(1)
+    Callback = function(value)
+        AutoFarmCoinsEnabled = value
+        if AutoFarmCoinsEnabled then
+            AutoFarmCoins()
         end
     end,
 })
+
 
 Tab:CreateSpacing(nil, 10)
 local autoCollectToggle = {}
