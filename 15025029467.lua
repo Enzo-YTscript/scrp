@@ -1,73 +1,232 @@
--- Load the DrRay library from the GitHub repository Library
-local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))()
+local ArrayField = loadstring(game:HttpGet('https://raw.githubusercontent.com/UI-Interface/ArrayField/main/Source'))()
+local Window = ArrayField:CreateWindow({
+        Name = "ArrayField Example Window",
+        LoadingTitle = "ArrayField Interface Suite",
+        LoadingSubtitle = "by Arrays",
+        ConfigurationSaving = {
+            Enabled = true,
+            FolderName = nil, -- Create a custom folder for your hub/game
+            FileName = "ArrayField"
+        },
+        Discord = {
+            Enabled = false,
+            Invite = "sirius", -- The Discord invite code, do not include discord.gg/
+            RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+        },
+        KeySystem = true, -- Set this to true to use our key system
+        KeySettings = {
+            Title = "ArrayField",
+            Subtitle = "Key System",
+            Note = "Join the discord (discord.gg/sirius)",
+            FileName = "ArrayFieldsKeys",
+            SaveKey = false,
+            GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like ArrayField to get the key from
+            Key = {"Hello",'Bye'},
+            Actions = {
+                [1] = {
+                    Text = 'Click here to copy the key link',
+                    OnPress = function()
 
--- Create a new window and set its title and theme
-local window = DrRayLibrary:Load("ENZO", "Default")
-
--- Create the first tab with an image ID
-local tab1 = DrRayLibrary.newTab("Tab 1", "😍")
-
--- Add elements to the first tab
-tab1.newLabel("Hello, this is Tab 1.")
-tab1.newButton("Button", "Prints Hello!", function()
-    print('Hello!')
-end)
-tab1.newToggle("Toggle", "Toggle! (prints the state)", true, function(toggleState)
-    if toggleState then
-        print("On")
-    else
-        print("Off")
-    end
-end)
-tab1.newInput("Input", "Prints your input.", function(text)
-    print("Entered text in Tab 1: " .. text)
-end)
-
--- Add a "Sell" button to Tab 1
-tab1.newButton("Sell", "Sells the item", function()
-    local args = {
-        [1] = "TeleportToLastHarborShopChannel"
-    }
-    game:GetService("ReplicatedStorage"):WaitForChild("CommonLibrary"):WaitForChild("Tool"):WaitForChild("RemoteManager"):WaitForChild("Funcs"):WaitForChild("DataPullFunc"):InvokeServer(unpack(args))
-end)
-
--- Create the second tab with a different image ID
-local tab2 = DrRayLibrary.newTab("Tab 2", "ImageIdLogoHere")
-
--- Add elements to the second tab
-tab2.newLabel("Hello, this is Tab 2.")
-tab2.newButton("Button", "Prints Hello!", function()
-    print('Hello!')
-end)
-
--- Create the dropdown and toggle
-local dropdownOptions = {"water", "dog", "air", "bb", "airplane", "wohhho", "yeay", "delete", "garden"}
-local dropdown = tab2.newDropdown("Dropdown", "Select one of these options!", dropdownOptions, function(selectedOption)
-    print(selectedOption)
-end)
-local toggle = tab2.newToggle("Toggle", "Toggle! (Run selected option)", false)
-dropdown.callback = function(selectedOption)
-    if selectedOption == "garden" then
-        toggle:SetEnabled(true)
-    else
-        toggle:SetEnabled(false)
-    end
-end
-toggle.callback = function(toggleState)
-    if toggleState then
-        local selectedOption = dropdown:GetValue()
-        if selectedOption == "garden" then
-            local args = {
-                [1] = "player_gacha_pet",
-                [2] = {
-                    ["1"] = 4,
-                    ["3"] = {},
-                    ["2"] = 1
+                    end,
                 }
-            }
-            game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunction"):InvokeServer(unpack(args))
-        else
-            print("Selected option:", selectedOption)
+            },
+        }
+    })
+    local Tab = Window:CreateTab("Tab Example", 4483362458) -- Title, Image
+    local Tab2 = Window:CreateTab("Tab Example 2") -- Title, Image
+    local Section = Tab:CreateSection("Section Example",false) -- The 2nd argument is to tell if its only a Title and doesnt contain element
+    Tab:CreateSpacing(nil,10)
+    local Button = Tab:CreateButton({
+        Name = "Button Example",
+        Info = {
+            Title = 'This is a Button',
+            Description = 'This is a description for the button you know.',
+        },
+        Interact = 'Changable',
+        Callback = function()
+            print('Pressed')
+        end,
+    })
+    Tab:CreateSpacing(nil,10)
+    local Toggle = Tab:CreateToggle({
+        Name = "Toggle Example",
+        Info = {
+            Title = 'Slider template',
+            Image = '12735851647',
+            Description = 'Just a slider for stuff',
+        },
+        CurrentValue = false,
+        Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+        Callback = function(Value)
+            print(Value)
+        end,
+    })
+    Tab:CreateSpacing(nil,10)
+    local ColorPicker = Tab:CreateColorPicker({
+        Name = "Color Picker",
+        Color = Color3.fromRGB(2,255,255),
+        Flag = "ColorPicker1",
+        Callback = function(Value)
+            print(Value)
         end
-    end
-end
+    })
+    Tab:CreateSpacing(nil,10)
+    local Slider = Tab:CreateSlider({
+        Name = "Slider Example",
+        Range = {0, 100},
+        Increment = 10,
+        Suffix = "Bananas",
+        CurrentValue = 10,
+        Flag = "Slider1",
+        Callback = function(Value)
+            print(Value)
+        end,
+    })
+    Tab:CreateSpacing(nil,10)
+    local Keybind = Tab:CreateKeybind({
+        Name = "Keybind Example",
+        CurrentKeybind = "Q",
+        HoldToInteract = false,
+        Flag = "Keybind1",
+        Callback = function(Keybind)
+
+        end,
+    })
+    Tab:CreateSpacing(nil,10)
+    local Section2 = Tab:CreateSection("Inputs Examples",true)
+    Tab:CreateInput({
+        Name = "Numbers Only",
+        PlaceholderText = "Amount",
+        NumbersOnly = true,
+        OnEnter = true,
+        RemoveTextAfterFocusLost = true,
+        Callback = function(Text)
+            print(Text)
+        end,
+    })
+    Tab:CreateInput({
+        Name = "11 Characters Limit",
+        PlaceholderText = "Text",
+        CharacterLimit = 11,
+        RemoveTextAfterFocusLost = true,
+        Callback = function(Text)
+            print(Text)
+        end,
+    })
+    Tab:CreateInput({
+        Name = "No RemoveTextAfterFocusLost",
+        PlaceholderText = "Input",
+        RemoveTextAfterFocusLost = false,
+        Callback = function(Text)
+            print(Text)
+        end,
+    })
+    local Section3= Tab:CreateSection("Dropdown Examples",true)
+    local MultiSelectionDropdown = Tab:CreateDropdown({
+        Name = "Multi Selection",
+        Options = {"Option 1","Option 2",'Option 3'},
+        CurrentOption = {"Option 1","Option 3"} ,
+        MultiSelection = true,
+        Flag = "Dropdown1",
+        Callback = function(Option)
+            print(Option)
+        end,
+    })
+    local SingleSelection = Tab:CreateDropdown({
+        Name = "Single Selection",
+        Options = {"Option 1","Option 2"},
+        CurrentOption = "Option 1",
+        MultiSelection = false,
+        Flag = "Dropdown2",
+        Callback = function(Option)
+            print(Option)
+        end,
+    })
+    local Label = Tab:CreateLabel("Thanks for using Arrayfield, there were alot of issues but here we are!",Section)
+    local Paragraph = Tab:CreateParagraph({Title = "Paragraph Example", Content = "Paragraph Example"},Section)
+    local Sets = Tab:CreateSection('Set Functions',false)
+    local SButton
+    SButton = Tab:CreateButton({
+        Name = "Button Example",
+        Interact = 'Interact',
+        SectionParent = Sets,
+        Callback = function()
+            SButton:Set(nil,'New Interaction')
+        end
+    })
+    Tab:CreateButton({
+        Name = "Dropdown Set",
+        Interact = 'Interact',
+        SectionParent = Sets,
+        Callback = function()
+            SingleSelection:Set('Option 1')
+        end
+    })
+
+    local LockTesting = Tab:CreateSection('Lockdown Section',false)
+    local ToLock = {}
+    Tab:CreateToggle({
+        Name = "Lockdown",
+        SectionParent = LockTesting,
+        CurrentValue = false,
+        Callback = function(Value)
+            if Value then
+                for _,v in ToLock do
+                    v:Lock('Locked')
+                end
+            else
+                for _,v in ToLock do
+                    v:Unlock('Locked')
+                end
+            end
+        end,
+    })
+    Tab:CreateSpacing(LockTesting)
+    ToLock.Button = Tab:CreateButton({
+        SectionParent = LockTesting,
+        Name = "Button Example",
+        Interact = 'Interact',
+        Callback = function()
+            print('Pressed')
+        end,
+    })
+    ToLock.Toggle = Tab:CreateToggle({
+        SectionParent = LockTesting,
+        Name = "Toggle Example",
+        CurrentValue = false,
+        Flag = "Toggle2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+        Callback = function(Value)
+            print(Value)
+        end,
+    })
+    ToLock.ColorPicker = Tab:CreateColorPicker({
+        Name = "Color Picker",
+        SectionParent = LockTesting,
+        Color = Color3.fromRGB(2,255,255),
+        Flag = "ColorPicker2",
+        Callback = function(Value)
+            print(Value)
+        end
+    })
+    ToLock.Slider = Tab:CreateSlider({
+        SectionParent = LockTesting,
+        Name = "Slider Example",
+        Range = {0, 100},
+        Increment = 10,
+        Suffix = "Bananas",
+        CurrentValue = 10,
+        Flag = "Slider2",
+        Callback = function(Value)
+            print(Value)
+        end,
+    })
+    ToLock.Keybind = Tab:CreateKeybind({
+        Name = "Keybind Example",
+        CurrentKeybind = "Q",
+        HoldToInteract = false,
+        SectionParent = LockTesting,
+        Flag = "Keybind2",
+        Callback = function(Keybind)
+
+        end,
+    })
