@@ -92,28 +92,38 @@ end
 })
 
 local autoCollectToggle = TabFarm:CreateToggle({
-	Name = "Auto Collect",
-        SectionParent = SectionFarm,
-        CurrentValue = false,
-        Callback = function(v)
-getgenv().collect = Value
+    Name = "Auto Collect",
+    SectionParent = SectionFarm,
+    CurrentValue = false,
+    Callback = function(v)
+        getgenv().collect = v
 
-while true do
-    if getgenv().collect then
-        local player = game.Players.LocalPlayer
-        local humanoidRootPart = player.Character:WaitForChild("HumanoidRootPart")
-        
-        for _, Drops in ipairs(game.Workspace.Misc.Drops:GetChildren()) do
-            if Drops:IsA("BasePart") then
-                Drops.CFrame = CFrame.new(humanoidRootPart.Position)
+        while true do
+            if getgenv().collect then
+                local player = game.Players.LocalPlayer
+                local humanoidRootPart = player.Character:WaitForChild("HumanoidRootPart")
+                local dropsFolder = game.Workspace.Misc.Drops
+
+                -- Fungsi rekursif untuk mengumpulkan objek dalam folder
+                local function collectDrops(folder)
+                    for _, obj in ipairs(folder:GetChildren()) do
+                        if obj:IsA("BasePart") then
+                            obj.CFrame = CFrame.new(humanoidRootPart.Position)
+                        elseif obj:IsA("Folder") then
+                            collectDrops(obj)  -- Rekursif ke dalam folder
+                        end
+                    end
+                end
+
+                -- Panggil fungsi collectDrops untuk folder Drops
+                collectDrops(dropsFolder)
             end
+
+            wait(0.1)
         end
-        end
-    
-    wait(0.1)
-end
-end,
+    end,
 })
+
 
 	local AuroCollectGift = TabFarm:CreateToggle({
         Name = "Auto Collect Gift",
