@@ -163,7 +163,7 @@ local function autohatch(world, area, tier, tripleHatch)
         [3] = "tier_" .. tier,
         [4] = tripleHatch
     }
-    OpenCrate:FireServer(unpack(args))
+    Remotes.OpenCrate:FireServer(unpack(args))
 end
 
 local function startAutoHatch()
