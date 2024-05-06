@@ -156,6 +156,8 @@ local autoCollectToggle = TabFarm:CreateToggle({
 })
 
 -- Fungsi untuk mendapatkan daftar area berdasarkan dunia (Earth atau Cyberverse)
+local HatchRemote = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("OpenCrate")
+
 local function autohatch(world, area, tier, tripleHatch)
     local args = {
         [1] = world,
@@ -163,7 +165,7 @@ local function autohatch(world, area, tier, tripleHatch)
         [3] = "tier_" .. tier,
         [4] = tripleHatch
     }
-    Remotes.OpenCrate:FireServer(unpack(args))
+    HatchRemote:FireServer(unpack(args))
 end
 
 local function startAutoHatch()
