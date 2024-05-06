@@ -248,6 +248,26 @@ local HatchTypeDropdown = Tab2:CreateDropdown({
     end
 })
 
+local TierDropdown = Tab2:CreateDropdown({
+    Name = "Select Tier",
+    SectionParent = Egg,
+    Options = {"Tier_1", "Tier_2", "Tier_3", "Tier_4"},
+    CurrentOption = {""},
+    Callback = function(Option)
+        local tierOptions = {
+            ["Tier_1"] = "tier_1",
+            ["Tier_2"] = "tier_2",
+            ["Tier_3"] = "tier_3",
+            ["Tier_4"] = "tier_4"
+        }
+
+        getgenv().selectedTier = tierOptions[Option[1]] or "tier_1"
+        if getgenv().AutoHatchEgg then
+            autohatch()
+        end
+    end
+})
+
 local AutoHatchToggle = Tab2:CreateToggle({
     Name = "Auto Hatch Egg",
     SectionParent = Egg,
@@ -261,6 +281,7 @@ local AutoHatchToggle = Tab2:CreateToggle({
         end
     end
 })
+
 
 
 --TAB TELEPORT
