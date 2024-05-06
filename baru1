@@ -1,6 +1,6 @@
 local ArrayField = loadstring(game:HttpGet("https://raw.githubusercontent.com/Enzo-YTscript/Ui-Library/main/ArrayfieldLibrary"))()
 
-local Window = Rayfield:CreateWindow({
+local Window = ArrayField:CreateWindow({
    Name = "Toy Simulator Halloween 🎃",
    LoadingTitle = "SUBSCRIBE ENZO-YT",
    LoadingSubtitle = "by ENZO-YT",
@@ -92,10 +92,9 @@ end
 })
 
 	Tab:CreateSpacing(nil,10)
-	local autoCollectToggle = {}
-    Tab:CreateToggle({
+local autoCollectToggle = Tab:CreateToggle({
 	Name = "Auto Collect",
-        SectionParent = Farm,
+        SectionParent = SectionFarm,
         CurrentValue = false,
         Callback = function(v)
 getgenv().collect = Value
