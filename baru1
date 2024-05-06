@@ -307,9 +307,9 @@ local AutoHatchToggle = Tab2:CreateToggle({
 -- Membuat dropdown Realm
 local RealmDropdown = Tab3:CreateDropdown({
 	Name = "Select Realm",
+	SectionParent = Tele,
     Options = {"Earth", "Cyberverse"},
-	SectionParent = Tele,	
-	Flag = "Dropdown1",
+	Flag = "Dropdown4",
 	CurrentOption = {""},
     Callback = function(Option)
         getgenv().selectedRealm = Option[1]
