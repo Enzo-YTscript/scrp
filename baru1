@@ -302,7 +302,7 @@ local AutoHatchToggle = Tab2:CreateToggle({
 
 --TAB TELEPORT
 	local Tab3 = Window:CreateTab("Teleport") -- Title, Image	
-	local Tele = Tab3:CreateSection("Teleport", "note : Need Teleport Gempass")
+	local Tele = Tab3:CreateSection("Teleport",false)
 	
 -- Membuat dropdown Realm
 local RealmDropdown = Tab3:CreateDropdown({
