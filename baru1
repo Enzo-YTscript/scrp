@@ -155,6 +155,7 @@ local autoCollectToggle = TabFarm:CreateToggle({
     end,
 })
 
+-- TAB EGG
 -- Fungsi untuk mendapatkan daftar area berdasarkan dunia (Earth atau Cyberverse)
 local HatchRemote = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("OpenCrate")
 
@@ -162,11 +163,109 @@ local function autohatch(world, area, tier, tripleHatch)
     local args = {
         [1] = world,
         [2] = area,
-        [3] = tier,
+        [3] = "tier_" .. tier,
         [4] = tripleHatch
     }
     HatchRemote:FireServer(unpack(args))
 end
+
+local function startAutoHatch()
+    local selectedWorld = getgenv().selectedWorld
+    local selectedArea = getgenv().selectedArea
+    local selectedTier = getgenv().selectedTier
+    local tripleHatch = getgenv().tripleHatch
+
+    if selectedWorld == "Earth" then
+        autohatch("Earth", selectedArea, selectedTier, tripleHatch)
+    elseif selectedWorld == "Cyberverse" then
+        autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
+    end
+end
+
+--TAB EGG
+	local Tab2 = Window:CreateTab("🥚 EGG", nil) -- Title, Image	
+	local EGG = Tab2:CreateSection("Auto Egg",false)
+	
+local ManualAreasCyberverse = {"Cyber Town", "Robo Road", "Cyber Adventure", "Robo Expedition", "Cyber Kingdom", "Robo Life", "Cyber Expedition",  "Robo Forest", "Robo Land", "The Second Portal",}
+
+local ManualAreasEarth = {"Town", "Frosty Kingdom", "Desert Adventure", "Jungle Expedition", "Dinosaur Kingdom", "Farm Life", "Mountain Expedition", "Fantasy Forest", "Aqua Land", "The Portal"}
+
+local selectedCyberverseArea = nil
+local selectedEarthArea = nil
+
+local EarthAreaDropdown = Tab2:CreateDropdown({
+   Name = "Select Area Earth",
+   SectionParent = EGG,
+   Options = ManualAreasEarth,
+   CurrentOption = {""},
+   MultiSelection = false, -- If MultiSelections is allowed
+   Flag = "Dropdown1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Option)
+        getgenv().selectedWorld = "Earth"
+        getgenv().selectedArea = Option[1]
+        if getgenv().AutoHatchEgg then
+            startAutoHatch()
+        end
+    end
+})
+
+local CyberverseAreaDropdown = Tab2:CreateDropdown({
+   Name = "Select Area Cyberverse",
+   SectionParent = EGG,
+   Options = ManualAreasCyberverse,
+   CurrentOption = {""},
+   MultiSelection = false, -- If MultiSelections is allowed
+   Flag = "Dropdown2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Option)
+        getgenv().selectedWorld = "Cyberverse"
+        getgenv().selectedArea = Option[1]
+        if getgenv().AutoHatchEgg then
+            startAutoHatch()
+        end
+    end
+})
+
+local HatchTypeDropdown = Tab2:CreateDropdown({
+   Name = "Select Hatch Type",
+   SectionParent = EGG,
+   Options = {"1 Hatch", "3 Hatch"},
+   CurrentOption = {""},
+   Flag = "Dropdown3", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Option)
+        local hatchOptions = {
+            ["1 Hatch"] = false,
+            ["3 Hatch"] = true
+        }
+
+        local tripleHatch = hatchOptions[Option[1]]
+        getgenv().tripleHatch = tripleHatch
+
+        if getgenv().AutoHatchEgg then
+            startAutoHatch()
+        end
+    end
+})
+
+local TierDropdown = Tab2:CreateDropdown({
+   Name = "Select Tier",
+   SectionParent = EGG,
+   Options = {"Tier_1", "Tier_2", "Tier_3", "Tier_4"},
+   CurrentOption = {""},
+   Flag = "Dropdown4", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Option)
+        local tierOptions = {
+            ["Tier_1"] = 1,
+            ["Tier_2"] = 2,
+            ["Tier_3"] = 3,
+            ["Tier_4"] = 4
+        }
+
+        getgenv().selectedTier = tierOptions[Option[1]] or 1
+        if getgenv().AutoHatchEgg then
+            autohatch()
+        end
+    end
+})
 
 local isAutoHatching = false
 
@@ -184,90 +283,14 @@ local function startAutoHatch()
             autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
         end
 
-        wait(1) -- Tunggu 1 detik sebelum menjalankan lagi (sesuaikan dengan kebutuhan)
+        wait(1) -- Tunggu 2 detik sebelum menjalankan lagi (sesuaikan dengan kebutuhan)
     end
 end
 
--- TAB EGG
-local Tab2 = Window:CreateTab("EGG", nil) -- Title, Image
-local Egg = Tab2:CreateSection("🥚 Auto EGG", false)
-
-local ManualAreasCyberverse = {"Cyber Town", "Robo Road", "Cyber Adventure", "Robo Expedition", "Cyber Kingdom", "Robo Life", "Cyber Expedition",  "Robo Forest", "Robo Land", "The Second Portal"}
-local ManualAreasEarth = {"Town", "Frosty Kingdom", "Desert Adventure", "Jungle Expedition", "Dinosaur Kingdom", "Farm Life", "Mountain Expedition", "Fantasy Forest", "Aqua Land", "The Portal"}
-
-local EarthAreaDropdown = Tab2:CreateDropdown({
-    Name = "Select Area Earth",
-    SectionParent = Egg,
-    Options = ManualAreasEarth,
-    CurrentOption = {""},
-    MultiSelection = false,
-    Flag = "Dropdown1",
-    Callback = function(Option)
-        getgenv().selectedWorld = "Earth"
-        getgenv().selectedArea = Option[1]
-        if getgenv().AutoHatchEgg then
-            startAutoHatch()
-        end
-    end
-})
-
-local CyberverseAreaDropdown = Tab2:CreateDropdown({
-    Name = "Select Area Cyberverse",
-    SectionParent = Egg,
-    Options = ManualAreasCyberverse,
-    CurrentOption = {""},
-    MultiSelection = false,
-    Flag = "Dropdown2",
-    Callback = function(Option)
-        getgenv().selectedWorld = "Cyberverse"
-        getgenv().selectedArea = Option[1]
-        if getgenv().AutoHatchEgg then
-            startAutoHatch()
-        end
-    end
-})
-
-local HatchTypeDropdown = Tab2:CreateDropdown({
-    Name = "Select Hatch Type",
-    SectionParent = Egg,
-    Options = {"1 Hatch", "3 Hatch"},
-    CurrentOption = {""},
-    MultiSelection = false,
-    Flag = "Dropdown3",
-    Callback = function(Option)
-        local hatchOptions = {
-            ["1 Hatch"] = false,
-            ["3 Hatch"] = true
-        }
-
-        local tripleHatch = hatchOptions[Option[1]]
-        getgenv().tripleHatch = tripleHatch
-
-        if getgenv().AutoHatchEgg then
-            startAutoHatch()
-        end
-    end
-})
-
-local TierDropdown = Tab2:CreateDropdown({
-    Name = "Select Tier",
-    SectionParent = Egg,
-    Options = {"Tier_1", "Tier_2", "Tier_3", "Tier_4"},
-    CurrentOption = {""},
-    MultiSelection = false,
-    Flag = "Dropdown4",
-    Callback = function(Option)
-        getgenv().selectedTier = Option[1]
-        if getgenv().AutoHatchEgg then
-            startAutoHatch()
-        end
-    end
-})
-
 local AutoHatchToggle = Tab2:CreateToggle({
-    Name = "Auto Hatch Egg",
-    SectionParent = Egg,
-    CurrentValue = false,
+        Name = "Auto Hatch Egg",
+        SectionParent = EGG,
+        CurrentValue = false,
     Callback = function(Value)
         getgenv().AutoHatchEgg = Value
         if Value then
@@ -277,7 +300,6 @@ local AutoHatchToggle = Tab2:CreateToggle({
         end
     end
 })
-
 
 --TAB TELEPORT
 	local Tab3 = Window:CreateTab("Teleport") -- Title, Image	
