@@ -302,12 +302,12 @@ local AutoHatchToggle = Tab2:CreateToggle({
 
 --TAB TELEPORT
 	local Tab3 = Window:CreateTab("Teleport") -- Title, Image	
-	local Tele = Tab3:CreateSection("Teleport",false)
+	local Telep = Tab3:CreateSection("Teleport",false)
 	
 -- Membuat dropdown Realm
 local RealmDropdown = Tab3:CreateDropdown({
 	Name = "Select Realm",
-	SectionParent = Tele,
+	SectionParent = Telep,
     Options = {"Earth", "Cyberverse"},
 	Flag = "Dropdown5",
 	CurrentOption = {""},
@@ -322,7 +322,7 @@ local EarthAreaDropdown = Tab3:CreateDropdown({
     Options = {"Town", "Frosty Kingdom", "Desert Adventure", "Jungle Expedition", "Pirate Cove", "Cerberus Realm",
     "Dinosaur Kingdom", "Farm Life", "Mountain Expedition", "Fantasy Forest", "Aqua Land", "Hydra Room", "The Portal"}, -- Ganti dengan daftar Area untuk Earth
     CurrentOption = {""},
-	SectionParent = Tele,	
+	SectionParent = Telep,	
 	Flag = "Dropdown6",
 Callback = function(Option)
         if getgenv().selectedRealm == "Earth" then
@@ -337,8 +337,8 @@ local CyberTownAreaDropdown = Tab3:CreateDropdown({
     Options = {"Cyber Town", "Robo Road", "Cyber Adventure", "Robo Expedition", "Cyborg Cerberus Room", "Cyber Kingdom",
     "Robo Life", "Cyber Expedition", "Robo Forest", "Robo Land", "Robo Hydra Room", "The Second Portal",}, -- Ganti dengan daftar Area untuk CyberTown
     CurrentOption = {""},
-	SectionParent = Tele,	
-	Flag = "Dropdown3",
+	SectionParent = Telep,	
+	Flag = "Dropdown7",
     Callback = function(Option)
         if getgenv().selectedRealm == "Cyberverse" then
             getgenv().selectedAreaCyberTown = Option[1]
@@ -349,7 +349,7 @@ local CyberTownAreaDropdown = Tab3:CreateDropdown({
 -- Membuat tombol Teleport
 local TeleportButton = Tab3:CreateButton({
     Name = "Teleport",
-	SectionParent = Tele,	
+	SectionParent = Telep,	
     Callback = function()
 if getgenv().selectedRealm and ((getgenv().selectedRealm == "Earth" and getgenv().selectedAreaEarth) or (getgenv().selectedRealm == "Cyberverse" and getgenv().selectedAreaCyberTown)) then
             local selectedArea = getgenv().selectedRealm == "Earth" and getgenv().selectedAreaEarth or getgenv().selectedAreaCyberTown
