@@ -289,15 +289,14 @@ local AutoHatchToggle = Tab2:CreateToggle({
     Name = "Auto Hatch Egg",
         SectionParent = Egg,
         CurrentValue = false,
-        Callback = function(value)
-        AutoStartArenaEnabled = value
-        if AutoStartArenaEnabled then
-            while AutoStartArenaEnabled do
-                wait(3) -- Tunggu selama 3 detik sebelum memulai Arena
-                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Start"):FireServer()
-            end
+        Callback = function(Value)
+        getgenv().AutoHatchEgg = Value
+        if Value then
+            startAutoHatch()
+        else
+            isAutoHatching = false -- Mematikan auto hatch
         end
-    end,
+    end
 })
 
 --TAB TELEPORT
