@@ -198,7 +198,11 @@ local Tab2 = Window:CreateTab("🥚 EGG", nil) -- Title, Image
 local Egg = Tab2:CreateSection("EGG")
 
 local ManualAreasCyberverse = {"Cyber Town", "Robo Road", "Cyber Adventure", "Robo Expedition", "Cyber Kingdom", "Robo Life", "Cyber Expedition",  "Robo Forest", "Robo Land", "The Second Portal"}
+
 local ManualAreasEarth = {"Town", "Frosty Kingdom", "Desert Adventure", "Jungle Expedition", "Dinosaur Kingdom", "Farm Life", "Mountain Expedition", "Fantasy Forest", "Aqua Land", "The Portal"}
+
+local selectedCyberverseArea = nil
+local selectedEarthArea = nil
 
 local EarthAreaDropdown = Tab2:CreateDropdown({
     Name = "Select Area Earth",
