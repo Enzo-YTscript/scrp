@@ -91,7 +91,7 @@ end
     end,
 })
 
-	Tab:CreateSpacing(nil,10)
+	TabFarm:CreateSpacing(nil,10)
 local autoCollectToggle = TabFarm:CreateToggle({
 	Name = "Auto Collect",
         SectionParent = SectionFarm,
