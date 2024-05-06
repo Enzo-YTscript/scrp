@@ -309,7 +309,7 @@ local RealmDropdown = Tab3:CreateDropdown({
 	Name = "Select Realm",
 	SectionParent = Tele,
     Options = {"Earth", "Cyberverse"},
-	Flag = "Dropdown4",
+	Flag = "Dropdown5",
 	CurrentOption = {""},
     Callback = function(Option)
         getgenv().selectedRealm = Option[1]
@@ -323,7 +323,7 @@ local EarthAreaDropdown = Tab3:CreateDropdown({
     "Dinosaur Kingdom", "Farm Life", "Mountain Expedition", "Fantasy Forest", "Aqua Land", "Hydra Room", "The Portal"}, -- Ganti dengan daftar Area untuk Earth
     CurrentOption = {""},
 	SectionParent = Tele,	
-	Flag = "Dropdown2",
+	Flag = "Dropdown6",
 Callback = function(Option)
         if getgenv().selectedRealm == "Earth" then
             getgenv().selectedAreaEarth = Option[1]
