@@ -349,6 +349,7 @@ local CyberTownAreaDropdown = Tab3:CreateDropdown({
 -- Membuat tombol Teleport
 local TeleportButton = Tab3:CreateButton({
     Name = "Teleport",
+	SectionParent = Tele,	
     Callback = function()
 if getgenv().selectedRealm and ((getgenv().selectedRealm == "Earth" and getgenv().selectedAreaEarth) or (getgenv().selectedRealm == "Cyberverse" and getgenv().selectedAreaCyberTown)) then
             local selectedArea = getgenv().selectedRealm == "Earth" and getgenv().selectedAreaEarth or getgenv().selectedAreaCyberTown
@@ -448,24 +449,12 @@ end
     local Slider = Tab5:CreateSlider({
         Name = "Walk Speed",
 		SectionParent = MiscSec,
-        Range = {0, 100},
-        Increment = 10,
-        Suffix = "Speed",
-        CurrentValue = 10,
+        Range = {0, 300},
+		Increment = 1,
+		Suffix = "Speed",
+        CurrentValue = 16,
         Flag = "Slider1",
         Callback = function(Value)
           game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
    end,
-})	
-
-    local Keybind = Tab5:CreateKeybind({
-        Name = "Keybind",
-        CurrentKeybind = "Q",
-		SectionParent = MiscSec,
-        HoldToInteract = false,
-        SectionParent = LockTesting,
-        Flag = "Keybind2",
-        Callback = function(Keybind)
-
-        end,
-    })
+})
