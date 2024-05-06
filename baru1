@@ -180,6 +180,7 @@ local function startAutoHatch()
         autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
     end
 end
+
 -- TAB EGG
 	local Tab2 = Window:CreateTab("EGG", nil) -- Title, Image
 	local Egg = Tab2:CreateSection("🥚 Auto EGG",false)
