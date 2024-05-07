@@ -163,50 +163,37 @@ local function autohatch(world, area, tier, tripleHatch)
     local args = {
         [1] = world,
         [2] = area,
-        [3] = tier,
+        [3] = "tier_" .. tier,
+        [4] = tripleHatch
     }
-
-    if tripleHatch then
-        args[4] = true
-    end
-
     HatchRemote:FireServer(unpack(args))
 end
 
-local isAutoHatching = false
-
 local function startAutoHatch()
-    isAutoHatching = true
-    while isAutoHatching do
-        local selectedWorld = getgenv().selectedWorld
-        local selectedArea = getgenv().selectedArea
-        local selectedTier = getgenv().selectedTier
-        local tripleHatch = getgenv().tripleHatch
+    local selectedWorld = getgenv().selectedWorld
+    local selectedArea = getgenv().selectedArea
+    local selectedTier = getgenv().selectedTier
+    local tripleHatch = getgenv().tripleHatch
 
-        if selectedWorld == "Earth" then
-            autohatch("Earth", selectedArea, selectedTier, tripleHatch)
-        elseif selectedWorld == "Cyberverse" then
-            autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
-        end
-
-        wait(1) -- Tunggu 1 detik sebelum menjalankan lagi (sesuaikan dengan kebutuhan)
+    if selectedWorld == "Earth" then
+        autohatch("Earth", selectedArea, selectedTier, tripleHatch)
+    elseif selectedWorld == "Cyberverse" then
+        autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
     end
 end
 
--- TAB EGG
-local Tab2 = Window:CreateTab("🥚 EGG", nil) -- Title, Image
-local Egg = Tab2:CreateSection("EGG")
+local EggTab = Window:CreateTab("🥚 EGG", nil) -- Title, Image
+local EggSection = EggTab:CreateSection("EGG")
 
-local ManualAreasCyberverse = {"Cyber Town", "Robo Road", "Cyber Adventure", "Robo Expedition", "Cyber Kingdom", "Robo Life", "Cyber Expedition",  "Robo Forest", "Robo Land", "The Second Portal"}
+local ManualAreasCyberverse = {"Cyber Town", "Robo Road", "Cyber Adventure", "Robo Expedition", "Cyber Kingdom", "Robo Life", "Cyber Expedition",  "Robo Forest", "Robo Land", "The Second Portal",}
 
 local ManualAreasEarth = {"Town", "Frosty Kingdom", "Desert Adventure", "Jungle Expedition", "Dinosaur Kingdom", "Farm Life", "Mountain Expedition", "Fantasy Forest", "Aqua Land", "The Portal"}
 
 local selectedCyberverseArea = nil
 local selectedEarthArea = nil
 
-local EarthAreaDropdown = Tab2:CreateDropdown({
+local EarthAreaDropdown = EggTab:CreateDropdown({
     Name = "Select Area Earth",
-    SectionParent = Egg,
     Options = ManualAreasEarth,
     CurrentOption = {""},
     Callback = function(Option)
@@ -218,9 +205,8 @@ local EarthAreaDropdown = Tab2:CreateDropdown({
     end
 })
 
-local CyberverseAreaDropdown = Tab2:CreateDropdown({
+local CyberverseAreaDropdown = EggTab:CreateDropdown({
     Name = "Select Area Cyberverse",
-    SectionParent = Egg,
     Options = ManualAreasCyberverse,
     CurrentOption = {""},
     Callback = function(Option)
@@ -232,9 +218,8 @@ local CyberverseAreaDropdown = Tab2:CreateDropdown({
     end
 })
 
-local HatchTypeDropdown = Tab2:CreateDropdown({
+local HatchTypeDropdown = EggTab:CreateDropdown({
     Name = "Select Hatch Type",
-    SectionParent = Egg,
     Options = {"1 Hatch", "3 Hatch"},
     CurrentOption = {""},
     Callback = function(Option)
@@ -252,29 +237,47 @@ local HatchTypeDropdown = Tab2:CreateDropdown({
     end
 })
 
-local TierDropdown = Tab2:CreateDropdown({
+local TierDropdown = EggTab:CreateDropdown({
     Name = "Select Tier",
-    SectionParent = Egg,
     Options = {"Tier_1", "Tier_2", "Tier_3", "Tier_4"},
     CurrentOption = {""},
     Callback = function(Option)
         local tierOptions = {
-            ["Tier_1"] = "tier_1",
-            ["Tier_2"] = "tier_2",
-            ["Tier_3"] = "tier_3",
-            ["Tier_4"] = "tier_4"
+            ["Tier_1"] = 1,
+            ["Tier_2"] = 2,
+            ["Tier_3"] = 3,
+            ["Tier_4"] = 4
         }
 
-        getgenv().selectedTier = tierOptions[Option[1]] or "tier_1"
+        getgenv().selectedTier = tierOptions[Option[1]] or 1
         if getgenv().AutoHatchEgg then
             autohatch()
         end
     end
 })
 
-local AutoHatchToggle = Tab2:CreateToggle({
+local isAutoHatching = false
+
+local function startAutoHatch()
+    isAutoHatching = true
+    while isAutoHatching do
+        local selectedWorld = getgenv().selectedWorld
+        local selectedArea = getgenv().selectedArea
+        local selectedTier = getgenv().selectedTier
+        local tripleHatch = getgenv().tripleHatch
+
+        if selectedWorld == "Earth" then
+            autohatch("Earth", selectedArea, selectedTier, tripleHatch)
+        elseif selectedWorld == "Cyberverse" then
+            autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
+        end
+
+        wait(1) -- Tunggu 2 detik sebelum menjalankan lagi (sesuaikan dengan kebutuhan)
+    end
+end
+
+local AutoHatchToggle = EggTab:CreateToggle({
     Name = "Auto Hatch Egg",
-    SectionParent = Egg,
     CurrentValue = false,
     Callback = function(Value)
         getgenv().AutoHatchEgg = Value
@@ -285,7 +288,6 @@ local AutoHatchToggle = Tab2:CreateToggle({
         end
     end
 })
-
 
 
 --TAB TELEPORT
@@ -334,6 +336,7 @@ local CyberTownAreaDropdown = Tab3:CreateDropdown({
         end
     end,
 })
+
 
 -- Membuat tombol Teleport
 local TeleportButton = Tab3:CreateButton({
