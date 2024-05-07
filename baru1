@@ -1,43 +1,44 @@
 local ArrayField = loadstring(game:HttpGet("https://raw.githubusercontent.com/Enzo-YTscript/Ui-Library/main/ArrayfieldLibraryUI"))()
-
 local Window = ArrayField:CreateWindow({
-   Name = "Toy Simulator Halloween 🎃",
-   LoadingTitle = "SUBSCRIBE ENZO-YT",
-   LoadingSubtitle = "by ENZO-YT",
-   ConfigurationSaving = {
-      Enabled = false,
-      FolderName = nil,
-      FileName = "Enzo-YT Script"  },
-   Discord = {
-      Enabled = false,
-      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
-      RememberJoins = true -- Set this to false to make them join the discord every time they load it up   },
-   KeySystem = false, -- Set this to true to use our key system
-   KeySettings = {
-      Title = "Toy Simulator Halloween 🎃",
-      Subtitle = "Key System",
-      Note = "Key In Description",
-      FileName = "ToySimKeyEnzoYT", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
-      SaveKey = false, -- The user's key will be saved, but if you change the key, they will be unable to use your script
-      GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-            Key = {"https://pastebin.com/raw/iJCXgQGb"},
-            Actions = {
-                [1] = {
-                    Text = 'Click here to copy the key link',
-                    OnPress = function()
-                    end,
-                }
-            },
-        }
-    })
-	
+    Name = "Toy Simulator Halloween 🎃",
+    LoadingTitle = "SUBSCRIBE ENZO-YT",
+    LoadingSubtitle = "by ENZO-YT",
+    ConfigurationSaving = {
+        Enabled = false,
+        FolderName = nil,
+        FileName = "Enzo-YT Script"
+    },
+    Discord = {
+        Enabled = false,
+        Invite = "noinvitelink",
+        RememberJoins = true
+    },
+    KeySystem = false,
+    KeySettings = {
+        Title = "Toy Simulator Halloween 🎃",
+        Subtitle = "Key System",
+        Note = "Key In Description",
+        FileName = "ToySimKeyEnzoYT",
+        SaveKey = false,
+        GrabKeyFromSite = true,
+        Key = {"https://pastebin.com/raw/iJCXgQGb"},
+        Actions = {
+            [1] = {
+                Text = 'Click here to copy the key link',
+                OnPress = function()
+                end,
+            }
+        },
+    }
+})
+
 -- Anti Afk
-	local vu = game:GetService("VirtualUser")
-	game:GetService("Players").LocalPlayer.Idled:connect(function()
-	vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-	wait(1)
-	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-	end)
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+    vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    wait(1)
+    vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
 	
 --- MAIN TAB	
     local TabFarm = Window:CreateTab("HOME", nil) -- Title, Image
