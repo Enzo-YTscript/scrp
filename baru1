@@ -194,11 +194,11 @@ local selectedEarthArea = nil
 
 local EarthAreaDropdown = EggTab:CreateDropdown({
     Name = "Select Area Earth",
-    Options = ManualAreasEarth,
+    Options = {"Town", "Frosty Kingdom", "Desert Adventure", "Jungle Expedition", "Dinosaur Kingdom", "Farm Life", "Mountain Expedition", "Fantasy Forest", "Aqua Land", "The Portal"},
     CurrentOption = {""},
     Callback = function(Option)
-        getgenv().selectedWorld = "Earth"
-        getgenv().selectedArea = Option[1]
+        selectedWorld = "Earth"
+        selectedArea = Option[1]
         if getgenv().AutoHatchEgg then
             startAutoHatch()
         end
@@ -207,11 +207,11 @@ local EarthAreaDropdown = EggTab:CreateDropdown({
 
 local CyberverseAreaDropdown = EggTab:CreateDropdown({
     Name = "Select Area Cyberverse",
-    Options = ManualAreasCyberverse,
+    Options = {"Cyber Town", "Robo Road", "Cyber Adventure", "Robo Expedition", "Cyber Kingdom", "Robo Life", "Cyber Expedition", "Robo Forest", "Robo Land", "The Second Portal"},
     CurrentOption = {""},
     Callback = function(Option)
-        getgenv().selectedWorld = "Cyberverse"
-        getgenv().selectedArea = Option[1]
+        selectedWorld = "Cyberverse"
+        selectedArea = Option[1]
         if getgenv().AutoHatchEgg then
             startAutoHatch()
         end
@@ -227,10 +227,117 @@ local HatchTypeDropdown = EggTab:CreateDropdown({
             ["1 Hatch"] = false,
             ["3 Hatch"] = true
         }
+        tripleHatch = hatchOptions[Option[1]]
+        if getgenv().AutoHatchEgg then
+            startAutoHatch()
+        end
+    end
+})
 
-        local tripleHatch = hatchOptions[Option[1]]
-        getgenv().tripleHatch = tripleHatch
 
+Terdapat beberapa perubahan yang harus dilakukan pada skrip Anda agar berjalan dengan baik. Berikut adalah skrip yang telah diperbaiki:
+
+lua
+Copy code
+local ArrayField = loadstring(game:HttpGet("https://raw.githubusercontent.com/Enzo-YTscript/Ui-Library/main/ArrayfieldLibraryUI"))()
+local Window = ArrayField:CreateWindow({
+    Name = "Toy Simulator Halloween 🎃",
+    LoadingTitle = "SUBSCRIBE ENZO-YT",
+    LoadingSubtitle = "by ENZO-YT",
+    ConfigurationSaving = {
+        Enabled = false,
+        FolderName = nil,
+        FileName = "Enzo-YT Script"
+    },
+    Discord = {
+        Enabled = false,
+        Invite = "noinvitelink", 
+        RememberJoins = true 
+    },
+    KeySystem = false,
+    KeySettings = {
+        Title = "Toy Simulator Halloween 🎃",
+        Subtitle = "Key System",
+        Note = "Key In Description",
+        FileName = "ToySimKeyEnzoYT",
+        SaveKey = false, 
+        GrabKeyFromSite = true,
+        Key = {"https://pastebin.com/raw/iJCXgQGb"},
+        Actions = {
+            [1] = {
+                Text = 'Click here to copy the key link',
+                OnPress = function()
+                end,
+            }
+        },
+    }
+})
+
+local TabFarm = Window:CreateTab("HOME", nil)
+local SectionFarm = TabFarm:CreateSection("Farm", false)
+
+-- Define isAutoFarming and collectCoin function here
+
+local AutoFarmCoins = TabFarm:CreateToggle({
+    Name = "Auto Farm Coins",
+    SectionParent = SectionFarm,
+    CurrentValue = false,
+    Callback = function(Value)
+        isAutoFarming = Value
+        while isAutoFarming do
+            -- Your auto farming logic here
+            wait(1)
+        end
+    end
+})
+
+-- Define autoCollectToggle and AuroCollectGift here
+
+-- Define AutoStartArenaEnabled and AutoStartArena here
+
+-- Define selectedWorld, selectedArea, selectedTier, and tripleHatch here
+
+local EggTab = Window:CreateTab("🥚 EGG", nil)
+local EggSection = EggTab:CreateSection("EGG")
+
+-- Define autohatch and startAutoHatch functions here
+
+local EarthAreaDropdown = EggTab:CreateDropdown({
+    Name = "Select Area Earth",
+    Options = {"Town", "Frosty Kingdom", "Desert Adventure", "Jungle Expedition", "Dinosaur Kingdom", "Farm Life", "Mountain Expedition", "Fantasy Forest", "Aqua Land", "The Portal"},
+    CurrentOption = {""},
+    Callback = function(Option)
+        selectedWorld = "Earth"
+        selectedArea = Option[1]
+        if getgenv().AutoHatchEgg then
+            startAutoHatch()
+        end
+    end
+})
+
+local CyberverseAreaDropdown = EggTab:CreateDropdown({
+    Name = "Select Area Cyberverse",
+    Options = {"Cyber Town", "Robo Road", "Cyber Adventure", "Robo Expedition", "Cyber Kingdom", "Robo Life", "Cyber Expedition", "Robo Forest", "Robo Land", "The Second Portal"},
+    CurrentOption = {""},
+    Callback = function(Option)
+        selectedWorld = "Cyberverse"
+        selectedArea = Option[1]
+        if getgenv().AutoHatchEgg then
+            startAutoHatch()
+        end
+    end
+})
+
+local HatchTypeDropdown = EggTab:CreateDropdown({
+    Name = "Select Hatch Type",
+    Options = {"1 Hatch", "3 Hatch"},
+    CurrentOption = {""},
+    Callback = function(Option)
+        local hatchOptions = {
+            ["1 Hatch"] = false,
+            ["3 Hatch"] = true
+        }
+        tripleHatch = hatchOptions[Option[1]]
         if getgenv().AutoHatchEgg then
             startAutoHatch()
         end
@@ -248,10 +355,9 @@ local TierDropdown = EggTab:CreateDropdown({
             ["Tier_3"] = 3,
             ["Tier_4"] = 4
         }
-
-        getgenv().selectedTier = tierOptions[Option[1]] or 1
+        selectedTier = tierOptions[Option[1]] or 1
         if getgenv().AutoHatchEgg then
-            autohatch()
+            startAutoHatch()
         end
     end
 })
@@ -284,7 +390,7 @@ local AutoHatchToggle = EggTab:CreateToggle({
         if Value then
             startAutoHatch()
         else
-            isAutoHatching = false -- Mematikan auto hatch
+            isAutoHatching = false 
         end
     end
 })
