@@ -130,6 +130,7 @@ local autoCollectToggle = TabFarm:CreateToggle({
 })
 
 	local AutoStartArenaEnabled = false	
+	
 	local AutoStartArena = TabFarm:CreateToggle({
         Name = "Auto Start Arena",
         SectionParent = SectionFarm,
@@ -144,6 +145,7 @@ local autoCollectToggle = TabFarm:CreateToggle({
         end
     end,
 })
+
 -- TAB EGG
 -- Fungsi untuk mendapatkan daftar area berdasarkan dunia (Earth atau Cyberverse)
 local HatchRemote = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("OpenCrate")
@@ -156,6 +158,7 @@ local function autohatch(world, area, tier, tripleHatch)
     }
     HatchRemote:FireServer(unpack(args))
 end
+
 local function startAutoHatch()
     local selectedWorld = getgenv().selectedWorld
     local selectedArea = getgenv().selectedArea
@@ -167,12 +170,17 @@ local function startAutoHatch()
         autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
     end
 end
+
 local EggTab = Window:CreateTab("🥚 EGG", nil) -- Title, Image
 local EggSection = EggTab:CreateSection("EGG")
+
 local ManualAreasCyberverse = {"Cyber Town", "Robo Road", "Cyber Adventure", "Robo Expedition", "Cyber Kingdom", "Robo Life", "Cyber Expedition",  "Robo Forest", "Robo Land", "The Second Portal",}
+
 local ManualAreasEarth = {"Town", "Frosty Kingdom", "Desert Adventure", "Jungle Expedition", "Dinosaur Kingdom", "Farm Life", "Mountain Expedition", "Fantasy Forest", "Aqua Land", "The Portal"}
+
 local selectedCyberverseArea = nil
 local selectedEarthArea = nil
+
 local EarthAreaDropdown = EggTab:CreateDropdown({
     Name = "Select Area Earth",
     Options = ManualAreasEarth,
@@ -185,6 +193,7 @@ local EarthAreaDropdown = EggTab:CreateDropdown({
         end
     end
 })
+
 local CyberverseAreaDropdown = EggTab:CreateDropdown({
     Name = "Select Area Cyberverse",
     Options = ManualAreasCyberverse,
@@ -197,6 +206,7 @@ local CyberverseAreaDropdown = EggTab:CreateDropdown({
         end
     end
 })
+
 local HatchTypeDropdown = EggTab:CreateDropdown({
     Name = "Select Hatch Type",
     Options = {"1 Hatch", "3 Hatch"},
@@ -213,6 +223,7 @@ local HatchTypeDropdown = EggTab:CreateDropdown({
         end
     end
 })
+
 local TierDropdown = EggTab:CreateDropdown({
     Name = "Select Tier",
     Options = {"Tier_1", "Tier_2", "Tier_3", "Tier_4"},
@@ -230,7 +241,9 @@ local TierDropdown = EggTab:CreateDropdown({
         end
     end
 })
+
 local isAutoHatching = false
+
 local function startAutoHatch()
     isAutoHatching = true
     while isAutoHatching do
@@ -246,6 +259,7 @@ local function startAutoHatch()
         wait(1) -- Tunggu 2 detik sebelum menjalankan lagi (sesuaikan dengan kebutuhan)
     end
 end
+
 local AutoHatchToggle = EggTab:CreateToggle({
     Name = "Auto Hatch Egg",
     CurrentValue = false,
@@ -258,10 +272,12 @@ local AutoHatchToggle = EggTab:CreateToggle({
         end
     end
 })
+
 --TAB TELEPORT
 	local Tab3 = Window:CreateTab("Teleport") -- Title, Image	
 	local Telep = Tab3:CreateSection("Teleport",false)
 	local Label = Tab3:CreateLabel("Need Teleport Gempass",Telep)	
+	
 -- Membuat dropdown Realm
 local RealmDropdown = Tab3:CreateDropdown({
 	Name = "Select Realm",
@@ -273,6 +289,7 @@ local RealmDropdown = Tab3:CreateDropdown({
         getgenv().selectedRealm = Option[1]
     end,
 })
+
 -- Membuat dropdown Area untuk Earth
 local EarthAreaDropdown = Tab3:CreateDropdown({
 	Name = "Select Area Earth",
@@ -287,6 +304,7 @@ Callback = function(Option)
         end
     end,
 })
+
 -- Membuat dropdown Area untuk CyberTown
 local CyberTownAreaDropdown = Tab3:CreateDropdown({
 	Name = "Select Area CyberTown",
@@ -301,6 +319,7 @@ local CyberTownAreaDropdown = Tab3:CreateDropdown({
         end
     end,
 })
+
 -- Membuat tombol Teleport
 local TeleportButton = Tab3:CreateButton({
     Name = "Teleport",
@@ -317,9 +336,11 @@ if getgenv().selectedRealm and ((getgenv().selectedRealm == "Earth" and getgenv(
         end
     end,
 })
+
 --TAB F2PTab
 	local Tab4 = Window:CreateTab("F2PTab") -- Title, Image	
 	local F2PSec = Tab4:CreateSection("F2P")
+	
 -- Membuat tombol untuk memicu aksi pertama
 local Booster1Button = Tab4:CreateButton({
 Name = "DropsBooster",
@@ -328,6 +349,7 @@ SectionParent = F2PSec,
         local args = {[1] = "Booster", [2] = "DropsBooster"}        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
     end,
 })
+
 -- Membuat tombol untuk memicu aksi kedua
 local Booster2Button = Tab4:CreateButton({
 Name = "PowerBooster",
@@ -336,6 +358,7 @@ SectionParent = F2PSec,
         local args = {[1] = "Booster", [2] = "PowerBooster"}        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
     end,
 })
+
 -- Membuat tombol untuk memicu aksi ketiga
 local Booster3Button = Tab4:CreateButton({
 Name = "MegaLuckBooster",
@@ -344,6 +367,7 @@ Callback = function()
         local args = {[1] = "Booster", [2] = "MegaLuckBooster"}        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
     end,
 })
+
 -- Membuat tombol untuk memicu aksi keempat
 local Booster4Button = Tab4:CreateButton({
 Name = "LuckBooster",
@@ -352,9 +376,11 @@ Callback = function()
         local args = {[1] = "Booster", [2] = "LuckBooster"}        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
     end,
 })	
+
 --TAB MISC
 	local Tab5 = Window:CreateTab("Misc") -- Title, Image
 	local MiscSec = Tab5:CreateSection("MISC",false)	
+	
 -- inf jump
 	local Misc = Tab5:CreateButton({
 	Name = "Infinite Jump",
@@ -363,10 +389,13 @@ Callback = function()
 -- The function that takes place when the button is pressed
 	_G.infinjump = not _G.infinjump
 	if _G.infinJumpStarted == nil then
+	
 --Ensures this only runs once to save resources
 	_G.infinJumpStarted = true	
+	
 --Notifies readiness
 	game.StarterGui:SetCore("SendNotification", {Title="Youtube Hub"; Text="Infinite Jump Activated!"; Duration=5;})
+	
 --The actual infinite jump
 	local plr = game:GetService('Players').LocalPlayer
 	local m = plr:GetMouse()
@@ -383,6 +412,7 @@ Callback = function()
 end
    end,
 })
+
 --- speed
     local Slider = Tab5:CreateSlider({
         Name = "Walk Speed",
