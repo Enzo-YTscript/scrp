@@ -30,6 +30,7 @@ local Window = ArrayField:CreateWindow({
             },
         }
     })
+	
 -- Anti Afk
 	local vu = game:GetService("VirtualUser")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -37,9 +38,11 @@ local Window = ArrayField:CreateWindow({
 	wait(1)
 	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
+	
 --- MAIN TAB	
     local TabFarm = Window:CreateTab("HOME", nil) -- Title, Image
 	local SectionFarm = TabFarm:CreateSection("Farm",false)
+	
 ---- player	
 	local player = game.Players.LocalPlayer
 	local isAutoFarming = false
@@ -80,6 +83,7 @@ end
         end
     end,
 })
+
 local autoCollectToggle = TabFarm:CreateToggle({
     Name = "Auto Collect",
     SectionParent = SectionFarm,
@@ -108,6 +112,7 @@ local autoCollectToggle = TabFarm:CreateToggle({
         end
     end,
 })
+
 	local AuroCollectGift = TabFarm:CreateToggle({
         Name = "Auto Collect Gift",
         SectionParent = SectionFarm,
@@ -120,6 +125,7 @@ local autoCollectToggle = TabFarm:CreateToggle({
         end
     end,
 })
+
 	local AutoStartArenaEnabled = false	
 	local AutoStartArena = TabFarm:CreateToggle({
         Name = "Auto Start Arena",
@@ -129,7 +135,8 @@ local autoCollectToggle = TabFarm:CreateToggle({
         AutoStartArenaEnabled = value
         if AutoStartArenaEnabled then
             while AutoStartArenaEnabled do
-                wait(3) -- Tunggu selama 3 detik sebelum memulai Arena                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Start"):FireServer()
+                wait(3) -- Tunggu selama 3 detik sebelum memulai Arena                
+				game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Start"):FireServer()
             end
         end
     end,
