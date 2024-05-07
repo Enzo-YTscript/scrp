@@ -57,6 +57,7 @@ local Window = ArrayField:CreateWindow({
         player.Character:SetPrimaryPartCFrame(playerStartCFrame) -- Teleportasi kembali ke posisi awal
     end
 end
+
 	local AuroFarm = TabFarm:CreateToggle({
         Name = "Auto Farm Coins",
         SectionParent = SectionFarm,
