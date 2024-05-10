@@ -88,148 +88,71 @@ local AutoCollectDailyReward = TabAuto:CreateToggle({
 })
 
 
-
-	local AutoStartArenaEnabled = false	
-	
-	local AutoStartArena = TabFarm:CreateToggle({
-        Name = "Auto Start Arena",
-        SectionParent = SectionFarm,
-        CurrentValue = false,
-        Callback = function(value)
-        AutoStartArenaEnabled = value
-        if AutoStartArenaEnabled then
-            while AutoStartArenaEnabled do
-                wait(3) -- Tunggu selama 3 detik sebelum memulai Arena                
-				game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Start"):FireServer()
-            end
-        end
-    end,
-})
-
 -- TAB EGG
--- Fungsi untuk mendapatkan daftar area berdasarkan dunia (Earth atau Cyberverse)
-local HatchRemote = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("OpenCrate")
-local function autohatch(world, area, tier, tripleHatch)
-    local args = {
-        [1] = world,
-        [2] = area,
-        [3] = "tier_" .. tier,
-        [4] = tripleHatch
-    }
-    HatchRemote:FireServer(unpack(args))
+-- Fungsi untuk mendapatkan list telur dari folder EggHolders
+local function GetEggList()
+    local eggList = {}
+    local eggHoldersFolder = game.Workspace:WaitForChild("Scripted-EggHolders") -- Pastikan nama folder sesuai
+    for _, eggHolder in ipairs(eggHoldersFolder:GetChildren()) do
+        if eggHolder:IsA("Model") then
+            table.insert(eggList, eggHolder.Name)
+        end
+    end
+    return eggList
 end
 
-local function startAutoHatch()
-    local selectedWorld = getgenv().selectedWorld
-    local selectedArea = getgenv().selectedArea
-    local selectedTier = getgenv().selectedTier
-    local tripleHatch = getgenv().tripleHatch
-    if selectedWorld == "Earth" then
-        autohatch("Earth", selectedArea, selectedTier, tripleHatch)
-    elseif selectedWorld == "Cyberverse" then
-        autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
-    end
-end
 
 local EggTab = Window:CreateTab("🥚 EGG", nil) -- Title, Image
 local EggSection = EggTab:CreateSection("EGG")
 
-local ManualAreasCyberverse = {"Cyber Town", "Robo Road", "Cyber Adventure", "Robo Expedition", "Cyber Kingdom", "Robo Life", "Cyber Expedition",  "Robo Forest", "Robo Land", "The Second Portal",}
-
-local ManualAreasEarth = {"Town", "Frosty Kingdom", "Desert Adventure", "Jungle Expedition", "Dinosaur Kingdom", "Farm Life", "Mountain Expedition", "Fantasy Forest", "Aqua Land", "The Portal"}
-
-local selectedCyberverseArea = nil
-local selectedEarthArea = nil
-
-local EarthAreaDropdown = EggTab:CreateDropdown({
+-- Membuat dropdown dengan list telur dari folder EggHolders
+local EggDropdown = EggTab:CreateDropdown({
     Name = "Select Area Earth",
-    Options = ManualAreasEarth,
+	SectionParent = EggSection,
+    Options = GetEggList(),
     CurrentOption = {""},
     Callback = function(Option)
-        getgenv().selectedWorld = "Earth"
-        getgenv().selectedArea = Option[1]
-        if getgenv().AutoHatchEgg then
-            startAutoHatch()
+        -- Fungsi untuk refresh dropdown dengan list yang baru
+        local function RefreshDropdown()
+            EggDropdown:Refresh(GetEggList(), {""})
         end
-    end
-})
+        
+        -- Membuat tombol toggle untuk auto hatch telur dari dropdown
+        local AutoHatchToggle = EggTab:CreateToggle({
+            Name = "Auto Hatch " .. Option .. " (Triple)",
+            SectionParent = EggSection,
+            CurrentValue = false,
+            Callback = function(v)
+                if v then
+                    -- Aktifkan auto hatch
+                    AutoHatch = true
+                    while AutoHatch do
+                        -- Cek apakah telur tersedia di folder EggHolders
+                        local eggHoldersFolder = game.Workspace:WaitForChild("Scripted-EggHolders")
+                        local egg = eggHoldersFolder:FindFirstChild(Option)
+                        if egg then
+                            -- Lakukan tindakan triple hatch
+                            for _ = 1, 3 do
+                                egg:FindFirstChild("HatchButton"):Invoke()
+                                wait(0.5) -- Tunggu sebentar antara setiap hatch
+                            end
+                        end
+                        wait(1) -- Ubah nilai ini untuk mengatur interval hatch
+                    end
+                else
+                    -- Matikan auto hatch
+                    AutoHatch = false
+                end
+            end
+        })
 
-local CyberverseAreaDropdown = EggTab:CreateDropdown({
-    Name = "Select Area Cyberverse",
-    Options = ManualAreasCyberverse,
-    CurrentOption = {""},
-    Callback = function(Option)
-        getgenv().selectedWorld = "Cyberverse"
-        getgenv().selectedArea = Option[1]
-        if getgenv().AutoHatchEgg then
-            startAutoHatch()
-        end
-    end
-})
-
-local HatchTypeDropdown = EggTab:CreateDropdown({
-    Name = "Select Hatch Type",
-    Options = {"1 Hatch", "3 Hatch"},
-    CurrentOption = {""},
-    Callback = function(Option)
-        local hatchOptions = {
-            ["1 Hatch"] = false,
-            ["3 Hatch"] = true
-        }
-        local tripleHatch = hatchOptions[Option[1]]
-        getgenv().tripleHatch = tripleHatch
-        if getgenv().AutoHatchEgg then
-            startAutoHatch()
-        end
-    end
-})
-
-local TierDropdown = EggTab:CreateDropdown({
-    Name = "Select Tier",
-    Options = {"Tier_1", "Tier_2", "Tier_3", "Tier_4"},
-    CurrentOption = {""},
-    Callback = function(Option)
-        local tierOptions = {
-            ["Tier_1"] = 1,
-            ["Tier_2"] = 2,
-            ["Tier_3"] = 3,
-            ["Tier_4"] = 4
-        }
-        getgenv().selectedTier = tierOptions[Option[1]] or 1
-        if getgenv().AutoHatchEgg then
-            autohatch()
-        end
-    end
-})
-
-local isAutoHatching = false
-
-local function startAutoHatch()
-    isAutoHatching = true
-    while isAutoHatching do
-        local selectedWorld = getgenv().selectedWorld
-        local selectedArea = getgenv().selectedArea
-        local selectedTier = getgenv().selectedTier
-        local tripleHatch = getgenv().tripleHatch
-        if selectedWorld == "Earth" then
-            autohatch("Earth", selectedArea, selectedTier, tripleHatch)
-        elseif selectedWorld == "Cyberverse" then
-            autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
-        end
-        wait(1) -- Tunggu 2 detik sebelum menjalankan lagi (sesuaikan dengan kebutuhan)
-    end
-end
-
-local AutoHatchToggle = EggTab:CreateToggle({
-    Name = "Auto Hatch Egg",
-    CurrentValue = false,
-    Callback = function(Value)
-        getgenv().AutoHatchEgg = Value
-        if Value then
-            startAutoHatch()
-        else
-            isAutoHatching = false -- Mematikan auto hatch
-        end
+        -- Membuat tombol refresh dropdown
+        local RefreshButton = EggTab:CreateButton({
+            Name = "Refresh Dropdown",
+            SectionParent = EggSection,
+            Text = "Refresh",
+            Callback = RefreshDropdown
+        })
     end
 })
 
