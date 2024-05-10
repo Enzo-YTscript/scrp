@@ -1,0 +1,392 @@
+local ArrayField = loadstring(game:HttpGet("https://raw.githubusercontent.com/Enzo-YTscript/Ui-Library/main/ArrayfieldLibraryUI"))()
+
+local Window = ArrayField:CreateWindow({
+    Name = "Mythic Tappers",
+    LoadingTitle = "SUBSCRIBE ENZO-YT",
+    LoadingSubtitle = "by ENZO-YT",
+    ConfigurationSaving = {
+        Enabled = false,
+        FolderName = nil,
+        FileName = "Enzo-YT Script"
+    },
+    Discord = {
+        Enabled = false,
+        Invite = "noinvitelink",
+        RememberJoins = true
+    },
+    KeySystem = false,
+    KeySettings = {
+        Title = "Mythic Tappers",
+        Subtitle = "Key System",
+        Note = "Key In Description",
+        FileName = "ToySimKeyEnzoYT",
+        SaveKey = false,
+        GrabKeyFromSite = true,
+        Key = {"https://pastebin.com/raw/iJCXgQGb"},
+        Actions = {
+            [1] = {
+                Text = 'Click here to copy the key link',
+                OnPress = function()
+                end,
+            }
+        },
+    }
+})
+
+-- Anti Afk
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+    vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    wait(1)
+    vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+	
+--- MAIN TAB	
+    local TabAuto = Window:CreateTab("HOME", nil) -- Title, Image
+	local SectionAuto = TabAuto:CreateSection("AutoClicker",false)
+
+local AutoClicker = TabAuto:CreateToggle({
+    Name = "Auto Clicker",
+    SectionParent = SectionAuto,
+    CurrentValue = false,
+    Callback = function(v)
+        if v then
+            -- Aktifkan auto clicker
+            AutoClicker = true
+            while AutoClicker do
+                game:GetService("ReplicatedStorage").Events.Click:FireServer()
+                wait(000.1) -- Ubah nilai ini untuk mengatur kecepatan klik
+            end
+        else
+            -- Matikan auto clicker
+            AutoClicker = false
+        end
+    end
+})
+
+local AutoCollectDailyReward = TabAuto:CreateToggle({
+    Name = "Auto Collect Daily Reward",
+    SectionParent = SectionAuto,
+    CurrentValue = false,
+    Callback = function(v)
+        if v then
+            -- Aktifkan auto collect
+            AutoCollect = true
+            while AutoCollect do
+                -- Cek apakah hadiah harian tersedia untuk diklaim
+                local canClaim = game:GetService("ReplicatedStorage").Events.CanCollectDailyReward:InvokeServer()
+                if canClaim then
+                    game:GetService("ReplicatedStorage").Events.CollectDailyReward:FireServer()
+                end
+                wait(1) -- Ubah nilai ini untuk mengatur interval cek
+            end
+        else
+            -- Matikan auto collect
+            AutoCollect = false
+        end
+    end
+})
+
+
+
+	local AutoStartArenaEnabled = false	
+	
+	local AutoStartArena = TabFarm:CreateToggle({
+        Name = "Auto Start Arena",
+        SectionParent = SectionFarm,
+        CurrentValue = false,
+        Callback = function(value)
+        AutoStartArenaEnabled = value
+        if AutoStartArenaEnabled then
+            while AutoStartArenaEnabled do
+                wait(3) -- Tunggu selama 3 detik sebelum memulai Arena                
+				game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Start"):FireServer()
+            end
+        end
+    end,
+})
+
+-- TAB EGG
+-- Fungsi untuk mendapatkan daftar area berdasarkan dunia (Earth atau Cyberverse)
+local HatchRemote = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("OpenCrate")
+local function autohatch(world, area, tier, tripleHatch)
+    local args = {
+        [1] = world,
+        [2] = area,
+        [3] = "tier_" .. tier,
+        [4] = tripleHatch
+    }
+    HatchRemote:FireServer(unpack(args))
+end
+
+local function startAutoHatch()
+    local selectedWorld = getgenv().selectedWorld
+    local selectedArea = getgenv().selectedArea
+    local selectedTier = getgenv().selectedTier
+    local tripleHatch = getgenv().tripleHatch
+    if selectedWorld == "Earth" then
+        autohatch("Earth", selectedArea, selectedTier, tripleHatch)
+    elseif selectedWorld == "Cyberverse" then
+        autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
+    end
+end
+
+local EggTab = Window:CreateTab("🥚 EGG", nil) -- Title, Image
+local EggSection = EggTab:CreateSection("EGG")
+
+local ManualAreasCyberverse = {"Cyber Town", "Robo Road", "Cyber Adventure", "Robo Expedition", "Cyber Kingdom", "Robo Life", "Cyber Expedition",  "Robo Forest", "Robo Land", "The Second Portal",}
+
+local ManualAreasEarth = {"Town", "Frosty Kingdom", "Desert Adventure", "Jungle Expedition", "Dinosaur Kingdom", "Farm Life", "Mountain Expedition", "Fantasy Forest", "Aqua Land", "The Portal"}
+
+local selectedCyberverseArea = nil
+local selectedEarthArea = nil
+
+local EarthAreaDropdown = EggTab:CreateDropdown({
+    Name = "Select Area Earth",
+    Options = ManualAreasEarth,
+    CurrentOption = {""},
+    Callback = function(Option)
+        getgenv().selectedWorld = "Earth"
+        getgenv().selectedArea = Option[1]
+        if getgenv().AutoHatchEgg then
+            startAutoHatch()
+        end
+    end
+})
+
+local CyberverseAreaDropdown = EggTab:CreateDropdown({
+    Name = "Select Area Cyberverse",
+    Options = ManualAreasCyberverse,
+    CurrentOption = {""},
+    Callback = function(Option)
+        getgenv().selectedWorld = "Cyberverse"
+        getgenv().selectedArea = Option[1]
+        if getgenv().AutoHatchEgg then
+            startAutoHatch()
+        end
+    end
+})
+
+local HatchTypeDropdown = EggTab:CreateDropdown({
+    Name = "Select Hatch Type",
+    Options = {"1 Hatch", "3 Hatch"},
+    CurrentOption = {""},
+    Callback = function(Option)
+        local hatchOptions = {
+            ["1 Hatch"] = false,
+            ["3 Hatch"] = true
+        }
+        local tripleHatch = hatchOptions[Option[1]]
+        getgenv().tripleHatch = tripleHatch
+        if getgenv().AutoHatchEgg then
+            startAutoHatch()
+        end
+    end
+})
+
+local TierDropdown = EggTab:CreateDropdown({
+    Name = "Select Tier",
+    Options = {"Tier_1", "Tier_2", "Tier_3", "Tier_4"},
+    CurrentOption = {""},
+    Callback = function(Option)
+        local tierOptions = {
+            ["Tier_1"] = 1,
+            ["Tier_2"] = 2,
+            ["Tier_3"] = 3,
+            ["Tier_4"] = 4
+        }
+        getgenv().selectedTier = tierOptions[Option[1]] or 1
+        if getgenv().AutoHatchEgg then
+            autohatch()
+        end
+    end
+})
+
+local isAutoHatching = false
+
+local function startAutoHatch()
+    isAutoHatching = true
+    while isAutoHatching do
+        local selectedWorld = getgenv().selectedWorld
+        local selectedArea = getgenv().selectedArea
+        local selectedTier = getgenv().selectedTier
+        local tripleHatch = getgenv().tripleHatch
+        if selectedWorld == "Earth" then
+            autohatch("Earth", selectedArea, selectedTier, tripleHatch)
+        elseif selectedWorld == "Cyberverse" then
+            autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
+        end
+        wait(1) -- Tunggu 2 detik sebelum menjalankan lagi (sesuaikan dengan kebutuhan)
+    end
+end
+
+local AutoHatchToggle = EggTab:CreateToggle({
+    Name = "Auto Hatch Egg",
+    CurrentValue = false,
+    Callback = function(Value)
+        getgenv().AutoHatchEgg = Value
+        if Value then
+            startAutoHatch()
+        else
+            isAutoHatching = false -- Mematikan auto hatch
+        end
+    end
+})
+
+--TAB TELEPORT
+	local Tab3 = Window:CreateTab("Teleport") -- Title, Image	
+	local Telep = Tab3:CreateSection("Teleport",false)
+	local Label = Tab3:CreateLabel("Need Teleport Gempass",Telep)	
+	
+-- Membuat dropdown Realm
+local RealmDropdown = Tab3:CreateDropdown({
+	Name = "Select Realm",
+	SectionParent = Telep,
+    Options = {"Earth", "Cyberverse"},
+	Flag = "Dropdown5",
+	CurrentOption = {""},
+    Callback = function(Option)
+        getgenv().selectedRealm = Option[1]
+    end,
+})
+
+-- Membuat dropdown Area untuk Earth
+local EarthAreaDropdown = Tab3:CreateDropdown({
+	Name = "Select Area Earth",
+    Options = {"Town", "Frosty Kingdom", "Desert Adventure", "Jungle Expedition", "Pirate Cove", "Cerberus Realm",
+    "Dinosaur Kingdom", "Farm Life", "Mountain Expedition", "Fantasy Forest", "Aqua Land", "Hydra Room", "The Portal"}, -- Ganti dengan daftar Area untuk Earth
+    CurrentOption = {""},
+	SectionParent = Telep,	
+	Flag = "Dropdown6",
+Callback = function(Option)
+        if getgenv().selectedRealm == "Earth" then
+            getgenv().selectedAreaEarth = Option[1]
+        end
+    end,
+})
+
+-- Membuat dropdown Area untuk CyberTown
+local CyberTownAreaDropdown = Tab3:CreateDropdown({
+	Name = "Select Area CyberTown",
+    Options = {"Cyber Town", "Robo Road", "Cyber Adventure", "Robo Expedition", "Cyborg Cerberus Room", "Cyber Kingdom",
+    "Robo Life", "Cyber Expedition", "Robo Forest", "Robo Land", "Robo Hydra Room", "The Second Portal",}, -- Ganti dengan daftar Area untuk CyberTown
+    CurrentOption = {""},
+	SectionParent = Telep,	
+	Flag = "Dropdown7",
+    Callback = function(Option)
+        if getgenv().selectedRealm == "Cyberverse" then
+            getgenv().selectedAreaCyberTown = Option[1]
+        end
+    end,
+})
+
+-- Membuat tombol Teleport
+local TeleportButton = Tab3:CreateButton({
+    Name = "Teleport",
+	SectionParent = Telep,	
+    Callback = function()
+if getgenv().selectedRealm and ((getgenv().selectedRealm == "Earth" and getgenv().selectedAreaEarth) or (getgenv().selectedRealm == "Cyberverse" and getgenv().selectedAreaCyberTown)) then
+            local selectedArea = getgenv().selectedRealm == "Earth" and getgenv().selectedAreaEarth or getgenv().selectedAreaCyberTown
+            local args = {
+                [1] = getgenv().selectedRealm,
+                [2] = selectedArea
+            }            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Teleport"):FireServer(unpack(args))
+        else
+            warn("Pilih Realm dan Area terlebih dahulu.")
+        end
+    end,
+})
+
+--TAB F2PTab
+	local Tab4 = Window:CreateTab("F2PTab") -- Title, Image	
+	local F2PSec = Tab4:CreateSection("F2P")
+	
+-- Membuat tombol untuk memicu aksi pertama
+local Booster1Button = Tab4:CreateButton({
+Name = "DropsBooster",
+SectionParent = F2PSec,
+    Callback = function()
+        local args = {[1] = "Booster", [2] = "DropsBooster"}        
+		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
+    end,
+})
+
+-- Membuat tombol untuk memicu aksi kedua
+local Booster2Button = Tab4:CreateButton({
+Name = "PowerBooster",
+SectionParent = F2PSec,
+    Callback = function()
+        local args = {[1] = "Booster", [2] = "PowerBooster"}        
+		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
+    end,
+})
+
+-- Membuat tombol untuk memicu aksi ketiga
+local Booster3Button = Tab4:CreateButton({
+Name = "MegaLuckBooster",
+SectionParent = F2PSec,
+Callback = function()
+        local args = {[1] = "Booster", [2] = "MegaLuckBooster"}        
+		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
+    end,
+})
+
+-- Membuat tombol untuk memicu aksi keempat
+local Booster4Button = Tab4:CreateButton({
+Name = "LuckBooster",
+SectionParent = F2PSec,
+Callback = function()
+        local args = {[1] = "Booster", [2] = "LuckBooster"}        
+		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
+    end,
+})	
+
+--TAB MISC
+	local Tab5 = Window:CreateTab("Misc") -- Title, Image
+	local MiscSec = Tab5:CreateSection("MISC",false)	
+	
+-- inf jump
+	local Misc = Tab5:CreateButton({
+	Name = "Infinite Jump",
+	SectionParent = MiscSec,
+	Callback = function()
+-- The function that takes place when the button is pressed
+	_G.infinjump = not _G.infinjump
+	if _G.infinJumpStarted == nil then
+	
+--Ensures this only runs once to save resources
+	_G.infinJumpStarted = true	
+	
+--Notifies readiness
+	game.StarterGui:SetCore("SendNotification", {Title="Youtube Hub"; Text="Infinite Jump Activated!"; Duration=5;})
+	
+--The actual infinite jump
+	local plr = game:GetService('Players').LocalPlayer
+	local m = plr:GetMouse()
+	m.KeyDown:connect(function(k)
+		if _G.infinjump then
+			if k:byte() == 32 then
+			humanoid = game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
+			humanoid:ChangeState('Jumping')
+			wait()
+			humanoid:ChangeState('Seated')
+			end
+		end
+	end)
+end
+   end,
+})
+
+--- speed
+    local Slider = Tab5:CreateSlider({
+        Name = "Walk Speed",
+		SectionParent = MiscSec,
+        Range = {0, 300},
+		Increment = 1,
+		Suffix = "Speed",
+        CurrentValue = 16,
+        Flag = "Slider1",
+        Callback = function(Value)
+          game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+   end,
+})
