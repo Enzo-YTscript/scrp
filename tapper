@@ -44,6 +44,20 @@ end)
 --- MAIN TAB	
     local TabAuto = Window:CreateTab("HOME", nil) -- Title, Image
 	local SectionAuto = TabAuto:CreateSection("AutoClicker",false)
+	
+local Toggle = TabAuto:CreateToggle({
+    Name = "Auto Collect Gift",
+	SectionParent = SectionAuto,
+    Currentv = false,
+    Flag = "Toggle1",
+    Callback = function(v)
+        for i = 1, 145 do
+            local args = {[1] = i}
+            game:GetService("ReplicatedStorage").Network.Relic_Found:InvokeServer(unpack(args))
+            wait(000000000000000.1)
+        end
+    end,
+})
 
 local AutoClicker = TabAuto:CreateToggle({
     Name = "Auto Clicker",
