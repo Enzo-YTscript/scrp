@@ -159,6 +159,7 @@ local function autohatch(world, area, tier, tripleHatch)
     HatchRemote:FireServer(unpack(args))
 end
 
+
 local function startAutoHatch()
     local selectedWorld = getgenv().selectedWorld
     local selectedArea = getgenv().selectedArea
@@ -256,9 +257,10 @@ local function startAutoHatch()
         elseif selectedWorld == "Cyberverse" then
             autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
         end
-        wait(1) -- Tunggu 2 detik sebelum menjalankan lagi (sesuaikan dengan kebutuhan)
+        wait(1) -- Tunggu 1 detik sebelum menjalankan lagi (sesuaikan dengan kebutuhan)
     end
 end
+
 
 local AutoHatchToggle = EggTab:CreateToggle({
     Name = "Auto Hatch Egg",
@@ -272,6 +274,7 @@ local AutoHatchToggle = EggTab:CreateToggle({
         end
     end
 })
+
 
 --TAB TELEPORT
 	local Tab3 = Window:CreateTab("Teleport") -- Title, Image	
@@ -346,7 +349,8 @@ local Booster1Button = Tab4:CreateButton({
 Name = "DropsBooster",
 SectionParent = F2PSec,
     Callback = function()
-        local args = {[1] = "Booster", [2] = "DropsBooster"}        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
+        local args = {[1] = "Booster", [2] = "DropsBooster"}        
+		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
     end,
 })
 
@@ -355,7 +359,8 @@ local Booster2Button = Tab4:CreateButton({
 Name = "PowerBooster",
 SectionParent = F2PSec,
     Callback = function()
-        local args = {[1] = "Booster", [2] = "PowerBooster"}        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
+        local args = {[1] = "Booster", [2] = "PowerBooster"}        
+		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
     end,
 })
 
@@ -364,7 +369,8 @@ local Booster3Button = Tab4:CreateButton({
 Name = "MegaLuckBooster",
 SectionParent = F2PSec,
 Callback = function()
-        local args = {[1] = "Booster", [2] = "MegaLuckBooster"}        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
+        local args = {[1] = "Booster", [2] = "MegaLuckBooster"}        
+		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
     end,
 })
 
@@ -373,7 +379,8 @@ local Booster4Button = Tab4:CreateButton({
 Name = "LuckBooster",
 SectionParent = F2PSec,
 Callback = function()
-        local args = {[1] = "Booster", [2] = "LuckBooster"}        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
+        local args = {[1] = "Booster", [2] = "LuckBooster"}        
+		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
     end,
 })	
 
