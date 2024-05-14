@@ -195,7 +195,7 @@ local worldDropdown = EggTab:CreateDropdown({
     end
 })
 
-local areaDropdown = EggTab:CreateDropdown({
+local areaDropdown = EggSection:CreateDropdown({
     Name = "Select Area",
     Options = {"Town", "Frosty Kingdom", "Desert Adventure", "Jungle Expedition", "Dinosaur Kingdom", "Farm Life", "Mountain Expedition", "Fantasy Forest", "Aqua Land", "The Portal"}, -- Ganti dengan area yang valid
     CurrentOption = "",
@@ -222,10 +222,11 @@ local HatchTypeDropdown = EggTab:CreateDropdown({
     end
 })
 
+
 local tierDropdown = EggTab:CreateDropdown({
     Name = "Select Tier",
-    Options = {1, 2, 3, 4, 5}, -- Ganti dengan tier yang valid
-    CurrentOption = 1,
+    Options = {"Tier_1", "Tier_2", "Tier_3", "Tier_4"}, -- Ganti dengan tier yang valid
+    CurrentOption = {""},
     Callback = function(option)
         getgenv().selectedTier = option
         print("Tier selected:", option)
@@ -260,26 +261,13 @@ local function startAutoHatch()
     end
 end
 
+
 local tripleHatchToggle = EggTab:CreateToggle({
     Name = "Triple Hatch",
     CurrentValue = false,
     Callback = function(value)
         getgenv().tripleHatch = value
         print("Triple Hatch selected:", value)
-    end
-})
-
-local AutoHatchToggle = EggTab:CreateToggle({
-    Name = "Auto Hatch Egg",
-    CurrentValue = false,
-    Callback = function(Value)
-        print("Auto Hatch Egg toggled:", Value)
-        getgenv().AutoHatchEgg = Value
-        if Value then
-            startAutoHatch()
-        else
-            isAutoHatching = false -- Mematikan auto hatch
-        end
     end
 })
 
