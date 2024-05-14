@@ -246,7 +246,7 @@ local TierDropdown = EggTab:CreateDropdown({
     end
 })
 
-local worldDropdown = EggSection:CreateDropdown({
+local worldDropdown = EggTab:CreateDropdown({
     Name = "Select World",
     Options = {"Earth", "Cyberverse"},
     CurrentOption = "Earth",
@@ -256,7 +256,7 @@ local worldDropdown = EggSection:CreateDropdown({
     end
 })
 
-local areaDropdown = EggSection:CreateDropdown({
+local areaDropdown = EggTab:CreateDropdown({
     Name = "Select Area",
     Options = {"Area1", "Area2", "Area3"}, -- Ganti dengan area yang valid
     CurrentOption = "Area1",
@@ -266,7 +266,7 @@ local areaDropdown = EggSection:CreateDropdown({
     end
 })
 
-local tierDropdown = EggSection:CreateDropdown({
+local tierDropdown = EggTab:CreateDropdown({
     Name = "Select Tier",
     Options = {1, 2, 3, 4, 5}, -- Ganti dengan tier yang valid
     CurrentOption = 1,
@@ -276,7 +276,7 @@ local tierDropdown = EggSection:CreateDropdown({
     end
 })
 
-local tripleHatchToggle = EggSection:CreateToggle({
+local tripleHatchToggle = EggTab:CreateToggle({
     Name = "Triple Hatch",
     CurrentValue = false,
     Callback = function(value)
