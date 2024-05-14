@@ -149,6 +149,7 @@ local autoCollectToggle = TabFarm:CreateToggle({
 -- TAB EGG
 -- Fungsi untuk mendapatkan daftar area berdasarkan dunia (Earth atau Cyberverse)
 local HatchRemote = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("OpenCrate")
+
 local function autohatch(world, area, tier, tripleHatch)
     local args = {
         [1] = world,
@@ -159,12 +160,12 @@ local function autohatch(world, area, tier, tripleHatch)
     HatchRemote:FireServer(unpack(args))
 end
 
-
 local function startAutoHatch()
     local selectedWorld = getgenv().selectedWorld
     local selectedArea = getgenv().selectedArea
     local selectedTier = getgenv().selectedTier
     local tripleHatch = getgenv().tripleHatch
+
     if selectedWorld == "Earth" then
         autohatch("Earth", selectedArea, selectedTier, tripleHatch)
     elseif selectedWorld == "Cyberverse" then
@@ -252,15 +253,16 @@ local function startAutoHatch()
         local selectedArea = getgenv().selectedArea
         local selectedTier = getgenv().selectedTier
         local tripleHatch = getgenv().tripleHatch
+
         if selectedWorld == "Earth" then
             autohatch("Earth", selectedArea, selectedTier, tripleHatch)
         elseif selectedWorld == "Cyberverse" then
             autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
         end
-        wait(1) -- Tunggu 1 detik sebelum menjalankan lagi (sesuaikan dengan kebutuhan)
+
+        wait(1) -- Tunggu 2 detik sebelum menjalankan lagi (sesuaikan dengan kebutuhan)
     end
 end
-
 
 local AutoHatchToggle = EggTab:CreateToggle({
     Name = "Auto Hatch Egg",
@@ -274,7 +276,6 @@ local AutoHatchToggle = EggTab:CreateToggle({
         end
     end
 })
-
 
 --TAB TELEPORT
 	local Tab3 = Window:CreateTab("Teleport") -- Title, Image	
