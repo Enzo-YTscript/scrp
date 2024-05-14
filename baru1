@@ -246,26 +246,74 @@ local TierDropdown = EggTab:CreateDropdown({
     end
 })
 
+local worldDropdown = EggSection:CreateDropdown({
+    Name = "Select World",
+    Options = {"Earth", "Cyberverse"},
+    CurrentOption = "Earth",
+    Callback = function(option)
+        getgenv().selectedWorld = option
+        print("World selected:", option)
+    end
+})
+
+local areaDropdown = EggSection:CreateDropdown({
+    Name = "Select Area",
+    Options = {"Area1", "Area2", "Area3"}, -- Ganti dengan area yang valid
+    CurrentOption = "Area1",
+    Callback = function(option)
+        getgenv().selectedArea = option
+        print("Area selected:", option)
+    end
+})
+
+local tierDropdown = EggSection:CreateDropdown({
+    Name = "Select Tier",
+    Options = {1, 2, 3, 4, 5}, -- Ganti dengan tier yang valid
+    CurrentOption = 1,
+    Callback = function(option)
+        getgenv().selectedTier = option
+        print("Tier selected:", option)
+    end
+})
+
+local tripleHatchToggle = EggSection:CreateToggle({
+    Name = "Triple Hatch",
+    CurrentValue = false,
+    Callback = function(value)
+        getgenv().tripleHatch = value
+        print("Triple Hatch selected:", value)
+    end
+})
+
+
 local isAutoHatching = false
 
 local function startAutoHatch()
     isAutoHatching = true
     while isAutoHatching do
-        local selectedWorld = getgenv().selectedWorld
-        local selectedArea = getgenv().selectedArea
-        local selectedTier = getgenv().selectedTier
-        local tripleHatch = getgenv().tripleHatch
+        local selectedWorld = getgenv().selectedWorld or "Earth" -- Nilai default jika tidak ada yang dipilih
+        local selectedArea = getgenv().selectedArea or "DefaultArea" -- Ganti dengan area default yang valid
+        local selectedTier = getgenv().selectedTier or 1 -- Nilai default jika tidak ada yang dipilih
+        local tripleHatch = getgenv().tripleHatch or false -- Nilai default jika tidak ada yang dipilih
+        
         print("startAutoHatch loop running. Params:", selectedWorld, selectedArea, selectedTier, tripleHatch)
-        if selectedWorld == "Earth" then
-            autohatch("Earth", selectedArea, selectedTier, tripleHatch)
-        elseif selectedWorld == "Cyberverse" then
-            autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
+        
+        if selectedWorld and selectedArea and selectedTier then
+            if selectedWorld == "Earth" then
+                autohatch("Earth", selectedArea, selectedTier, tripleHatch)
+            elseif selectedWorld == "Cyberverse" then
+                autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
+            else
+                print("Invalid world selected:", selectedWorld)
+            end
         else
-            print("Invalid world selected:", selectedWorld)
+            print("Invalid parameters for autohatch. Skipping...")
         end
+        
         wait(1) -- Tunggu 1 detik sebelum menjalankan lagi (sesuaikan dengan kebutuhan)
     end
 end
+
 
 local AutoHatchToggle = EggTab:CreateToggle({
     Name = "Auto Hatch Egg",
