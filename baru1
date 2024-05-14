@@ -289,8 +289,6 @@ local AutoHatchToggle = EggTab:CreateToggle({
     end
 })
 
-
-
 --TAB TELEPORT
 	local Tab3 = Window:CreateTab("Teleport") -- Title, Image	
 	local Telep = Tab3:CreateSection("Teleport",false)
