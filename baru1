@@ -185,29 +185,23 @@ local ManualAreasEarth = {"Town", "Frosty Kingdom", "Desert Adventure", "Jungle 
 local selectedCyberverseArea = nil
 local selectedEarthArea = nil
 
-local EarthAreaDropdown = EggTab:CreateDropdown({
-    Name = "Select Area Earth",
-    Options = ManualAreasEarth,
-    CurrentOption = {""},
-    Callback = function(Option)
-        getgenv().selectedWorld = "Earth"
-        getgenv().selectedArea = Option[1]
-        if getgenv().AutoHatchEgg then
-            startAutoHatch()
-        end
+local worldDropdown = EggTab:CreateDropdown({
+    Name = "Select World",
+    Options = {"Earth", "Cyberverse"},
+    CurrentOption = "Earth",
+    Callback = function(option)
+        getgenv().selectedWorld = option
+        print("World selected:", option)
     end
 })
 
-local CyberverseAreaDropdown = EggTab:CreateDropdown({
-    Name = "Select Area Cyberverse",
-    Options = ManualAreasCyberverse,
-    CurrentOption = {""},
-    Callback = function(Option)
-        getgenv().selectedWorld = "Cyberverse"
-        getgenv().selectedArea = Option[1]
-        if getgenv().AutoHatchEgg then
-            startAutoHatch()
-        end
+local areaDropdown = EggTab:CreateDropdown({
+    Name = "Select Area",
+    Options = {"Town", "Frosty Kingdom", "Desert Adventure", "Jungle Expedition", "Dinosaur Kingdom", "Farm Life", "Mountain Expedition", "Fantasy Forest", "Aqua Land", "The Portal"}, -- Ganti dengan area yang valid
+    CurrentOption = "",
+    Callback = function(option)
+        getgenv().selectedArea = option
+        print("Area selected:", option)
     end
 })
 
@@ -228,21 +222,13 @@ local HatchTypeDropdown = EggTab:CreateDropdown({
     end
 })
 
-local TierDropdown = EggTab:CreateDropdown({
+local tierDropdown = EggTab:CreateDropdown({
     Name = "Select Tier",
-    Options = {"Tier_1", "Tier_2", "Tier_3", "Tier_4"},
-    CurrentOption = {""},
-    Callback = function(Option)
-        local tierOptions = {
-            ["Tier_1"] = 1,
-            ["Tier_2"] = 2,
-            ["Tier_3"] = 3,
-            ["Tier_4"] = 4
-        }
-        getgenv().selectedTier = tierOptions[Option[1]] or 1
-        if getgenv().AutoHatchEgg then
-            autohatch()
-        end
+    Options = {1, 2, 3, 4, 5}, -- Ganti dengan tier yang valid
+    CurrentOption = 1,
+    Callback = function(option)
+        getgenv().selectedTier = option
+        print("Tier selected:", option)
     end
 })
 
@@ -274,6 +260,14 @@ local function startAutoHatch()
     end
 end
 
+local tripleHatchToggle = EggTab:CreateToggle({
+    Name = "Triple Hatch",
+    CurrentValue = false,
+    Callback = function(value)
+        getgenv().tripleHatch = value
+        print("Triple Hatch selected:", value)
+    end
+})
 
 local AutoHatchToggle = EggTab:CreateToggle({
     Name = "Auto Hatch Egg",
@@ -289,44 +283,6 @@ local AutoHatchToggle = EggTab:CreateToggle({
     end
 })
 
-local worldDropdown = EggTab:CreateDropdown({
-    Name = "Select World",
-    Options = {"Earth", "Cyberverse"},
-    CurrentOption = "Earth",
-    Callback = function(option)
-        getgenv().selectedWorld = option
-        print("World selected:", option)
-    end
-})
-
-local areaDropdown = EggTab:CreateDropdown({
-    Name = "Select Area",
-    Options = {"Area1", "Area2", "Area3"}, -- Ganti dengan area yang valid
-    CurrentOption = "Area1",
-    Callback = function(option)
-        getgenv().selectedArea = option
-        print("Area selected:", option)
-    end
-})
-
-local tierDropdown = EggTab:CreateDropdown({
-    Name = "Select Tier",
-    Options = {1, 2, 3, 4, 5}, -- Ganti dengan tier yang valid
-    CurrentOption = 1,
-    Callback = function(option)
-        getgenv().selectedTier = option
-        print("Tier selected:", option)
-    end
-})
-
-local tripleHatchToggle = EggTab:CreateToggle({
-    Name = "Triple Hatch",
-    CurrentValue = false,
-    Callback = function(value)
-        getgenv().tripleHatch = value
-        print("Triple Hatch selected:", value)
-    end
-})
 
 
 --TAB TELEPORT
