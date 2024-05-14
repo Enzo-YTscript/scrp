@@ -195,16 +195,6 @@ local worldDropdown = EggTab:CreateDropdown({
     end
 })
 
-local areaDropdown = EggSection:CreateDropdown({
-    Name = "Select Area",
-    Options = {"Town", "Frosty Kingdom", "Desert Adventure", "Jungle Expedition", "Dinosaur Kingdom", "Farm Life", "Mountain Expedition", "Fantasy Forest", "Aqua Land", "The Portal"}, -- Ganti dengan area yang valid
-    CurrentOption = "",
-    Callback = function(option)
-        getgenv().selectedArea = option
-        print("Area selected:", option)
-    end
-})
-
 local HatchTypeDropdown = EggTab:CreateDropdown({
     Name = "Select Hatch Type",
     Options = {"1 Hatch", "3 Hatch"},
@@ -222,14 +212,21 @@ local HatchTypeDropdown = EggTab:CreateDropdown({
     end
 })
 
-
-local tierDropdown = EggTab:CreateDropdown({
+local TierDropdown = EggTab:CreateDropdown({
     Name = "Select Tier",
-    Options = {"Tier_1", "Tier_2", "Tier_3", "Tier_4"}, -- Ganti dengan tier yang valid
+    Options = {"Tier_1", "Tier_2", "Tier_3", "Tier_4"},
     CurrentOption = {""},
-    Callback = function(option)
-        getgenv().selectedTier = option
-        print("Tier selected:", option)
+    Callback = function(Option)
+        local tierOptions = {
+            ["Tier_1"] = 1,
+            ["Tier_2"] = 2,
+            ["Tier_3"] = 3,
+            ["Tier_4"] = 4
+        }
+        getgenv().selectedTier = tierOptions[Option[1]] or 1
+        if getgenv().AutoHatchEgg then
+            autohatch()
+        end
     end
 })
 
@@ -262,12 +259,17 @@ local function startAutoHatch()
 end
 
 
-local tripleHatchToggle = EggTab:CreateToggle({
-    Name = "Triple Hatch",
+local AutoHatchToggle = EggTab:CreateToggle({
+    Name = "Auto Hatch Egg",
     CurrentValue = false,
-    Callback = function(value)
-        getgenv().tripleHatch = value
-        print("Triple Hatch selected:", value)
+    Callback = function(Value)
+        print("Auto Hatch Egg toggled:", Value)
+        getgenv().AutoHatchEgg = Value
+        if Value then
+            startAutoHatch()
+        else
+            isAutoHatching = false -- Mematikan auto hatch
+        end
     end
 })
 
