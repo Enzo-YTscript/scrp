@@ -246,46 +246,6 @@ local TierDropdown = EggTab:CreateDropdown({
     end
 })
 
-local worldDropdown = EggTab:CreateDropdown({
-    Name = "Select World",
-    Options = {"Earth", "Cyberverse"},
-    CurrentOption = "Earth",
-    Callback = function(option)
-        getgenv().selectedWorld = option
-        print("World selected:", option)
-    end
-})
-
-local areaDropdown = EggTab:CreateDropdown({
-    Name = "Select Area",
-    Options = {"Area1", "Area2", "Area3"}, -- Ganti dengan area yang valid
-    CurrentOption = "Area1",
-    Callback = function(option)
-        getgenv().selectedArea = option
-        print("Area selected:", option)
-    end
-})
-
-local tierDropdown = EggTab:CreateDropdown({
-    Name = "Select Tier",
-    Options = {1, 2, 3, 4, 5}, -- Ganti dengan tier yang valid
-    CurrentOption = 1,
-    Callback = function(option)
-        getgenv().selectedTier = option
-        print("Tier selected:", option)
-    end
-})
-
-local tripleHatchToggle = EggTab:CreateToggle({
-    Name = "Triple Hatch",
-    CurrentValue = false,
-    Callback = function(value)
-        getgenv().tripleHatch = value
-        print("Triple Hatch selected:", value)
-    end
-})
-
-
 local isAutoHatching = false
 
 local function startAutoHatch()
@@ -328,6 +288,46 @@ local AutoHatchToggle = EggTab:CreateToggle({
         end
     end
 })
+
+local worldDropdown = EggTab:CreateDropdown({
+    Name = "Select World",
+    Options = {"Earth", "Cyberverse"},
+    CurrentOption = "Earth",
+    Callback = function(option)
+        getgenv().selectedWorld = option
+        print("World selected:", option)
+    end
+})
+
+local areaDropdown = EggTab:CreateDropdown({
+    Name = "Select Area",
+    Options = {"Area1", "Area2", "Area3"}, -- Ganti dengan area yang valid
+    CurrentOption = "Area1",
+    Callback = function(option)
+        getgenv().selectedArea = option
+        print("Area selected:", option)
+    end
+})
+
+local tierDropdown = EggTab:CreateDropdown({
+    Name = "Select Tier",
+    Options = {1, 2, 3, 4, 5}, -- Ganti dengan tier yang valid
+    CurrentOption = 1,
+    Callback = function(option)
+        getgenv().selectedTier = option
+        print("Tier selected:", option)
+    end
+})
+
+local tripleHatchToggle = EggTab:CreateToggle({
+    Name = "Triple Hatch",
+    CurrentValue = false,
+    Callback = function(value)
+        getgenv().tripleHatch = value
+        print("Triple Hatch selected:", value)
+    end
+})
+
 
 --TAB TELEPORT
 	local Tab3 = Window:CreateTab("Teleport") -- Title, Image	
