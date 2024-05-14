@@ -151,6 +151,7 @@ local autoCollectToggle = TabFarm:CreateToggle({
 local HatchRemote = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("OpenCrate")
 
 local function autohatch(world, area, tier, tripleHatch)
+    print("autohatch called with params:", world, area, "tier_" .. tier, tripleHatch)
     local args = {
         [1] = world,
         [2] = area,
@@ -158,6 +159,7 @@ local function autohatch(world, area, tier, tripleHatch)
         [4] = tripleHatch
     }
     HatchRemote:FireServer(unpack(args))
+    print("HatchRemote fired with args:", unpack(args))
 end
 
 local function startAutoHatch()
@@ -253,14 +255,15 @@ local function startAutoHatch()
         local selectedArea = getgenv().selectedArea
         local selectedTier = getgenv().selectedTier
         local tripleHatch = getgenv().tripleHatch
-
+        print("startAutoHatch loop running. Params:", selectedWorld, selectedArea, selectedTier, tripleHatch)
         if selectedWorld == "Earth" then
             autohatch("Earth", selectedArea, selectedTier, tripleHatch)
         elseif selectedWorld == "Cyberverse" then
             autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
+        else
+            print("Invalid world selected:", selectedWorld)
         end
-
-        wait(1) -- Tunggu 2 detik sebelum menjalankan lagi (sesuaikan dengan kebutuhan)
+        wait(1) -- Tunggu 1 detik sebelum menjalankan lagi (sesuaikan dengan kebutuhan)
     end
 end
 
@@ -268,6 +271,7 @@ local AutoHatchToggle = EggTab:CreateToggle({
     Name = "Auto Hatch Egg",
     CurrentValue = false,
     Callback = function(Value)
+        print("Auto Hatch Egg toggled:", Value)
         getgenv().AutoHatchEgg = Value
         if Value then
             startAutoHatch()
