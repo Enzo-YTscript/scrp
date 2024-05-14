@@ -185,13 +185,29 @@ local ManualAreasEarth = {"Town", "Frosty Kingdom", "Desert Adventure", "Jungle 
 local selectedCyberverseArea = nil
 local selectedEarthArea = nil
 
-local worldDropdown = EggTab:CreateDropdown({
-    Name = "Select World",
-    Options = {"Earth", "Cyberverse"},
-    CurrentOption = "Earth",
-    Callback = function(option)
-        getgenv().selectedWorld = option
-        print("World selected:", option)
+local EarthAreaDropdown = EggTab:CreateDropdown({
+    Name = "Select Area Earth",
+    Options = ManualAreasEarth,
+    CurrentOption = {""},
+    Callback = function(Option)
+        getgenv().selectedWorld = "Earth"
+        getgenv().selectedArea = Option[1]
+        if getgenv().AutoHatchEgg then
+            startAutoHatch()
+        end
+    end
+})
+
+local CyberverseAreaDropdown = EggTab:CreateDropdown({
+    Name = "Select Area Cyberverse",
+    Options = ManualAreasCyberverse,
+    CurrentOption = {""},
+    Callback = function(Option)
+        getgenv().selectedWorld = "Cyberverse"
+        getgenv().selectedArea = Option[1]
+        if getgenv().AutoHatchEgg then
+            startAutoHatch()
+        end
     end
 })
 
