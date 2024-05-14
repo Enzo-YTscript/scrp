@@ -147,6 +147,9 @@ local autoCollectToggle = TabFarm:CreateToggle({
 })
 
 -- TAB EGG
+local EggTab = Window:CreateTab("🥚 EGG", nil) -- Title, Image
+local EggSection = EggTab:CreateSection("EGG")
+
 -- Fungsi untuk mendapatkan daftar area berdasarkan dunia (Earth atau Cyberverse)
 local HatchRemote = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("OpenCrate")
 
@@ -174,9 +177,6 @@ local function startAutoHatch()
         autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
     end
 end
-
-local EggTab = Window:CreateTab("🥚 EGG", nil) -- Title, Image
-local EggSection = EggTab:CreateSection("EGG")
 
 local ManualAreasCyberverse = {"Cyber Town", "Robo Road", "Cyber Adventure", "Robo Expedition", "Cyber Kingdom", "Robo Life", "Cyber Expedition",  "Robo Forest", "Robo Land", "The Second Portal",}
 
