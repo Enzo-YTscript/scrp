@@ -73,26 +73,51 @@ end
     end
 })
 
--- Fungsi untuk mendapatkan daftar nama musuh
-local function getEnemiesList()
+-- Tabel pemetaan nama asli ke nama yang ditampilkan
+local enemyNameMap = {
+    ["70"] = "Goblin",
+	["71"] = "Goblin",
+	["72"] = "Goblin",
+	["73"] = "Goblin",
+	["74"] = "Goblin",
+	["75"] = "Goblin",
+	["76"] = "Goblin",
+	["77"] = "Goblin",
+	["78"] = "Goblin",
+    ["80"] = "Orc",
+    ["90"] = "Troll",
+    -- Tambahkan pemetaan lainnya di sini
+}
+
+-- Fungsi untuk mendapatkan daftar nama musuh yang ditampilkan
+local function getDisplayedEnemiesList()
     local enemies = {}
     for _, enemy in pairs(workspace.Enemies:GetChildren()) do
-        table.insert(enemies, enemy.Name)
+        if enemyNameMap[enemy.Name] then
+            table.insert(enemies, enemyNameMap[enemy.Name])
+        else
+            table.insert(enemies, enemy.Name)
+        end
     end
     return enemies
 end
 
--- Inisialisasi dropdown dengan daftar musuh
+-- Inisialisasi dropdown dengan daftar musuh yang ditampilkan
 local enemyDropdown
 local function createEnemyDropdown()
-    enemyDropdown = TabMain:CreateDropdown({
+    enemyDropdown = EggTab:CreateDropdown({
         Name = "Select Enemy",
-		SectionParent = SectionMain,
-        Options = getEnemiesList(),
+        Options = getDisplayedEnemiesList(),
         CurrentOption = "None",
         Callback = function(option)
-            getgenv().selectedEnemy = option
-            print("Enemy selected:", option) -- Debug print statement
+            -- Cari nama asli berdasarkan nama yang ditampilkan
+            for originalName, displayName in pairs(enemyNameMap) do
+                if displayName == option then
+                    getgenv().selectedEnemy = originalName
+                    break
+                end
+            end
+            print("Enemy selected:", getgenv().selectedEnemy) -- Debug print statement
         end
     })
 end
@@ -128,15 +153,49 @@ local function autoAttack()
 end
 
 -- Menambahkan toggle untuk auto attack ke UI
-local AutoAttackToggle = TabMain:CreateToggle({
+local AutoAttackToggle = EggTab:CreateToggle({
     Name = "Auto Attack Enemy",
-	SectionParent = SectionMain,
     CurrentValue = false,
     Callback = function(Value)
         getgenv().AutoAttack = Value
         print("Auto Attack toggled:", Value) -- Debug print statement
         if Value then
             autoAttack()
+        end
+    end
+})
+
+-- Inisialisasi variabel global untuk auto collect coin
+getgenv().AutoCollectCoin = false
+
+-- Fungsi untuk auto collect coin
+local function autoCollectCoin()
+    while getgenv().AutoCollectCoin do
+        for _, dropModel in pairs(workspace.Enemies.DropModels:GetChildren()) do
+            if dropModel:IsA("Model") and dropModel:FindFirstChild("Id") then
+                local args = {
+                    [1] = "Collected",
+                    [2] = {
+                        ["Id"] = dropModel.Id.Value
+                    }
+                }
+                game:GetService("ReplicatedStorage").Knit.Services.GameService.RE.GameRemote:FireServer(unpack(args))
+                print("Collecting coin with Id:", dropModel.Id.Value) -- Debug print statement
+            end
+        end
+        wait(1) -- Interval waktu antara setiap iterasi pengumpulan koin (dalam detik, sesuaikan dengan kebutuhan)
+    end
+end
+
+-- Menambahkan toggle untuk auto collect coin ke UI
+local AutoCollectCoinToggle = EggTab:CreateToggle({
+    Name = "Auto Collect Coin",
+    CurrentValue = false,
+    Callback = function(Value)
+        getgenv().AutoCollectCoin = Value
+        print("Auto Collect Coin toggled:", Value) -- Debug print statement
+        if Value then
+            autoCollectCoin()
         end
     end
 })
