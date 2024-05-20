@@ -156,7 +156,7 @@ getgenv().AutoCollectCoin = false
 -- Fungsi untuk auto collect coin
 local function autoCollectCoin()
     while getgenv().AutoCollectCoin do
-        for _, dropModel in pairs(workspace.Enemies.DropModels:GetChildren()) do
+        for _, dropModel in pairs(workspace.DropModels:GetChildren()) do
             if dropModel:IsA("Model") and dropModel:FindFirstChild("Id") then
                 local args = {
                     [1] = "Collected",
