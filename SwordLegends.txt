@@ -156,31 +156,17 @@ getgenv().AutoCollectCoin = false
 -- Fungsi untuk auto collect coin
 local function autoCollectCoin()
     while getgenv().AutoCollectCoin do
-        -- Memastikan DropModel ada dalam workspace
-        local dropModel = workspace:FindFirstChild("DropModel")
-        if dropModel then
-            -- Mengakses setiap anak dari DropModel
-            for _, coinDrop in pairs(dropModel:GetChildren()) do
-                local dropFolder = coinDrop:FindFirstChild("Drop")
-                if dropFolder then
-                    for _, drop in pairs(dropFolder:GetChildren()) do
-                        if drop:IsA("Model") and drop:FindFirstChild("Id") then
-                            local args = {
-                                [1] = "Collected",
-                                [2] = {
-                                    ["Id"] = drop.Id.Value
-                                }
-                            }
-                            game:GetService("ReplicatedStorage").Knit.Services.GameService.RE.GameRemote:FireServer(unpack(args))
-                            print("Collecting coin with Id:", drop.Id.Value) -- Debug print statement
-                        end
-                    end
-                else
-                    print("Drop folder not found in coinDrop:", coinDrop.Name) -- Debug print statement
-                end
+        for _, coinDrop in pairs(workspace.DropModels.CoinDrop:GetChildren()) do
+            if coinDrop:IsA("Model") and coinDrop:FindFirstChild("Id") then
+                local args = {
+                    [1] = "Collected",
+                    [2] = {
+                        ["Id"] = coinDrop.Id.Value
+                    }
+                }
+                game:GetService("ReplicatedStorage").Knit.Services.GameService.RE.GameRemote:FireServer(unpack(args))
+                print("Collecting coin with Id:", coinDrop.Id.Value) -- Debug print statement
             end
-        else
-            warn("DropModel not found in workspace") -- Warning if DropModel is not found
         end
         wait(1) -- Interval waktu antara setiap iterasi pengumpulan koin (dalam detik, sesuaikan dengan kebutuhan)
     end
@@ -198,6 +184,7 @@ local AutoCollectCoinToggle = TabMain:CreateToggle({
         end
     end
 })
+
 
 
 
