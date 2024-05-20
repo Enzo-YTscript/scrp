@@ -153,48 +153,35 @@ local AutoAttackToggle = TabMain:CreateToggle({
 -- Inisialisasi variabel global untuk auto collect coin
 getgenv().AutoCollectCoin = false
 
--- Fungsi untuk mengumpulkan koin dari lokasi tertentu
-local function collectCoinsFromLocation(location)
-    for _, coinDrop in pairs(location:GetChildren()) do
-        local dropFolder = coinDrop:FindFirstChild("Drop")
-        if dropFolder then
-            for _, drop in pairs(dropFolder:GetChildren()) do
-                if drop:IsA("Model") and drop:FindFirstChild("Id") then
-                    local args = {
-                        [1] = "Collected",
-                        [2] = {
-                            ["Id"] = drop.Id.Value
-                        }
-                    }
-                    game:GetService("ReplicatedStorage").Knit.Services.GameService.RE.GameRemote:FireServer(unpack(args))
-                    print("Collecting coin with Id:", drop.Id.Value) -- Debug print statement
-                end
-            end
-        else
-            print("Drop folder not found in coinDrop:", coinDrop.Name) -- Debug print statement
-        end
-    end
-end
-
--- Fungsi utama untuk auto collect coin
+-- Fungsi untuk auto collect coin
 local function autoCollectCoin()
     while getgenv().AutoCollectCoin do
         -- Memastikan DropModel ada dalam workspace
         local dropModel = workspace:FindFirstChild("DropModel")
         if dropModel then
-            collectCoinsFromLocation(dropModel)
+            -- Mengakses setiap anak dari DropModel
+            for _, coinDrop in pairs(dropModel:GetChildren()) do
+                local dropFolder = coinDrop:FindFirstChild("Drop")
+                if dropFolder then
+                    for _, drop in pairs(dropFolder:GetChildren()) do
+                        if drop:IsA("Model") and drop:FindFirstChild("Id") then
+                            local args = {
+                                [1] = "Collected",
+                                [2] = {
+                                    ["Id"] = drop.Id.Value
+                                }
+                            }
+                            game:GetService("ReplicatedStorage").Knit.Services.GameService.RE.GameRemote:FireServer(unpack(args))
+                            print("Collecting coin with Id:", drop.Id.Value) -- Debug print statement
+                        end
+                    end
+                else
+                    print("Drop folder not found in coinDrop:", coinDrop.Name) -- Debug print statement
+                end
+            end
         else
             warn("DropModel not found in workspace") -- Warning if DropModel is not found
         end
-
-        -- Memastikan HiddenItems ada dalam workspace
-        local hiddenItems = workspace:FindFirstChild("HiddenItems")
-        if hiddenItems then
-            collectCoinsFromLocation(hiddenItems)
-        else
-            warn("HiddenItems not found in workspace") -- Warning if HiddenItems is not found
-        end
-
         wait(1) -- Interval waktu antara setiap iterasi pengumpulan koin (dalam detik, sesuaikan dengan kebutuhan)
     end
 end
@@ -211,7 +198,6 @@ local AutoCollectCoinToggle = TabMain:CreateToggle({
         end
     end
 })
-
 
 
 
