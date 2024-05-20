@@ -156,16 +156,26 @@ getgenv().AutoCollectCoin = false
 -- Fungsi untuk auto collect coin
 local function autoCollectCoin()
     while getgenv().AutoCollectCoin do
-        for _, coinDrop in pairs(workspace.DropModels.CoinDrop:GetChildren()) do
-            if coinDrop:IsA("Model") and coinDrop:FindFirstChild("Id") then
-                local args = {
-                    [1] = "Collected",
-                    [2] = {
-                        ["Id"] = coinDrop.Id.Value
-                    }
-                }
-                game:GetService("ReplicatedStorage").Knit.Services.GameService.RE.GameRemote:FireServer(unpack(args))
-                print("Collecting coin with Id:", coinDrop.Id.Value) -- Debug print statement
+        for _, coinDrop in pairs(workspace.DropModels:GetChildren()) do
+            print("Checking CoinDrop:", coinDrop.Name) -- Debug print statement
+            if coinDrop.Name == "CoinDrop" and coinDrop:FindFirstChild("Drop") then
+                for _, drop in pairs(coinDrop.Drop:GetChildren()) do
+                    print("Checking Drop:", drop.Name) -- Debug print statement
+                    if drop:IsA("Model") and drop:FindFirstChild("Id") then
+                        local args = {
+                            [1] = "Collected",
+                            [2] = {
+                                ["Id"] = drop.Id.Value
+                            }
+                        }
+                        game:GetService("ReplicatedStorage").Knit.Services.GameService.RE.GameRemote:FireServer(unpack(args))
+                        print("Collecting coin with Id:", drop.Id.Value) -- Debug print statement
+                    else
+                        print("Drop does not have Id:", drop.Name) -- Debug print statement
+                    end
+                end
+            else
+                print("CoinDrop does not have Drop or incorrect name:", coinDrop.Name) -- Debug print statement
             end
         end
         wait(1) -- Interval waktu antara setiap iterasi pengumpulan koin (dalam detik, sesuaikan dengan kebutuhan)
