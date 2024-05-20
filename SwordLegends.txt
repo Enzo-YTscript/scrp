@@ -159,9 +159,11 @@ local function autoCollectCoin()
         -- Memastikan DropModel ada dalam workspace
         local dropModel = workspace:FindFirstChild("DropModel")
         if dropModel then
+            -- Mengakses setiap anak dari DropModel
             for _, coinDrop in pairs(dropModel:GetChildren()) do
-                if coinDrop:FindFirstChild("Drop") then
-                    for _, drop in pairs(coinDrop.Drop:GetChildren()) do
+                local dropFolder = coinDrop:FindFirstChild("Drop")
+                if dropFolder then
+                    for _, drop in pairs(dropFolder:GetChildren()) do
                         if drop:IsA("Model") and drop:FindFirstChild("Id") then
                             local args = {
                                 [1] = "Collected",
@@ -173,6 +175,8 @@ local function autoCollectCoin()
                             print("Collecting coin with Id:", drop.Id.Value) -- Debug print statement
                         end
                     end
+                else
+                    print("Drop folder not found in coinDrop:", coinDrop.Name) -- Debug print statement
                 end
             end
         else
@@ -194,6 +198,7 @@ local AutoCollectCoinToggle = TabMain:CreateToggle({
         end
     end
 })
+
 
 
 -- TAB EGG
