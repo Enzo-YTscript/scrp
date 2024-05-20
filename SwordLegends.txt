@@ -150,47 +150,42 @@ local AutoAttackToggle = TabMain:CreateToggle({
     end
 })
 
--- Inisialisasi variabel global untuk auto collect coin
-getgenv().AutoCollectCoin = false
+local function collectCoin(target)
+    local targetPosition = target.PrimaryPart.Position
+    local playerPosition = player.Character.HumanoidRootPart.Position
+    local distance = (targetPosition - playerPosition).Magnitude
 
--- Mendapatkan referensi pemain
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
-
--- Fungsi untuk auto collect coin
-local function autoCollectCoin()
-    while getgenv().AutoCollectCoin do
-        for _, coinDrop in pairs(workspace.DropModels:GetChildren()) do
-            if coinDrop.Name == "CoinDrop" and coinDrop:FindFirstChild("Drop") then
-                for _, drop in pairs(coinDrop.Drop:GetChildren()) do
-                    if drop:IsA("Model") and drop:FindFirstChild("Id") then
-                        -- Pindahkan drop ke posisi pemain
-                        drop:SetPrimaryPartCFrame(humanoidRootPart.CFrame)
-                        print("Moving coin with Id:", drop.Id.Value, "to player") -- Debug print statement
-                    else
-                        print("Drop does not have Id or is not a Model:", drop.Name) -- Debug print statement
-                    end
-                end
-            else
-                print("CoinDrop does not have Drop or incorrect name:", coinDrop.Name) -- Debug print statement
-            end
-        end
-        wait(1) -- Interval waktu antara setiap iterasi pengumpulan koin (dalam detik, sesuaikan dengan kebutuhan)
+    if distance <= 1000 then -- Jarak maksimum untuk mengambil koin
+        player.Character:SetPrimaryPartCFrame(target.PrimaryPart.CFrame * CFrame.new(0, 0, -3)) -- Teleportasi ke koin
+        wait(0.5) -- Tunggu sejenak untuk memastikan karakter telah sampai ke koin
+        target:Destroy() -- Menghapus koin dari permainan (opsional, tergantung pada game Anda)
+        player.Character:SetPrimaryPartCFrame(playerStartCFrame) -- Teleportasi kembali ke posisi awal
     end
 end
 
--- Menambahkan toggle untuk auto collect coin ke UI
-local AutoCollectCoinToggle = TabMain:CreateToggle({
-    Name = "Auto Collect Coin",
+-- Toggle untuk mengaktifkan/menonaktifkan auto collect
+local autoCollectToggle = TabMain:CreateToggle({
+    Name = "Auto Collect",
+	SectionParent = SectionMain,
     CurrentValue = false,
     Callback = function(Value)
-        getgenv().AutoCollectCoin = Value
-        print("Auto Collect Coin toggled:", Value) -- Debug print statement
-        if Value then
-            autoCollectCoin()
+getgenv().collect = Value
+
+while true do
+    if getgenv().collect then
+        local player = game.Players.LocalPlayer
+        local humanoidRootPart = player.Character:WaitForChild("HumanoidRootPart")
+        
+        for _, Drops in ipairs(Workspace.CoinDrop.Drops:GetChildren()) do
+            if Drops:IsA("BasePart") then
+                Drops.CFrame = CFrame.new(humanoidRootPart.Position)
+            end
         end
-    end
+        end
+    
+    wait(0.1)
+end
+end,
 })
 
 
