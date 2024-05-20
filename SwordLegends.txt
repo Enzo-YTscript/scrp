@@ -165,6 +165,7 @@ local function autoCollectCoin()
                     }
                 }
                 game:GetService("ReplicatedStorage").Knit.Services.GameService.RE.GameRemote:FireServer(unpack(args))
+                print("Collecting coin with Id:", dropModel.Id.Value) -- Debug print statement
             end
         end
         wait(1) -- Interval waktu antara setiap iterasi pengumpulan koin (dalam detik, sesuaikan dengan kebutuhan)
@@ -174,17 +175,15 @@ end
 -- Menambahkan toggle untuk auto collect coin ke UI
 local AutoCollectCoinToggle = TabMain:CreateToggle({
     Name = "Auto Collect Coin",
-	SectionParent = SectionMain,
     CurrentValue = false,
     Callback = function(Value)
         getgenv().AutoCollectCoin = Value
+        print("Auto Collect Coin toggled:", Value) -- Debug print statement
         if Value then
             autoCollectCoin()
         end
     end
 })
-
-
 
 -- TAB EGG
 -- Fungsi untuk mendapatkan daftar area berdasarkan dunia (Earth atau Cyberverse)
