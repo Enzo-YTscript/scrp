@@ -156,7 +156,7 @@ getgenv().AutoCollectCoin = false
 -- Fungsi untuk auto collect coin
 local function autoCollectCoin()
     while getgenv().AutoCollectCoin do
-        for _, coinDrop in pairs(workspace.DropModels:GetChildren()) do
+        for _, coinDrop in pairs(workspace.DropModel:GetChildren()) do
             if coinDrop:FindFirstChild("Drop") then
                 for _, drop in pairs(coinDrop.Drop:GetChildren()) do
                     if drop:IsA("Model") and drop:FindFirstChild("Id") then
