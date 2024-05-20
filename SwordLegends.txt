@@ -156,16 +156,20 @@ getgenv().AutoCollectCoin = false
 -- Fungsi untuk auto collect coin
 local function autoCollectCoin()
     while getgenv().AutoCollectCoin do
-        for _, dropModel in pairs(workspace.DropModels:GetChildren()) do
-            if dropModel:IsA("Model") and dropModel:FindFirstChild("Id") then
-                local args = {
-                    [1] = "Collected",
-                    [2] = {
-                        ["Id"] = dropModel.Id.Value
-                    }
-                }
-                game:GetService("ReplicatedStorage").Knit.Services.GameService.RE.GameRemote:FireServer(unpack(args))
-                print("Collecting coin with Id:", dropModel.Id.Value) -- Debug print statement
+        for _, coinDrop in pairs(workspace.DropModels:GetChildren()) do
+            if coinDrop:FindFirstChild("Drop") then
+                for _, drop in pairs(coinDrop.Drop:GetChildren()) do
+                    if drop:IsA("Model") and drop:FindFirstChild("Id") then
+                        local args = {
+                            [1] = "Collected",
+                            [2] = {
+                                ["Id"] = drop.Id.Value
+                            }
+                        }
+                        game:GetService("ReplicatedStorage").Knit.Services.GameService.RE.GameRemote:FireServer(unpack(args))
+                        print("Collecting coin with Id:", drop.Id.Value) -- Debug print statement
+                    end
+                end
             end
         end
         wait(1) -- Interval waktu antara setiap iterasi pengumpulan koin (dalam detik, sesuaikan dengan kebutuhan)
