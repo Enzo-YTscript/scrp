@@ -86,8 +86,9 @@ local function autoCollectCoin()
             if coinDrop:IsA("Model") then
                 for _, drop in ipairs(coinDrop:GetChildren()) do
                     if drop:IsA("BasePart") then
-                        drop.CFrame = humanoidRootPart.CFrame
-                        print("Moving coin to player") -- Debug print statement
+                        -- Pindahkan koin ke posisi pemain
+                        drop.CFrame = CFrame.new(humanoidRootPart.Position + Vector3.new(math.random(-5,5), 0, math.random(-5,5)))
+                        wait(0.1)
                     end
                 end
             end
@@ -103,7 +104,6 @@ local autoCollectToggle = TabMain:CreateToggle({
     CurrentValue = false,
     Callback = function(Value)
         getgenv().collect = Value
-        print("Auto Collect toggled:", Value) -- Debug print statement
         if Value then
             spawn(autoCollectCoin)
         end
