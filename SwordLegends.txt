@@ -179,8 +179,9 @@ local function autoCollectCoin()
 end
 
 -- Menambahkan toggle untuk auto collect coin ke UI
-local autoCollectToggle = MainTab:CreateToggle({
+local autoCollectToggle = TabMain:CreateToggle({
     Name = "Auto Collect",
+	SectionParent = SectionMain,
     CurrentValue = false,
     Callback = function(Value)
         getgenv().collect = Value
