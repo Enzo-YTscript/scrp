@@ -31,85 +31,36 @@ local Window = ArrayField:CreateWindow({
 local TabMain = Window:CreateTab("HOME", nil) -- Title, Image
 local SectionMain = TabMain:CreateSection("Actions", false)
 
--- Helper function to run the given args every 1 second if the toggle is on
-local function createToggleFunction(args)
-    return function()
-        while wait(1) do
-            if not getgenv()[args[1]] then return end
+-- Function template for toggles
+local function createToggle(name, args)
+    local active = false
+    
+    local function action()
+        while active do
             game:GetService("ReplicatedStorage").RDT:FireServer(unpack(args))
+            wait(1)
         end
     end
+
+    TabMain:CreateToggle({
+        Name = name,
+        SectionParent = SectionMain,
+        CurrentValue = false,
+        Callback = function(Value)
+            active = Value
+            if Value then
+                spawn(action)
+            end
+        end
+    })
 end
 
--- Toggle Give Coin
-getgenv().GiveCoin = false
-local ToggleGiveCoin = TabMain:CreateToggle({
-    Name = "Give Coin",
-    SectionParent = SectionMain,
-    CurrentValue = false,
-    Callback = function(Value)
-        getgenv().GiveCoin = Value
-        if Value then
-            spawn(createToggleFunction({GiveCoin = true, 7}))
-        end
-    end
-})
-
--- Toggle Random Rare
-getgenv().RandomRare = false
-local ToggleRandomRare = TabMain:CreateToggle({
-    Name = "Random Rare",
-    SectionParent = SectionMain,
-    CurrentValue = false,
-    Callback = function(Value)
-        getgenv().RandomRare = Value
-        if Value then
-            spawn(createToggleFunction({RandomRare = true, 3}))
-        end
-    end
-})
-
--- Toggle Random Epic
-getgenv().RandomEpic = false
-local ToggleRandomEpic = TabMain:CreateToggle({
-    Name = "Random Epic",
-    SectionParent = SectionMain,
-    CurrentValue = false,
-    Callback = function(Value)
-        getgenv().RandomEpic = Value
-        if Value then
-            spawn(createToggleFunction({RandomEpic = true, 5}))
-        end
-    end
-})
-
--- Toggle Random Legendary
-getgenv().RandomLegendary = false
-local ToggleRandomLegendary = TabMain:CreateToggle({
-    Name = "Random Legendary",
-    SectionParent = SectionMain,
-    CurrentValue = false,
-    Callback = function(Value)
-        getgenv().RandomLegendary = Value
-        if Value then
-            spawn(createToggleFunction({RandomLegendary = true, 6}))
-        end
-    end
-})
-
--- Toggle Random Mythic
-getgenv().RandomMythic = false
-local ToggleRandomMythic = TabMain:CreateToggle({
-    Name = "Random Mythic",
-    SectionParent = SectionMain,
-    CurrentValue = false,
-    Callback = function(Value)
-        getgenv().RandomMythic = Value
-        if Value then
-            spawn(createToggleFunction({RandomMythic = true, 8}))
-        end
-    end
-})
+-- Create toggles
+createToggle("Give Coin", {7})
+createToggle("Random Rare", {3})
+createToggle("Random Epic", {5})
+createToggle("Random Legendary", {6})
+createToggle("Random Mythic", {8})
 
 
 -- Infinite Jump
