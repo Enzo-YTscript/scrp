@@ -150,13 +150,17 @@ local AutoStartArena = TabFarm:CreateToggle({
 -- Fungsi untuk mendapatkan daftar area berdasarkan dunia (Earth atau Cyberverse)
 local HatchRemote = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("OpenCrate")
 local function autohatch(world, area, tier, tripleHatch)
-    local args = {
-        [1] = world,
-        [2] = area,
-        [3] = "tier_" .. tier,
-        [4] = tripleHatch
-    }
-    HatchRemote:FireServer(unpack(args))
+    if tier then
+        local args = {
+            [1] = world,
+            [2] = area,
+            [3] = "tier_" .. tier,
+            [4] = tripleHatch
+        }
+        HatchRemote:FireServer(unpack(args))
+    else
+        warn("Tier is nil, cannot autohatch")
+    end
 end
 
 local function startAutoHatch()
@@ -164,10 +168,14 @@ local function startAutoHatch()
     local selectedArea = getgenv().selectedArea
     local selectedTier = getgenv().selectedTier
     local tripleHatch = getgenv().tripleHatch
-    if selectedWorld == "Earth" then
-        autohatch("Earth", selectedArea, selectedTier, tripleHatch)
-    elseif selectedWorld == "Cyberverse" then
-        autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
+    if selectedWorld and selectedArea and selectedTier then
+        if selectedWorld == "Earth" then
+            autohatch("Earth", selectedArea, selectedTier, tripleHatch)
+        elseif selectedWorld == "Cyberverse" then
+            autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
+        end
+    else
+        warn("Please select World, Area, and Tier before starting Auto Hatch")
     end
 end
 
@@ -230,14 +238,14 @@ local HatchTypeDropdown = EggTab:CreateDropdown({
 local TierDropdown = EggTab:CreateDropdown({
     Name = "Select Tier",
     SectionParent = EggSection,
-    Options = {"Tier_1", "Tier_2", "Tier_3", "Tier_4"},
+    Options = {"1", "2", "3", "4"},
     CurrentOption = {""},
     Callback = function(Option)
         local tierOptions = {
-            ["Tier_1"] = 1,
-            ["Tier_2"] = 2,
-            ["Tier_3"] = 3,
-            ["Tier_4"] = 4
+            ["1"] = 1,
+            ["2"] = 2,
+            ["3"] = 3,
+            ["4"] = 4
         }
         local selectedTier = tierOptions[Option[1]]
         getgenv().selectedTier = selectedTier
