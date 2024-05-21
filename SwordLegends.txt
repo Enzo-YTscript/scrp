@@ -40,12 +40,12 @@ game:GetService("Players").LocalPlayer.Idled:connect(function()
     wait(1)
     vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 end)
-	
---- MAIN TAB	
-    local TabMain = Window:CreateTab("HOME", nil) -- Title, Image
-	local SectionMain = TabMain:CreateSection("Farm",false)
-	
----- autoClick Fungtions
+
+--- MAIN TAB    
+local TabMain = Window:CreateTab("HOME", nil) -- Title, Image
+local SectionMain = TabMain:CreateSection("Farm",false)
+
+---- autoClick Functions
 getgenv().AutoClick = false
 
 local function autoClick()
@@ -58,15 +58,54 @@ local function autoClick()
     end
 end
 
-
-	local AutoClick = TabMain:CreateToggle({
+local AutoClick = TabMain:CreateToggle({
     Name = "Auto Click",
-	SectionParent = SectionMain,
+    SectionParent = SectionMain,
     CurrentValue = false,
     Callback = function(Value)
         getgenv().AutoClick = Value
         if Value then
-            autoClick()
+            spawn(autoClick)
+        end
+    end
+})
+
+-- Inisialisasi variabel global untuk auto collect
+getgenv().collect = false
+
+-- Mendapatkan referensi pemain
+local player = game.Players.LocalPlayer
+
+-- Fungsi untuk auto collect coin
+local function autoCollectCoin()
+    while getgenv().collect do
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        for _, coinDrop in ipairs(workspace.DropModels.CoinDrop:GetChildren()) do
+            if coinDrop:IsA("Model") then
+                for _, drop in ipairs(coinDrop:GetChildren()) do
+                    if drop:IsA("BasePart") then
+                        drop.CFrame = humanoidRootPart.CFrame
+                        print("Moving coin to player") -- Debug print statement
+                    end
+                end
+            end
+        end
+        wait(0.1)
+    end
+end
+
+-- Menambahkan toggle untuk auto collect coin ke UI
+local autoCollectToggle = TabMain:CreateToggle({
+    Name = "Auto Collect",
+    SectionParent = SectionMain,
+    CurrentValue = false,
+    Callback = function(Value)
+        getgenv().collect = Value
+        print("Auto Collect toggled:", Value) -- Debug print statement
+        if Value then
+            spawn(autoCollectCoin)
         end
     end
 })
@@ -97,7 +136,7 @@ local enemyDropdown
 local function createEnemyDropdown()
     enemyDropdown = TabMain:CreateDropdown({
         Name = "Select Enemy",
-		SectionParent = SectionMain,
+        SectionParent = SectionMain,
         Options = getDisplayedEnemiesList(),
         CurrentOption = "None",
         Callback = function(option)
@@ -140,171 +179,127 @@ end
 -- Menambahkan toggle untuk auto attack ke UI
 local AutoAttackToggle = TabMain:CreateToggle({
     Name = "Auto Attack Enemy",
-	SectionParent = SectionMain,
+    SectionParent = SectionMain,
     CurrentValue = false,
     Callback = function(Value)
         getgenv().AutoAttack = Value
         if Value then
-            autoAttack()
+            spawn(autoAttack)
         end
     end
 })
-
--- coin
-
--- Inisialisasi variabel global untuk auto collect
-getgenv().collect = false
-
--- Mendapatkan referensi pemain
-local player = game.Players.LocalPlayer
-
--- Fungsi untuk auto collect coin
-local function autoCollectCoin()
-    while getgenv().collect do
-        local character = player.Character or player.CharacterAdded:Wait()
-        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
-
-        for _, coinDrop in ipairs(workspace.DropModels.CoinDrop:GetChildren()) do
-            if coinDrop:IsA("Model") then
-                for _, drop in ipairs(coinDrop:GetChildren()) do
-                    if drop:IsA("BasePart") then
-                        drop.CFrame = humanoidRootPart.CFrame
-                        print("Moving coin to player") -- Debug print statement
-                    end
-                end
-            end
-        end
-        wait(0.1)
-    end
-end
-
--- Menambahkan toggle untuk auto collect coin ke UI
-local autoCollectToggle = TabMain:CreateToggle({
-    Name = "Auto Collect",
-	
-    CurrentValue = false,
-    Callback = function(Value)
-        getgenv().collect = Value
-        print("Auto Collect toggled:", Value) -- Debug print statement
-        if Value then
-            -- Mulai pengumpulan koin dalam coroutine agar tidak memblokir thread utama
-            spawn(autoCollectCoin)
-        end
-    end
-})
-
-
 
 -- TAB EGG
 local EggTab = Window:CreateTab("🥚 EGG", nil) -- Title, Image
 local EggSection = EggTab:CreateSection("EGG")
 
-
-
-
 -- Membuat tombol Teleport
 local TeleportButton = Tab3:CreateButton({
     Name = "Teleport",
-	SectionParent = Telep,	
+    SectionParent = Telep,
     Callback = function()
-if getgenv().selectedRealm and ((getgenv().selectedRealm == "Earth" and getgenv().selectedAreaEarth) or (getgenv().selectedRealm == "Cyberverse" and getgenv().selectedAreaCyberTown)) then
+        if getgenv().selectedRealm and ((getgenv().selectedRealm == "Earth" and getgenv().selectedAreaEarth) or (getgenv().selectedRealm == "Cyberverse" and getgenv().selectedAreaCyberTown)) then
             local selectedArea = getgenv().selectedRealm == "Earth" and getgenv().selectedAreaEarth or getgenv().selectedAreaCyberTown
             local args = {
                 [1] = getgenv().selectedRealm,
                 [2] = selectedArea
-            }            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Teleport"):FireServer(unpack(args))
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Teleport"):FireServer(unpack(args))
         else
             warn("Pilih Realm dan Area terlebih dahulu.")
         end
     end,
 })
 
---TAB F2PTab
-	local Tab4 = Window:CreateTab("F2PTab") -- Title, Image	
-	local F2PSec = Tab4:CreateSection("F2P")
-	
+-- TAB F2P
+local Tab4 = Window:CreateTab("F2PTab") -- Title, Image
+local F2PSec = Tab4:CreateSection("F2P")
+
 -- Membuat tombol untuk memicu aksi pertama
 local Booster1Button = Tab4:CreateButton({
-Name = "DropsBooster",
-SectionParent = F2PSec,
+    Name = "DropsBooster",
+    SectionParent = F2PSec,
     Callback = function()
-        local args = {[1] = "Booster", [2] = "DropsBooster"}        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
+        local args = {[1] = "Booster", [2] = "DropsBooster"}
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
     end,
 })
 
 -- Membuat tombol untuk memicu aksi kedua
 local Booster2Button = Tab4:CreateButton({
-Name = "PowerBooster",
-SectionParent = F2PSec,
+    Name = "PowerBooster",
+    SectionParent = F2PSec,
     Callback = function()
-        local args = {[1] = "Booster", [2] = "PowerBooster"}        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
+        local args = {[1] = "Booster", [2] = "PowerBooster"}
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
     end,
 })
 
 -- Membuat tombol untuk memicu aksi ketiga
 local Booster3Button = Tab4:CreateButton({
-Name = "MegaLuckBooster",
-SectionParent = F2PSec,
-Callback = function()
-        local args = {[1] = "Booster", [2] = "MegaLuckBooster"}        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
+    Name = "MegaLuckBooster",
+    SectionParent = F2PSec,
+    Callback = function()
+        local args = {[1] = "Booster", [2] = "MegaLuckBooster"}
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
     end,
 })
 
 -- Membuat tombol untuk memicu aksi keempat
 local Booster4Button = Tab4:CreateButton({
-Name = "LuckBooster",
-SectionParent = F2PSec,
-Callback = function()
-        local args = {[1] = "Booster", [2] = "LuckBooster"}        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
+    Name = "LuckBooster",
+    SectionParent = F2PSec,
+    Callback = function()
+        local args = {[1] = "Booster", [2] = "LuckBooster"}
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("F2PStore"):FireServer(unpack(args))
     end,
-})	
-
---TAB MISC
-	local Tab5 = Window:CreateTab("Misc") -- Title, Image
-	local MiscSec = Tab5:CreateSection("MISC",false)	
-	
--- inf jump
-	local Misc = Tab5:CreateButton({
-	Name = "Infinite Jump",
-	SectionParent = MiscSec,
-	Callback = function()
--- The function that takes place when the button is pressed
-	_G.infinjump = not _G.infinjump
-	if _G.infinJumpStarted == nil then
-	
---Ensures this only runs once to save resources
-	_G.infinJumpStarted = true	
-	
---Notifies readiness
-	game.StarterGui:SetCore("SendNotification", {Title="Youtube Hub"; Text="Infinite Jump Activated!"; Duration=5;})
-	
---The actual infinite jump
-	local plr = game:GetService('Players').LocalPlayer
-	local m = plr:GetMouse()
-	m.KeyDown:connect(function(k)
-		if _G.infinjump then
-			if k:byte() == 32 then
-			humanoid = game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
-			humanoid:ChangeState('Jumping')
-			wait()
-			humanoid:ChangeState('Seated')
-			end
-		end
-	end)
-end
-   end,
 })
 
---- speed
-    local Slider = Tab5:CreateSlider({
-        Name = "Walk Speed",
-		SectionParent = MiscSec,
-        Range = {0, 300},
-		Increment = 1,
-		Suffix = "Speed",
-        CurrentValue = 16,
-        Flag = "Slider1",
-        Callback = function(Value)
-          game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
-   end,
+-- TAB MISC
+local Tab5 = Window:CreateTab("Misc") -- Title, Image
+local MiscSec = Tab5:CreateSection("MISC", false)
+
+-- Infinite Jump
+local Misc = Tab5:CreateButton({
+    Name = "Infinite Jump",
+    SectionParent = MiscSec,
+    Callback = function()
+        -- The function that takes place when the button is pressed
+        _G.infinjump = not _G.infinjump
+        if _G.infinJumpStarted == nil then
+            -- Ensures this only runs once to save resources
+            _G.infinJumpStarted = true
+
+            -- Notifies readiness
+            game.StarterGui:SetCore("SendNotification", {Title="Youtube Hub"; Text="Infinite Jump Activated!"; Duration=5;})
+
+            -- The actual infinite jump
+            local plr = game:GetService('Players').LocalPlayer
+            local m = plr:GetMouse()
+            m.KeyDown:connect(function(k)
+                if _G.infinjump then
+                    if k:byte() == 32 then
+                        humanoid = game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
+                        humanoid:ChangeState('Jumping')
+                        wait()
+                        humanoid:ChangeState('Seated')
+                    end
+                end
+            end)
+        end
+    end,
+})
+
+-- Walk Speed Slider
+local Slider = Tab5:CreateSlider({
+    Name = "Walk Speed",
+    SectionParent = MiscSec,
+    Range = {0, 300},
+    Increment = 1,
+    Suffix = "Speed",
+    CurrentValue = 16,
+    Flag = "Slider1",
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+    end,
 })
