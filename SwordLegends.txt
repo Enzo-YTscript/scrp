@@ -83,20 +83,12 @@ local function autoCollectCoin()
             if coinDrop.Name == "CoinDrop" and coinDrop:FindFirstChild("Drop") then
                 for _, drop in pairs(coinDrop.Drop:GetChildren()) do
                     if drop:IsA("Model") then
-                        -- Pindahkan koin ke posisi pemain
-                        local playerPosition = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-                        if drop.PrimaryPart then
-                            drop:SetPrimaryPartCFrame(CFrame.new(playerPosition))
-                            print("Moving coin to player position:", playerPosition) -- Debug print statement
-                        else
-                            -- Tentukan PrimaryPart jika belum ada
-                            drop.PrimaryPart = drop:FindFirstChildWhichIsA("BasePart")
-                            if drop.PrimaryPart then
-                                drop:SetPrimaryPartCFrame(CFrame.new(playerPosition))
-                                print("Setting PrimaryPart and moving coin to player position:", playerPosition) -- Debug print statement
-                            else
-                                warn("No PrimaryPart found for", drop.Name)
-                            end
+                        -- Pindahkan pemain ke posisi koin
+                        local coinPosition = drop.PrimaryPart and drop.PrimaryPart.Position or drop:FindFirstChildWhichIsA("BasePart").Position
+                        local playerCharacter = game.Players.LocalPlayer.Character
+                        if playerCharacter and playerCharacter:FindFirstChild("HumanoidRootPart") then
+                            playerCharacter:MoveTo(coinPosition)
+                            print("Moving player to coin position:", coinPosition) -- Debug print statement
                         end
                     end
                 end
