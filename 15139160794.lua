@@ -1,35 +1,34 @@
 local ArrayField = loadstring(game:HttpGet("https://raw.githubusercontent.com/Enzo-YTscript/Ui-Library/main/ArrayfieldLibraryUI"))()
 
-local Window = ArrayField:CreateWindow({
-    Name = "Toilet Defense",
-    LoadingTitle = "Toilet Defense",
-    LoadingSubtitle = "",
-    ConfigurationSaving = {
-        Enabled = false,
-        FolderName = nil,
-        FileName = "ToiletDefense"
-    },
-    Discord = {
-        Enabled = false,
-        Invite = "",
-        RememberJoins = true
-    },
-    KeySystem = false,
-    KeySettings = {
-        Title = "Toilet Defense",
-        Subtitle = "",
-        Note = "",
-        FileName = "ToiletDefenseKey",
-        SaveKey = false,
-        GrabKeyFromSite = false,
-        Key = {},
-        Actions = {}
-    }
+local Window = Rayfield:CreateWindow({
+   Name = "Toilet Defense",
+   LoadingTitle = "SUBSCRIBE ENZO-YT",
+   LoadingSubtitle = "by ENZO-YT",
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = nil,
+      FileName = "Enzo-YT Script"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Toilet Defense",
+      Subtitle = "Key System",
+      Note = "Key In Description",
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"https://pastebin.com/raw/iJCXgQGb"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
 })
 
 -- MAIN TAB    
 local TabMain = Window:CreateTab("HOME", nil) -- Title, Image
-local SectionMain = TabMain:CreateSection("Actions", false)
+local SectionMain = TabMain:CreateSection("Main", false)
 
 -- Function template for toggles
 local function createToggle(name, args)
