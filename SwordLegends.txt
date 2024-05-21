@@ -137,7 +137,20 @@ local function autoAttack()
     end
 end
 
--- autoCollectCoin
+-- Menambahkan toggle untuk auto attack ke UI
+local AutoAttackToggle = TabMain:CreateToggle({
+    Name = "Auto Attack Enemy",
+	SectionParent = SectionMain,
+    CurrentValue = false,
+    Callback = function(Value)
+        getgenv().AutoAttack = Value
+        if Value then
+            autoAttack()
+        end
+    end
+})
+
+-- coin
 
 -- Inisialisasi variabel global untuk auto collect
 getgenv().collect = false
