@@ -45,7 +45,7 @@ local function createToggle(name, args)
     local function action()
         while active do
             game:GetService("ReplicatedStorage").RDT:FireServer(unpack(args))
-            wait(3)
+            wait(1)
         end
     end
 
