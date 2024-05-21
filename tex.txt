@@ -40,15 +40,15 @@ game:GetService("Players").LocalPlayer.Idled:connect(function()
     wait(1)
     vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 end)
-	
---- MAIN TAB	
-    local TabFarm = Window:CreateTab("HOME", nil) -- Title, Image
-	local SectionFarm = TabFarm:CreateSection("Farm",false)
-	
----- player	
-	local player = game.Players.LocalPlayer
-	local isAutoFarming = false
-	local function collectCoin(target)
+
+-- MAIN TAB    
+local TabFarm = Window:CreateTab("HOME", nil) -- Title, Image
+local SectionFarm = TabFarm:CreateSection("Farm",false)
+
+-- player    
+local player = game.Players.LocalPlayer
+local isAutoFarming = false
+local function collectCoin(target)
     local targetPosition = target.PrimaryPart.Position
     local playerPosition = player.Character.HumanoidRootPart.Position
     local distance = (targetPosition - playerPosition).Magnitude
@@ -60,11 +60,11 @@ end)
     end
 end
 
-	local AuroFarm = TabFarm:CreateToggle({
-        Name = "Auto Farm Coins",
-        SectionParent = SectionFarm,
-        CurrentValue = false,
-        Callback = function(v)
+local AutoFarm = TabFarm:CreateToggle({
+    Name = "Auto Farm Coins",
+    SectionParent = SectionFarm,
+    CurrentValue = false,
+    Callback = function(v)
         isAutoFarming = v
         while isAutoFarming do
             local target = nil
@@ -82,7 +82,7 @@ end
             else
                 print("Tidak ada objek dengan ClickDetector di dekat Anda")
             end
-            wait(00000000000000000.1) -- Tunggu 1 detik sebelum mencoba lagi
+            wait(1) -- Tunggu 1 detik sebelum mencoba lagi
         end
     end,
 })
@@ -116,31 +116,31 @@ local autoCollectToggle = TabFarm:CreateToggle({
     end,
 })
 
-	local AuroCollectGift = TabFarm:CreateToggle({
-        Name = "Auto Collect Gift",
-        SectionParent = SectionFarm,
-        CurrentValue = false,
-        Callback = function(v)
+local AutoCollectGift = TabFarm:CreateToggle({
+    Name = "Auto Collect Gift",
+    SectionParent = SectionFarm,
+    CurrentValue = false,
+    Callback = function(v)
         for i = 1, 15 do
             local args = {[1] = i}
-          game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Rewards"):FireServer(unpack(args))
-            wait(000000000000000.1)
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Rewards"):FireServer(unpack(args))
+            wait(0.1)
         end
     end,
 })
 
-	local AutoStartArenaEnabled = false	
-	
-	local AutoStartArena = TabFarm:CreateToggle({
-        Name = "Auto Start Arena",
-        SectionParent = SectionFarm,
-        CurrentValue = false,
-        Callback = function(value)
+local AutoStartArenaEnabled = false    
+
+local AutoStartArena = TabFarm:CreateToggle({
+    Name = "Auto Start Arena",
+    SectionParent = SectionFarm,
+    CurrentValue = false,
+    Callback = function(value)
         AutoStartArenaEnabled = value
         if AutoStartArenaEnabled then
             while AutoStartArenaEnabled do
                 wait(3) -- Tunggu selama 3 detik sebelum memulai Arena                
-				game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Start"):FireServer()
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Start"):FireServer()
             end
         end
     end,
@@ -184,7 +184,7 @@ local selectedEarthArea = nil
 local EarthAreaDropdown = EggTab:CreateDropdown({
     Name = "Select Area Earth",
     Options = ManualAreasEarth,
-	SectionParent = EggSection,
+    SectionParent = EggSection,
     CurrentOption = {""},
     Callback = function(Option)
         getgenv().selectedWorld = "Earth"
@@ -197,7 +197,7 @@ local EarthAreaDropdown = EggTab:CreateDropdown({
 
 local CyberverseAreaDropdown = EggTab:CreateDropdown({
     Name = "Select Area Cyberverse",
-	SectionParent = EggSection,
+    SectionParent = EggSection,
     Options = ManualAreasCyberverse,
     CurrentOption = {""},
     Callback = function(Option)
@@ -211,7 +211,7 @@ local CyberverseAreaDropdown = EggTab:CreateDropdown({
 
 local HatchTypeDropdown = EggTab:CreateDropdown({
     Name = "Select Hatch Type",
-	SectionParent = EggSection,
+    SectionParent = EggSection,
     Options = {"1 Hatch", "3 Hatch"},
     CurrentOption = {""},
     Callback = function(Option)
@@ -229,7 +229,7 @@ local HatchTypeDropdown = EggTab:CreateDropdown({
 
 local TierDropdown = EggTab:CreateDropdown({
     Name = "Select Tier",
-	SectionParent = EggSection,
+    SectionParent = EggSection,
     Options = {"Tier_1", "Tier_2", "Tier_3", "Tier_4"},
     CurrentOption = {""},
     Callback = function(Option)
@@ -239,41 +239,22 @@ local TierDropdown = EggTab:CreateDropdown({
             ["Tier_3"] = 3,
             ["Tier_4"] = 4
         }
-        getgenv().selectedTier = tierOptions[Option[1]] or 1
+        local selectedTier = tierOptions[Option[1]]
+        getgenv().selectedTier = selectedTier
         if getgenv().AutoHatchEgg then
-            autohatch()
+            startAutoHatch()
         end
     end
 })
 
-local isAutoHatching = false
-
-local function startAutoHatch()
-    isAutoHatching = true
-    while isAutoHatching do
-        local selectedWorld = getgenv().selectedWorld
-        local selectedArea = getgenv().selectedArea
-        local selectedTier = getgenv().selectedTier
-        local tripleHatch = getgenv().tripleHatch
-        if selectedWorld == "Earth" then
-            autohatch("Earth", selectedArea, selectedTier, tripleHatch)
-        elseif selectedWorld == "Cyberverse" then
-            autohatch("Cyberverse", selectedArea, selectedTier, tripleHatch)
-        end
-        wait(1) -- Tunggu 2 detik sebelum menjalankan lagi (sesuaikan dengan kebutuhan)
-    end
-end
-
-local AutoHatchToggle = EggTab:CreateToggle({
+local AutoHatchEggToggle = EggTab:CreateToggle({
     Name = "Auto Hatch Egg",
-	SectionParent = EggSection,
+    SectionParent = EggSection,
     CurrentValue = false,
-    Callback = function(Value)
-        getgenv().AutoHatchEgg = Value
-        if Value then
+    Callback = function(state)
+        getgenv().AutoHatchEgg = state
+        if state then
             startAutoHatch()
-        else
-            isAutoHatching = false -- Mematikan auto hatch
         end
     end
 })
