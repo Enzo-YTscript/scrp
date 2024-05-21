@@ -165,11 +165,11 @@ local function autoCollectCoin()
         local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 
         for _, coinDrop in ipairs(workspace.DropModels.CoinDrop:GetChildren()) do
-            if coinDrop:IsA("Model") and coinDrop:FindFirstChild("Id") then
+            if coinDrop:IsA("Model") then
                 for _, drop in ipairs(coinDrop:GetChildren()) do
                     if drop:IsA("BasePart") then
-                        drop.CFrame = CFrame.new(humanoidRootPart.Position)
-                        print("Moving coin with Id:", coinDrop.Id.Value, "to player") -- Debug print statement
+                        drop.CFrame = humanoidRootPart.CFrame
+                        print("Moving coin to player") -- Debug print statement
                     end
                 end
             end
@@ -179,9 +179,8 @@ local function autoCollectCoin()
 end
 
 -- Menambahkan toggle untuk auto collect coin ke UI
-local autoCollectToggle = TabMain:CreateToggle({
+local autoCollectToggle = MainTab:CreateToggle({
     Name = "Auto Collect",
-	SectionParent = SectionMain,
     CurrentValue = false,
     Callback = function(Value)
         getgenv().collect = Value
@@ -192,6 +191,7 @@ local autoCollectToggle = TabMain:CreateToggle({
         end
     end
 })
+
 
 
 -- TAB EGG
