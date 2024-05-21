@@ -82,15 +82,11 @@ local function autoCollectCoin()
         for _, coinDrop in pairs(workspace.DropModels:GetChildren()) do
             if coinDrop.Name == "CoinDrop" and coinDrop:FindFirstChild("Drop") then
                 for _, drop in pairs(coinDrop.Drop:GetChildren()) do
-                    if drop:IsA("Model") and drop:FindFirstChild("Id") then
-                        local args = {
-                            [1] = "Collected",
-                            [2] = {
-                                ["Id"] = drop.Id.Value
-                            }
-                        }
-                        game:GetService("ReplicatedStorage").Knit.Services.GameService.RE.GameRemote:FireServer(unpack(args))
-                        print("Collecting coin with Id:", drop.Id.Value) -- Debug print statement
+                    if drop:IsA("Model") then
+                        -- Pindahkan koin ke posisi pemain
+                        local playerPosition = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                        drop:SetPrimaryPartCFrame(CFrame.new(playerPosition))
+                        print("Moving coin to player position:", playerPosition) -- Debug print statement
                     end
                 end
             end
