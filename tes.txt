@@ -1,0 +1,347 @@
+local ArrayField = loadstring(game:HttpGet("https://raw.githubusercontent.com/Enzo-YTscript/Ui-Library/main/ArrayfieldLibraryUI"))()
+
+local Window = ArrayField:CreateWindow({
+    Name = "Arm Wrestle",
+    LoadingTitle = "SUBSCRIBE ENZO-YT",
+    LoadingSubtitle = "by ENZO-YT",
+    ConfigurationSaving = {
+        Enabled = false,
+        FolderName = nil,
+        FileName = "Enzo-YT Script"
+    },
+    Discord = {
+        Enabled = false,
+        Invite = "noinvitelink",
+        RememberJoins = true
+    },
+    KeySystem = false,
+    KeySettings = {
+        Title = "Arm Wrestle",
+        Subtitle = "Key System",
+        Note = "Key In Description",
+        FileName = "NinjaLegendsKeyEnzoYT",
+        SaveKey = false,
+        GrabKeyFromSite = true,
+        Key = {"https://pastebin.com/raw/iJCXgQGb"},
+        Actions = {
+            [1] = {
+                Text = 'Click here to copy the key link',
+                OnPress = function()
+                end,
+            }
+        },
+    }
+})
+
+-- Anti Afk
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+    vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    wait(1)
+    vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+
+--- MAIN TAB    
+local TabMain = Window:CreateTab("HOME", nil) -- Title, Image
+local SectionMain = TabMain:CreateSection("Farm",false)
+
+local isClaiming = false
+local claimCoroutine
+
+local Toggle = TabMain:CreateToggle({
+    Name = "Auto Claim Gift",
+    SectionParent = SectionMain,
+    Currentv = false,
+    Callback = function(v)
+        isClaiming = v
+        if isClaiming then
+            claimCoroutine = coroutine.create(function()
+                while isClaiming do
+                    for i = 1, 12 do
+                        if not isClaiming then
+                            return
+                        end
+                        local args = {[1] = i}
+                        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("TimedRewardService"):WaitForChild("RE"):WaitForChild("onClaim"):FireServer(unpack(args))
+                        wait(0.1)
+                    end
+                end
+            end)
+            coroutine.resume(claimCoroutine)
+        else
+            -- Stop the coroutine when the toggle is turned off
+            isClaiming = false
+            if claimCoroutine then
+                coroutine.yield(claimCoroutine)
+            end
+        end
+    end,
+})
+
+-- Fungsi untuk mendapatkan daftar nama NPC dari setiap zona
+local function getNPCList()
+    local npcs = {}
+    local armWrestling = workspace:WaitForChild("GameObjects"):WaitForChild("ArmWrestling")
+
+    for _, zone in pairs(armWrestling:GetChildren()) do
+        local npcParent = zone:FindFirstChild("NPC")
+        if npcParent then
+            for _, npc in pairs(npcParent:GetChildren()) do
+                table.insert(npcs, "Zone: " .. zone.Name .. " || NPC Name: " .. npc.Name)
+            end
+        end
+    end
+    
+    -- Mengurutkan daftar NPC berdasarkan zona dan nama NPC
+    table.sort(npcs, function(a, b)
+        local zoneA, nameA = a:match("Zone: (.+) || NPC Name: (.+)")
+        local zoneB, nameB = b:match("Zone: (.+) || NPC Name: (.+)")
+        
+        if tonumber(zoneA) and tonumber(zoneB) then
+            if tonumber(zoneA) == tonumber(zoneB) then
+                return nameA < nameB
+            else
+                return tonumber(zoneA) < tonumber(zoneB)
+            end
+        elseif tonumber(zoneA) then
+            return true
+        elseif tonumber(zoneB) then
+            return false
+        else
+            if zoneA == zoneB then
+                return nameA < nameB
+            else
+                return zoneA < zoneB
+            end
+        end
+    end)
+
+    return npcs
+end
+
+-- Inisialisasi dropdown dengan daftar NPC
+local npcDropdown
+local function createNPCDropdown()
+    npcDropdown = TabMain:CreateDropdown({
+        Name = "Select NPC",
+        SectionParent = SectionMain,
+        Options = getNPCList(),
+        CurrentOption = "None",
+        Callback = function(option)
+            getgenv().selectedNPC = option:match("NPC Name: (.+)")
+            getgenv().selectedZone = option:match("Zone: (.+) ||")  -- Menyimpan zona yang dipilih
+        end
+    })
+end
+
+createNPCDropdown()
+
+-- Inisialisasi variabel global untuk auto farming
+getgenv().AutoFarm = false
+getgenv().selectedNPC = "None"
+getgenv().selectedZone = "None"
+
+-- Fungsi untuk auto farming
+local function autoFarm()
+    while getgenv().AutoFarm do
+        if getgenv().selectedNPC and getgenv().selectedNPC ~= "None" then
+            local npcPath = workspace:WaitForChild("GameObjects"):WaitForChild("ArmWrestling"):WaitForChild(getgenv().selectedZone):WaitForChild("NPC"):FindFirstChild(getgenv().selectedNPC):WaitForChild("Table")
+            if npcPath then
+                local args = {
+                    [1] = getgenv().selectedNPC,
+                    [2] = npcPath,
+                    [3] = getgenv().selectedZone
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onEnterNPCTable"):FireServer(unpack(args))
+            end
+        end
+        wait(1) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
+    end
+end
+
+-- Menambahkan toggle untuk auto farming ke UI
+local AutoFarmToggle = TabMain:CreateToggle({
+    Name = "Start Farming",
+    SectionParent = SectionMain,
+    CurrentValue = false,
+    Callback = function(Value)
+        getgenv().AutoFarm = Value
+        if Value then
+            autoFarm()
+        end
+    end
+})
+
+-- Menambahkan toggle untuk Auto Tap NPC ke UI
+local AutoTapNPCToggle = TabMain:CreateToggle({
+    Name = "Auto Tap NPC",
+    SectionParent = SectionMain,
+    CurrentValue = false,
+    Callback = function(Value)
+        getgenv().AutoTapNPC = Value
+        while getgenv().AutoTapNPC do
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
+            wait(0.1) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
+        end
+    end
+})
+
+-- Fungsi untuk mendapatkan daftar nama Zone
+local function getZoneList()
+    local zones = {}
+    local zoneParent = workspace:WaitForChild("Zones")
+    for _, zone in pairs(zoneParent:GetChildren()) do
+        table.insert(zones, zone.Name)
+    end
+    
+    -- Mengurutkan daftar zona
+    table.sort(zones, function(a, b)
+        if tonumber(a) and tonumber(b) then
+            return tonumber(a) < tonumber(b)
+        elseif tonumber(a) then
+            return true
+        elseif tonumber(b) then
+            return false
+        else
+            return a < b
+        end
+    end)
+
+    return zones
+end
+
+-- Inisialisasi dropdown dengan daftar Zone
+local zoneDropdown
+local function createZoneDropdown()
+    zoneDropdown = TabMain:CreateDropdown({
+        Name = "Select Zone To Train",
+        SectionParent = SectionMain,
+        Options = getZoneList(),
+        CurrentOption = "None",
+        Callback = function(option)
+            getgenv().selectedTrainingZone = option
+        end
+    })
+end
+
+createZoneDropdown()
+
+-- Inisialisasi dropdown dengan daftar opsi latihan
+local whatToTrainDropdown
+local function createWhatToTrainDropdown()
+    whatToTrainDropdown = TabMain:CreateDropdown({
+        Name = "Select What To Train",
+        SectionParent = SectionMain,
+        Options = {"Dumbells", "Knuckles", "Hands", "Barells"},
+        CurrentOption = "Dumbells",
+        Callback = function(option)
+            getgenv().selectedTraining = option
+        end
+    })
+end
+
+createWhatToTrainDropdown()
+
+-- Inisialisasi variabel global untuk auto training
+getgenv().AutoTrain = false
+getgenv().selectedTrainingZone = "1"
+getgenv().selectedTraining = "Dumbells"
+local initialAutoTrainExecuted = false
+
+-- Fungsi untuk eksekusi satu kali sebelum auto training
+local function executeInitialFunction()
+    local weightMapping = {
+        ["1"] = "250Kg",
+        ["2"] = "4000Kg",
+        ["3"] = "45000Kg",
+        ["4"] = "300000Kg",
+        ["5"] = "...",
+        ["6"] = "...",
+    }
+
+    local weight = weightMapping[getgenv().selectedTrainingZone] or "..."
+    local args = {
+        [1] = getgenv().selectedTrainingZone,
+        [2] = getgenv().selectedTraining,
+        [3] = weight
+    }
+
+    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RE"):WaitForChild("onGuiEquipRequest"):FireServer(unpack(args))
+end
+
+-- Fungsi untuk auto training
+local function autoTrain()
+    if not initialAutoTrainExecuted then
+        executeInitialFunction()
+        initialAutoTrainExecuted = true
+    end
+
+    while getgenv().AutoTrain do
+        if getgenv().selectedTrainingZone and getgenv().selectedTrainingZone ~= "None" and getgenv().selectedTraining then
+            local args = {
+                [1] = getgenv().selectedTrainingZone,
+                [2] = getgenv().selectedTraining,
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RE"):WaitForChild("onEquipRequest"):FireServer(unpack(args))
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RE"):WaitForChild("onClick"):FireServer()
+        end
+        wait(0.2) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
+    end
+end
+
+-- Menambahkan toggle untuk auto training ke UI
+local AutoTrainToggle = TabMain:CreateToggle({
+    Name = "Auto Train",
+    SectionParent = SectionMain,
+    CurrentValue = false,
+    Callback = function(Value)
+        getgenv().AutoTrain = Value
+        if Value then
+            autoTrain()
+        end
+    end
+})
+
+-- Inisialisasi variabel global untuk auto fishing
+getgenv().AutoFish = false
+getgenv().FishingInterval = 0.2 -- Interval waktu default dalam detik (sesuaikan sesuai kebutuhan)
+
+-- Fungsi untuk auto fishing
+local function autoFish()
+    while getgenv().AutoFish do
+        -- Memulai menangkap ikan
+        local argsStart = {
+            [1] = "Regular"
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("NetService"):WaitForChild("RF"):WaitForChild("StartCatching"):InvokeServer(unpack(argsStart))
+        
+        -- Memverifikasi tangkapan pertama
+        local argsVerify1 = {
+            [1] = 95,
+            [2] = 79.1055715456605
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("NetService"):WaitForChild("RF"):WaitForChild("VerifyCatch"):InvokeServer(unpack(argsVerify1))
+
+        -- Memverifikasi tangkapan kedua
+        local argsVerify2 = {
+            [1] = 343,
+            [2] = 351.13384050130844
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("NetService"):WaitForChild("RF"):WaitForChild("VerifyCatch"):InvokeServer(unpack(argsVerify2))
+
+        wait(getgenv().FishingInterval) -- Interval waktu antara tiap siklus fishing (dalam detik)
+    end
+end
+
+-- Menambahkan toggle untuk auto fishing ke UI
+local AutoFishToggle = TabMain:CreateToggle({
+    Name = "Auto Fish",
+    SectionParent = SectionMain,
+    CurrentValue = false,
+    Callback = function(Value)
+        getgenv().AutoFish = Value
+        if Value then
+            spawn(autoFish)
+        end
+    end
+})
