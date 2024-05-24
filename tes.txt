@@ -351,77 +351,40 @@ local AutoFishToggle = TabMain:CreateToggle({
     end
 })
 
--- TAB Teleport
+local zonePositions = {
+    ["Zone 1"] = Vector3.new(-10271.158203125, 1.66973876953125, 46.93609619140625),
+    ["Zone 2"] = Vector3.new(-10256.7001953125, -138.099609375, 2776.732666015625),
+    ["Zone 3"] = Vector3.new(11736.1591796875, 39.74077606201172, -58.2999267578125),
+    ["Zone 4"] = Vector3.new(-10302.259765625, 8.250654220581055, -865.3488159179688),
+    ["Zone 5"] = Vector3.new(-10252.9677734375, 56.502403259277344, -1443.7093505859375),
+    ["Zone 6"] = Vector3.new(497.15625, 51.94881820678711, -205.488525390625),
+    ["Zone 7"] = Vector3.new(-9622.2763671875, 7.6140899658203125, 585.5182495117188),
+    ["Zone 8"] = Vector3.new(-1470.2197265625, 147.17030334472656, 265.4627685546875),
+    ["Zone 9"] = Vector3.new(-8058.51025390625, 44.66698455810547, -1926.2008056640625),
+    ["Zone 10"] = Vector3.new(-6159.375, -93.49995422363281, -1657.2197265625),
+    ["Zone Garden"] = Vector3.new(-10692.947265625, 18.17506980895996, 62.70453643798828),
+    ["Zone JazzClub"] = Vector3.new(-3589.61181640625, 57.29662322998047, -3512.203125),
+    ["Zone Rewind"] = Vector3.new(-6990.16064453125, -428.2983093261719, 540.686279296875),
+}
+
+local function teleportToZone(zoneName)
+    local player = game:GetService("Players").LocalPlayer
+    if zonePositions[zoneName] then
+        player.Character:SetPrimaryPartCFrame(CFrame.new(zonePositions[zoneName]))
+    else
+        print("Zone not found!")
+    end
+end
+
 local TeleTab = Window:CreateTab("Teleport", nil) -- Title, Image
 local TeleSection = TeleTab:CreateSection("Teleport")
 
--- Fungsi untuk mendapatkan daftar nama Zone beserta posisinya
-local function getZoneListWithPositions()
-    local zones = {}
-    local zoneParent = workspace:WaitForChild("Zones")
-    for _, zone in pairs(zoneParent:GetChildren()) do
-        local position = zone.PrimaryPart and zone.PrimaryPart.Position or Vector3.new(0, 0, 0)
-        table.insert(zones, {Name = zone.Name, Position = position})
-    end
-
-    -- Mengurutkan daftar zona
-    table.sort(zones, function(a, b)
-        if tonumber(a.Name) and tonumber(b.Name) then
-            return tonumber(a.Name) < tonumber(b.Name)
-        elseif tonumber(a.Name) then
-            return true
-        elseif tonumber(b.Name) then
-            return false
-        else
-            return a.Name < b.Name
-        end
-    end)
-
-    return zones
-end
-
--- Inisialisasi dropdown dengan daftar Zone
-local teleportZoneDropdown
-local selectedZoneData = nil
-
-local function createTeleportZoneDropdown()
-    local zones = getZoneListWithPositions()
-    local zoneNames = {}
-    for _, zone in ipairs(zones) do
-        table.insert(zoneNames, zone.Name)
-    end
-
-    teleportZoneDropdown = TeleTab:CreateDropdown({
-        Name = "Zone To Teleport",
+for zoneName, _ in pairs(zonePositions) do
+    TeleTab:CreateButton({
+        Name = "Teleport To " .. zoneName,
         SectionParent = TeleSection,
-        Options = zoneNames,
-        CurrentOption = "None",
-        Callback = function(option)
-            for _, zone in ipairs(zones) do
-                if zone.Name == option then
-                    selectedZoneData = zone
-                    break
-                end
-            end
+        Callback = function()
+            teleportToZone(zoneName)
         end
     })
 end
-
-createTeleportZoneDropdown()
-
--- Fungsi untuk teleportasi karakter ke zona yang dipilih
-local function teleportToSelectedZone()
-    if selectedZoneData then
-        local player = game.Players.LocalPlayer
-        if player and player.Character and player.Character.PrimaryPart then
-            player.Character:SetPrimaryPartCFrame(CFrame.new(selectedZoneData.Position))
-        end
-    end
-end
-
--- Tombol untuk teleportasi
-local teleportButton = TeleTab:CreateButton({
-    Name = "Teleport",
-    SectionParent = TeleSection,
-    Callback = teleportToSelectedZone
-})
