@@ -350,3 +350,79 @@ local AutoFishToggle = TabMain:CreateToggle({
         end
     end
 })
+
+
+-- TAB Teleport
+local TeleTab = Window:CreateTab("Teleport", nil) -- Title, Image
+local TeleSection = TeleTab:CreateSection("Teleport")
+
+-- Fungsi untuk mendapatkan daftar nama Zone beserta posisinya
+local function getZoneListWithPositions()
+    local zones = {}
+    local zoneParent = workspace:WaitForChild("Zones")
+    for _, zone in pairs(zoneParent:GetChildren()) do
+        local position = zone.PrimaryPart and zone.PrimaryPart.Position or Vector3.new(0, 0, 0)
+        table.insert(zones, {Name = zone.Name, Position = position})
+    end
+
+    -- Mengurutkan daftar zona
+    table.sort(zones, function(a, b)
+        if tonumber(a.Name) and tonumber(b.Name) then
+            return tonumber(a.Name) < tonumber(b.Name)
+        elseif tonumber(a.Name) then
+            return true
+        elseif tonumber(b.Name) then
+            return false
+        else
+            return a.Name < b.Name
+        end
+    end)
+
+    return zones
+end
+
+-- Inisialisasi dropdown dengan daftar Zone
+local teleportZoneDropdown
+local selectedZoneData = nil
+
+local function createTeleportZoneDropdown()
+    local zones = getZoneListWithPositions()
+    local zoneNames = {}
+    for _, zone in ipairs(zones) do
+        table.insert(zoneNames, zone.Name)
+    end
+
+    teleportZoneDropdown = TeleTab:CreateDropdown({
+        Name = "Zone To Teleport",
+        SectionParent = TeleSection,
+        Options = zoneNames,
+        CurrentOption = "None",
+        Callback = function(option)
+            for _, zone in ipairs(zones) do
+                if zone.Name == option then
+                    selectedZoneData = zone
+                    break
+                end
+            end
+        end
+    })
+end
+
+createTeleportZoneDropdown()
+
+-- Fungsi untuk teleportasi karakter ke zona yang dipilih
+local function teleportToSelectedZone()
+    if selectedZoneData then
+        local player = game.Players.LocalPlayer
+        if player and player.Character and player.Character.PrimaryPart then
+            player.Character:SetPrimaryPartCFrame(CFrame.new(selectedZoneData.Position))
+        end
+    end
+end
+
+-- Tombol untuk teleportasi
+local teleportButton = TeleTab:CreateButton({
+    Name = "Teleport",
+    SectionParent = TeleSection,
+    Callback = teleportToSelectedZone
+})
