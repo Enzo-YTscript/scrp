@@ -364,7 +364,7 @@ local zonePositions = {
     ["Zone 10"] = Vector3.new(-6159.375, -93.49995422363281, -1657.2197265625),
     ["Zone Garden"] = Vector3.new(-10692.947265625, 18.17506980895996, 62.70453643798828),
     ["Zone JazzClub"] = Vector3.new(-3589.61181640625, 57.29662322998047, -3512.203125),
-    ["Zone Rewind"] = Vector3.new(-6990.16064453125, -428.2983093261719, 540.686279296875),
+    ["Zone Rewind"] = Vector3.new(-3437.69921875, -29.89999771118164, -5113),
 }
 
 local function teleportToZone(zoneName)
