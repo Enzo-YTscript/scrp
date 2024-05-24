@@ -352,7 +352,7 @@ local AutoFishToggle = TabMain:CreateToggle({
 })
 
 
--- TAB Teleport
+-- TAB Teleportt
 local TeleTab = Window:CreateTab("Teleport", nil) -- Title, Image
 local TeleSection = TeleTab:CreateSection("Teleport")
 
