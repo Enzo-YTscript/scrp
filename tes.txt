@@ -426,4 +426,3 @@ local teleportButton = TeleTab:CreateButton({
     SectionParent = TeleSection,
     Callback = teleportToSelectedZone
 })
-
