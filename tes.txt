@@ -352,7 +352,7 @@ local AutoFishToggle = TabMain:CreateToggle({
 })
 
 
--- TAB Teleportt
+-- TAB Teleport
 local TeleTab = Window:CreateTab("Teleport", nil) -- Title, Image
 local TeleSection = TeleTab:CreateSection("Teleport")
 
@@ -426,3 +426,4 @@ local teleportButton = TeleTab:CreateButton({
     SectionParent = TeleSection,
     Callback = teleportToSelectedZone
 })
+
