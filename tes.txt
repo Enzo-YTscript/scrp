@@ -51,7 +51,7 @@ local claimCoroutine
 local Toggle = TabMain:CreateToggle({
     Name = "Auto Claim Gift",
     SectionParent = SectionMain,
-    Currentv = false,
+    CurrentValue = false,
     Callback = function(v)
         isClaiming = v
         if isClaiming then
@@ -350,7 +350,6 @@ local AutoFishToggle = TabMain:CreateToggle({
         end
     end
 })
-
 
 -- TAB Teleport
 local TeleTab = Window:CreateTab("Teleport", nil) -- Title, Image
