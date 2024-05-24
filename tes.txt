@@ -1,0 +1,417 @@
+local ArrayField = loadstring(game:HttpGet("https://raw.githubusercontent.com/Enzo-YTscript/Ui-Library/main/ArrayfieldLibraryUI"))()
+
+local Window = ArrayField:CreateWindow({
+    Name = "Arm Wrestle",
+    LoadingTitle = "SUBSCRIBE ENZO-YT",
+    LoadingSubtitle = "by ENZO-YT",
+    ConfigurationSaving = {
+        Enabled = false,
+        FolderName = nil,
+        FileName = "Enzo-YT Script"
+    },
+    Discord = {
+        Enabled = false,
+        Invite = "noinvitelink",
+        RememberJoins = true
+    },
+    KeySystem = false,
+    KeySettings = {
+        Title = "Arm Wrestle",
+        Subtitle = "Key System",
+        Note = "Key In Description",
+        FileName = "NinjaLegendsKeyEnzoYT",
+        SaveKey = false,
+        GrabKeyFromSite = true,
+        Key = {"https://pastebin.com/raw/iJCXgQGb"},
+        Actions = {
+            [1] = {
+                Text = 'Click here to copy the key link',
+                OnPress = function()
+                end,
+            }
+        },
+    }
+})
+
+-- Anti Afk
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+    vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    wait(1)
+    vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+
+--- MAIN TAB    
+local TabMain = Window:CreateTab("HOME", nil) -- Title, Image
+local SectionMain = TabMain:CreateSection("Farm",false)
+
+local isClaiming = false
+local claimCoroutine
+
+local Toggle = TabMain:CreateToggle({
+    Name = "Auto Claim Gift",
+    SectionParent = SectionMain,
+    CurrentValue = false,
+    Callback = function(v)
+        isClaiming = v
+        if isClaiming then
+            claimCoroutine = coroutine.create(function()
+                while isClaiming do
+                    for i = 1, 12 do
+                        if not isClaiming then
+                            return
+                        end
+                        local args = {[1] = i}
+                        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("TimedRewardService"):WaitForChild("RE"):WaitForChild("onClaim"):FireServer(unpack(args))
+                        wait(0.1)
+                    end
+                end
+            end)
+            coroutine.resume(claimCoroutine)
+        else
+            -- Stop the coroutine when the toggle is turned off
+            isClaiming = false
+            if claimCoroutine then
+                coroutine.yield(claimCoroutine)
+            end
+        end
+    end,
+})
+
+-- Fungsi untuk mendapatkan daftar nama NPC dari setiap zona
+local function getNPCList()
+    local npcs = {}
+    local armWrestling = workspace:WaitForChild("GameObjects"):WaitForChild("ArmWrestling")
+
+    for _, zone in pairs(armWrestling:GetChildren()) do
+        local npcParent = zone:FindFirstChild("NPC")
+        if npcParent then
+            for _, npc in pairs(npcParent:GetChildren()) do
+                table.insert(npcs, "Zone: " .. zone.Name .. " || NPC Name: " .. npc.Name)
+            end
+        end
+    end
+    
+    -- Mengurutkan daftar NPC berdasarkan zona dan nama NPC
+    table.sort(npcs, function(a, b)
+        local zoneA, nameA = a:match("Zone: (.+) || NPC Name: (.+)")
+        local zoneB, nameB = b:match("Zone: (.+) || NPC Name: (.+)")
+        
+        if tonumber(zoneA) and tonumber(zoneB) then
+            if tonumber(zoneA) == tonumber(zoneB) then
+                return nameA < nameB
+            else
+                return tonumber(zoneA) < tonumber(zoneB)
+            end
+        elseif tonumber(zoneA) then
+            return true
+        elseif tonumber(zoneB) then
+            return false
+        else
+            if zoneA == zoneB then
+                return nameA < nameB
+            else
+                return zoneA < zoneB
+            end
+        end
+    end)
+
+    return npcs
+end
+
+-- Inisialisasi dropdown dengan daftar NPC
+local npcDropdown
+local function createNPCDropdown()
+    npcDropdown = TabMain:CreateDropdown({
+        Name = "Select NPC",
+        SectionParent = SectionMain,
+        Options = getNPCList(),
+        CurrentOption = "None",
+        Callback = function(option)
+            getgenv().selectedNPC = option:match("NPC Name: (.+)")
+            getgenv().selectedZone = option:match("Zone: (.+) ||")  -- Menyimpan zona yang dipilih
+        end
+    })
+end
+
+createNPCDropdown()
+
+-- Inisialisasi variabel global untuk auto farming
+getgenv().AutoFarm = false
+getgenv().selectedNPC = "None"
+getgenv().selectedZone = "None"
+
+-- Fungsi untuk auto farming
+local function autoFarm()
+    while getgenv().AutoFarm do
+        if getgenv().selectedNPC and getgenv().selectedNPC ~= "None" then
+            local npcPath = workspace:WaitForChild("GameObjects"):WaitForChild("ArmWrestling"):WaitForChild(getgenv().selectedZone):WaitForChild("NPC"):FindFirstChild(getgenv().selectedNPC):WaitForChild("Table")
+            if npcPath then
+                local args = {
+                    [1] = getgenv().selectedNPC,
+                    [2] = npcPath,
+                    [3] = getgenv().selectedZone
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onEnterNPCTable"):FireServer(unpack(args))
+            end
+        end
+        wait(1) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
+    end
+end
+
+-- Menambahkan toggle untuk auto farming ke UI
+local AutoFarmToggle = TabMain:CreateToggle({
+    Name = "Start Farming",
+    SectionParent = SectionMain,
+    CurrentValue = false,
+    Callback = function(Value)
+        getgenv().AutoFarm = Value
+        if Value then
+            autoFarm()
+        end
+    end
+})
+
+-- Menambahkan toggle untuk Auto Tap NPC ke UI
+local AutoTapNPCToggle = TabMain:CreateToggle({
+    Name = "Auto Tap NPC",
+    SectionParent = SectionMain,
+    CurrentValue = false,
+    Callback = function(Value)
+        getgenv().AutoTapNPC = Value
+        while getgenv().AutoTapNPC do
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
+            wait(0.1) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
+        end
+    end
+})
+
+-- Fungsi untuk mendapatkan daftar nama Zone
+local function getZoneList()
+    local zones = {}
+    local zoneParent = workspace:WaitForChild("Zones")
+    for _, zone in pairs(zoneParent:GetChildren()) do
+        table.insert(zones, zone.Name)
+    end
+    
+    -- Mengurutkan daftar zona
+    table.sort(zones, function(a, b)
+        if tonumber(a) and tonumber(b) then
+            return tonumber(a) < tonumber(b)
+        elseif tonumber(a) then
+            return true
+        elseif tonumber(b) then
+            return false
+        else
+            return a < b
+        end
+    end)
+
+    return zones
+end
+
+-- Inisialisasi dropdown dengan daftar Zone
+local zoneDropdown
+local function createZoneDropdown()
+    zoneDropdown = TabMain:CreateDropdown({
+        Name = "Select Zone To Train",
+        SectionParent = SectionMain,
+        Options = getZoneList(),
+        CurrentOption = "None",
+        Callback = function(option)
+            getgenv().selectedTrainingZone = option
+        end
+    })
+end
+
+createZoneDropdown()
+
+-- Inisialisasi dropdown dengan daftar opsi latihan
+local whatToTrainDropdown
+local function createWhatToTrainDropdown()
+    whatToTrainDropdown = TabMain:CreateDropdown({
+        Name = "Select What To Train",
+        SectionParent = SectionMain,
+        Options = {"Dumbells", "Hands", "Knuckles"},
+        CurrentOption = "Dumbells",
+        Callback = function(option)
+            getgenv().selectedTraining = option
+        end
+    })
+end
+
+createWhatToTrainDropdown()
+
+-- Inisialisasi variabel global untuk auto training
+getgenv().AutoTrain = false
+getgenv().selectedTrainingZone = "None"
+getgenv().selectedTraining = "Dumbells"
+local initialAutoTrainExecuted = false
+local unequipExecuted = false
+
+-- Peta berat berdasarkan zona
+local weightMapping = {
+    ["1"] = "250Kg",
+    ["2"] = "4000Kg",
+    ["3"] = "45000Kg",
+    ["4"] = "300000Kg",
+    ["5"] = "...",
+    ["6"] = "3T",
+    ["7"] = "150T",
+    ["8"] = "1QD",
+    ["9"] = "50QD",
+    ["Garden"] = "...",
+    ["JazzClub"] = "...",
+    ["Rewind"] = "Rewind12",
+}
+
+-- Fungsi untuk eksekusi satu kali sebelum auto training
+local function executeInitialFunction()
+    local weight = weightMapping[getgenv().selectedTrainingZone]
+    if weight then
+        local args = {
+            [1] = getgenv().selectedTrainingZone,
+            [2] = getgenv().selectedTraining == "Hands" and "Grips" or getgenv().selectedTraining,
+            [3] = weight
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RE"):WaitForChild("onEquipRequest"):FireServer(unpack(args))
+    end
+end
+
+-- Fungsi untuk unequip satu kali
+local function executeUnequipFunction()
+    local args = {}
+    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RE"):WaitForChild("onUnequipRequest"):FireServer(unpack(args))
+end
+
+-- Fungsi untuk auto training
+local function autoTrain()
+    while getgenv().AutoTrain do
+        if not unequipExecuted then
+            executeUnequipFunction()
+            unequipExecuted = true
+        end
+
+        if not initialAutoTrainExecuted then
+            executeInitialFunction()
+            initialAutoTrainExecuted = true
+        end
+
+        local zonePath = workspace:WaitForChild("Zones"):FindFirstChild(getgenv().selectedTrainingZone)
+        if zonePath then
+            local args = {
+                [1] = {
+                    ["Value"] = getgenv().selectedTraining,
+                    ["AutoType"] = "AutoTrain"
+                }
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("IdleTeleportService"):WaitForChild("RF"):WaitForChild("SetLatestTeleportData"):InvokeServer(unpack(args))
+        end
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RE"):WaitForChild("onClick"):FireServer()
+        wait(0.00001) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
+    end
+end
+
+-- Menambahkan toggle untuk auto training ke UI
+local AutoTrainToggle = TabMain:CreateToggle({
+    Name = "Start Training",
+    SectionParent = SectionMain,
+    CurrentValue = false,
+    Callback = function(Value)
+        getgenv().AutoTrain = Value
+        if Value then
+            initialAutoTrainExecuted = false
+            unequipExecuted = false
+            autoTrain()
+        end
+    end
+})
+
+-- Inisialisasi variabel global untuk auto fishing
+getgenv().AutoFish = false
+getgenv().FishingInterval = 0.2 -- Interval waktu default dalam detik (sesuaikan sesuai kebutuhan)
+
+-- Fungsi untuk auto fishing
+local function autoFish()
+    while getgenv().AutoFish do
+        -- Memulai menangkap ikan
+        local argsStart = {
+            [1] = "Regular"
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("NetService"):WaitForChild("RF"):WaitForChild("StartCatching"):InvokeServer(unpack(argsStart))
+        
+        -- Memverifikasi tangkapan pertama
+        local argsVerify1 = {
+            [1] = 95,
+            [2] = 79.1055715456605
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("NetService"):WaitForChild("RF"):WaitForChild("VerifyCatch"):InvokeServer(unpack(argsVerify1))
+
+        -- Memverifikasi tangkapan kedua
+        local argsVerify2 = {
+            [1] = 343,
+            [2] = 351.13384050130844
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("NetService"):WaitForChild("RF"):WaitForChild("VerifyCatch"):InvokeServer(unpack(argsVerify2))
+
+        wait(getgenv().FishingInterval) -- Interval waktu antara tiap siklus fishing (dalam detik)
+    end
+end
+
+-- Menambahkan toggle untuk auto fishing ke UI
+local AutoFishToggle = TabMain:CreateToggle({
+    Name = "Auto Fish",
+    SectionParent = SectionMain,
+    CurrentValue = false,
+    Callback = function(Value)
+        getgenv().AutoFish = Value
+        if Value then
+            spawn(autoFish)
+        end
+    end
+}) 
+
+
+
+--- Tab teleport 
+local TeleTab = Window:CreateTab("Teleport", nil) -- Title, Image
+local TeleSection = TeleTab:CreateSection("Teleport")
+
+-- Posisi zona untuk teleportasi
+local zonePositions = {
+    ["Zone 1"] = CFrame.new(-10271.158203125, 1.66973876953125, 46.93609619140625),
+    ["Zone 2"] = CFrame.new(-10287.3311, -159.776077, 2815.09399, 1, 0, 0, 0, 1, 0, 0, 0, 1),
+    ["Zone 3"] = CFrame.new(11620.255859375, 6.0537261962890625, 25.494232177734375),
+    ["Zone 4"] = CFrame.new(-10335.298828125, 3.0494019985198975, -605.9071655273438),
+    ["Zone 5"] = CFrame.new(-10294.3984375, 1.2994019985198975, -1417.257080078125),
+    ["Zone 6"] = CFrame.new(470.99981689453125, 35.51490020751953, -118.7999267578125),
+    ["Zone 7"] = CFrame.new(-9760.46875, 47.96651077270508, 580.4580078125),
+    ["Zone 8"] = CFrame.new(-1533.918212890625, 44.458778381347656, -51.14201354980469),
+    ["Zone 9"] = CFrame.new(-12350.458984375, 68.79398345947266, 1435.894775390625),
+    ["Zone 10"] = CFrame.new(-6152.36083984375, -100.4520034790039, -1636.3961181640625),
+    ["Zone Garden"] = CFrame.new(-10658.03125, 1.856773018836975, 109.11421966552734),
+    ["Zone JazzClub"] = CFrame.new(-3592.89013671875, 53.08951187133789, -3531.012451171875),
+    ["Zone Rewind"] = CFrame.new(-3437.69921875, -29.89999771118164, -5113),
+}
+
+-- Fungsi untuk teleportasi ke zone
+local function teleportToZone(zoneName)
+    local position = zonePositions[zoneName]
+    if position then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = position
+    end
+end
+
+-- Menambahkan tombol untuk teleportasi ke zone
+local teleportButtons = {}
+local zoneNames = {"Zone 1", "Zone 2", "Zone 3", "Zone 4", "Zone 5", "Zone 6", "Zone 7", "Zone 8", "Zone 9", "Zone 10", "Zone Garden", "Zone JazzClub", "Zone Rewind"}
+
+for i, zoneName in ipairs(zoneNames) do
+    teleportButtons[i] = TeleTab:CreateButton({
+        Name = "Teleport To " .. zoneName,
+		SectionParent = TeleSection,
+        Callback = function()
+            teleportToZone(zoneName)
+        end
+    })
+end
