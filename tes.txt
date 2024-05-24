@@ -257,6 +257,11 @@ local function executeInitialFunction()
         ["4"] = "300000Kg",
         ["5"] = "...",
         ["6"] = "...",
+		["7"] = "...",
+		["8"] = "...",
+		["9"] = "...",
+		["10"] = "...",
+		["Rewind"] = "Rewind12",	
     }
 
     local weight = weightMapping[getgenv().selectedTrainingZone] or "..."
