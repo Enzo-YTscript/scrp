@@ -376,7 +376,7 @@ local AutoFishToggle = TabMain:CreateToggle({
 
 
 --- Tab teleport 
-local TeleSection = TabMain:CreateSection("Teleport",true)
+local TeleSection = TabMain:CreateSection("Teleport",false)
 
 -- Posisi zona untuk teleportasi
 local zonePositions = {
