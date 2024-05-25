@@ -374,26 +374,44 @@ local AutoFishToggle = TabMain:CreateToggle({
 }) 
 
 
+--- Tab Other 
+local OtherTab = Window:CreateTab("Other", nil) -- Title, Image
+local OtherSection = OtherTab:CreateSection("Other Stuff")
+
+local function createSpinButton()
+    OtherTab:CreateButton({
+        Name = "Spin",
+        SectionParent = OtherSection,
+        Callback = function()
+            local args = {
+                [1] = false
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("SpinService"):WaitForChild("RE"):WaitForChild("onSpinRequest"):FireServer(unpack(args))
+        end
+    })
+end
+
+createSpinButton()
 
 --- Tab teleport 
-local TeleMain = Window:CreateTab("Teleport", nil) -- Title, Image
-local TeleSection = TeleMain:CreateSection("Teleport",false)
+local TeleTab = Window:CreateTab("Teleport", nil) -- Title, Image
+local TeleSection = TeleTab:CreateSection("Teleport")
 
 -- Posisi zona untuk teleportasi
 local zonePositions = {
     ["Zone 1"] = CFrame.new(-10271.158203125, 1.66973876953125, 46.93609619140625),
-    ["Zone 2"] = CFrame.new(-10287.3311, -150.776077, 2815.09399, 1, 0, 0, 0, 1, 0, 0, 0, 1),
-    ["Zone 3"] = CFrame.new(11620.255859375, 9.0537261962890625, 25.494232177734375),
+    ["Zone 2"] = CFrame.new(-10287.3311, -159.776077, 2815.09399, 1, 0, 0, 0, 1, 0, 0, 0, 1),
+    ["Zone 3"] = CFrame.new(11620.255859375, 6.0537261962890625, 25.494232177734375),
     ["Zone 4"] = CFrame.new(-10335.298828125, 3.0494019985198975, -605.9071655273438),
-    ["Zone 5"] = CFrame.new(-10294.3984375, 5.2994019985198975, -1417.257080078125),
+    ["Zone 5"] = CFrame.new(-10294.3984375, 1.2994019985198975, -1417.257080078125),
     ["Zone 6"] = CFrame.new(470.99981689453125, 35.51490020751953, -118.7999267578125),
     ["Zone 7"] = CFrame.new(-9760.46875, 47.96651077270508, 580.4580078125),
     ["Zone 8"] = CFrame.new(-1533.918212890625, 44.458778381347656, -51.14201354980469),
     ["Zone 9"] = CFrame.new(-12350.458984375, 68.79398345947266, 1435.894775390625),
-    ["Zone 10"] = CFrame.new(-6152.36083984375, 5.4520034790039, -1636.3961181640625),
-    ["Zone Garden"] = CFrame.new(-10658.03125, 10.856773018836975, 109.11421966552734),
-    ["Zone JazzClub"] = CFrame.new(-3592.89013671875, 60.08951187133789, -3531.012451171875),
-    ["Zone Rewind"] = CFrame.new(-3437.69921875, 20.89999771118164, -5113),
+    ["Zone 10"] = CFrame.new(-6152.36083984375, -100.4520034790039, -1636.3961181640625),
+    ["Zone Garden"] = CFrame.new(-10658.03125, 1.856773018836975, 109.11421966552734),
+    ["Zone JazzClub"] = CFrame.new(-3592.89013671875, 53.08951187133789, -3531.012451171875),
+    ["Zone Rewind"] = CFrame.new(-3437.69921875, -29.89999771118164, -5113),
 }
 
 -- Fungsi untuk teleportasi ke zone
