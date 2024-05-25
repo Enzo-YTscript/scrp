@@ -376,7 +376,8 @@ local AutoFishToggle = TabMain:CreateToggle({
 
 
 --- Tab teleport 
-local TeleSection = TabMain:CreateSection("Teleport",false)
+local TeleMain = Window:CreateTab("Teleport", nil) -- Title, Image
+local TeleSection = TeleMainMain:CreateSection("Teleport",false)
 
 -- Posisi zona untuk teleportasi
 local zonePositions = {
