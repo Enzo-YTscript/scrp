@@ -216,7 +216,7 @@ local zoneDropdown
 local function createZoneDropdown()
     zoneDropdown = TabMain:CreateDropdown({
         Name = "Select Zone To Train",
-        SectionParent = SectionMain,
+        SectionParent = TrainMain,
         Options = getZoneList(),
         CurrentOption = "None",
         Callback = function(option)
@@ -232,7 +232,7 @@ local whatToTrainDropdown
 local function createWhatToTrainDropdown()
     whatToTrainDropdown = TabMain:CreateDropdown({
         Name = "Select What To Train",
-        SectionParent = SectionMain,
+        SectionParent = TrainMain,
         Options = {"Dumbells", "Hands", "Knuckles"},
         CurrentOption = "Dumbells",
         Callback = function(option)
@@ -316,7 +316,7 @@ end
 -- Menambahkan toggle untuk auto training ke UI
 local AutoTrainToggle = TabMain:CreateToggle({
     Name = "Start Training",
-    SectionParent = SectionMain,
+    SectionParent = TrainMain,
     CurrentValue = false,
     Callback = function(Value)
         getgenv().AutoTrain = Value
@@ -376,8 +376,7 @@ local AutoFishToggle = TabMain:CreateToggle({
 
 
 --- Tab teleport 
-local TeleTab = Window:CreateTab("Teleport", nil) -- Title, Image
-local TeleSection = TeleTab:CreateSection("Teleport")
+local TeleSection = TabMain:CreateSection("Teleport",true)
 
 -- Posisi zona untuk teleportasi
 local zonePositions = {
