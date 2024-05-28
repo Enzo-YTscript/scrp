@@ -348,22 +348,24 @@ end
 createSpinButton()
 
 local FishSection = OtherTab:CreateSection("Fish",false)
--- Inisialisasi variabel global untuk auto fishing
+-- Initialize global variables for auto features
 getgenv().AutoFish = false
-getgenv().FishingInterval = 0.01 -- Interval waktu default dalam detik (sesuaikan sesuai kebutuhan)
+getgenv().FishingInterval = 0.01 -- Default interval time in seconds (adjust as needed)
 getgenv().SelectedPond = "Regular"
 getgenv().AutoSellFish = false
+getgenv().AutoGarden = false
+getgenv().AutoUpgradeSnacks = false
 
--- Fungsi untuk auto fishing
+-- Function for auto fishing
 local function autoFish()
     while getgenv().AutoFish do
-        -- Memulai menangkap ikan
+        -- Start catching fish
         local argsStart = {
             [1] = getgenv().SelectedPond
         }
         game:GetService("ReplicatedStorage").Packages.Knit.Services.NetService.RF.StartCatching:InvokeServer(unpack(argsStart))
         
-        -- Memverifikasi tangkapan dengan argumen yang diberikan
+        -- Verify catch with provided arguments
         local verifyArgsList = {
             {42, 46.21813527867198},
             {35, 33.440803369507194},
@@ -377,11 +379,11 @@ local function autoFish()
             game:GetService("ReplicatedStorage").Packages.Knit.Services.NetService.RF.VerifyCatch:InvokeServer(unpack(args))
         end
 
-        wait(getgenv().FishingInterval) -- Interval waktu antara tiap siklus fishing (dalam detik)
+        wait(getgenv().FishingInterval) -- Interval time between each fishing cycle (in seconds)
     end
 end
 
--- Fungsi untuk auto selling
+-- Function for auto selling fish
 local function autoSellFish()
     while getgenv().AutoSellFish do
         for i = 1, 3 do
@@ -390,22 +392,77 @@ local function autoSellFish()
                 [2] = i
             }
             game:GetService("ReplicatedStorage").Packages.Knit.Services.MerchantService.RF.BuyItem:InvokeServer(unpack(argsSell))
-            wait(0.1) -- Interval waktu antara penjualan
+            wait(0.1) -- Interval time between sales
         end
     end
 end
 
-local SelectPondDropdown = OtherTab:CreateDropdown({
-    Name = "Select Fishing Pond",
-    SectionParent = FishMain,
-    Options = {"Regular", "Chocolate"},
-    CurrentOption = "Regular",
-    Callback = function(Option)
-        getgenv().SelectedPond = Option
-    end
-})
+-- Function for auto gardening
+local function autoGarden()
+    local harvestArgsList = {1, 2, 3, 4, 5, 6}
+    local plantArgsList = {
+        "Banana Seeds", "Apple Seeds", "Dragon Fruit Seeds", "Pear Seeds", "Phoenix Fruit Seeds", "Starfruit Seeds"
+    }
 
--- Menambahkan toggle dan dropdown ke UI
+    while getgenv().AutoGarden do
+        -- Harvesting
+        for _, id in ipairs(harvestArgsList) do
+            local success, err = pcall(function()
+                local args = {[1] = tostring(id)}
+                game:GetService("ReplicatedStorage").Packages.Knit.Services.ItemPlantingService.RF.Harvest:InvokeServer(unpack(args))
+            end)
+            if not success then
+                warn("Error harvesting item with ID:", id, "Error:", err)
+            end
+        end
+        wait(0.1) -- Adjust the interval as needed
+        
+        -- Planting
+        for _, seed in ipairs(plantArgsList) do
+            for i = 1, 6 do
+                local success, err = pcall(function()
+                    local plantArgs = {seed, tostring(1), tostring(i)}
+                    game:GetService("ReplicatedStorage").Packages.Knit.Services.ItemPlantingService.RF.Plant:InvokeServer(unpack(plantArgs))
+                end)
+                if not success then
+                    warn("Error planting item:", seed, "at slot:", i, "Error:", err)
+                end
+            end
+        end
+        wait(0.1) -- Adjust the interval as needed
+    end
+end
+
+-- Function for auto upgrading snacks
+local function autoUpgradeSnacks()
+    local snackList = {
+        "Banana", "Apple", "Dragon Fruit", "Pear", "Phoenix Fruit", "Pet Bone", "Starfruit"
+    }
+    local tierList = {1, 2}
+
+    while getgenv().AutoUpgradeSnacks do
+        for _, snack in ipairs(snackList) do
+            for _, tier in ipairs(tierList) do
+                local args = {
+                    {
+                        ["Item"] = snack,
+                        ["Tier"] = tier
+                    }
+                }
+                -- Attempt to upgrade snack and catch any errors
+                local success, err = pcall(function()
+                    game:GetService("ReplicatedStorage").Packages.Knit.Services.ItemCraftingService.RF.UpgradeSnack:InvokeServer(unpack(args))
+                end)
+                if not success then
+                    warn("Error upgrading snack:", snack, "to tier:", tier, "Error:", err)
+                end
+            end
+        end
+        wait(1) -- Adjust the interval as needed
+    end
+end
+
+-- Adding toggles and dropdown to the UI
 local AutoFishToggle = OtherTab:CreateToggle({
     Name = "Auto Fish",
     SectionParent = FishMain,
@@ -426,6 +483,34 @@ local AutoSellFishToggle = OtherTab:CreateToggle({
         getgenv().AutoSellFish = Value
         if Value then
             spawn(autoSellFish)
+        end
+    end
+})
+
+-- Adding GardenSection and Auto Garden toggle
+local GardenSection = OtherTab:CreateSection("Garden", false)
+
+local AutoGardenToggle = OtherTab:CreateToggle({
+    Name = "Auto Garden",
+    SectionParent = GardenSection,
+    CurrentValue = false,
+    Callback = function(Value)
+        getgenv().AutoGarden = Value
+        if Value then
+            spawn(autoGarden)
+        end
+    end
+})
+
+-- Adding Auto Upgrade Snacks toggle
+local AutoUpgradeSnacksToggle = OtherTab:CreateToggle({
+    Name = "Auto Upgrade Snacks",
+    SectionParent = GardenSection,
+    CurrentValue = false,
+    Callback = function(Value)
+        getgenv().AutoUpgradeSnacks = Value
+        if Value then
+            spawn(autoUpgradeSnacks)
         end
     end
 })
