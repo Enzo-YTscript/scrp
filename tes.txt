@@ -63,7 +63,7 @@ local Toggle = TabMain:CreateToggle({
                         end
                         local args = {[1] = i}
                         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("TimedRewardService"):WaitForChild("RE"):WaitForChild("onClaim"):FireServer(unpack(args))
-                        wait(0.1)
+                        wait(0.01)
                     end
                 end
             end)
@@ -181,7 +181,7 @@ local AutoTapNPCToggle = TabMain:CreateToggle({
         getgenv().AutoTapNPC = Value
         while getgenv().AutoTapNPC do
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
-            wait(0.1) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
+            wait(0.00000000001) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
         end
     end
 })
@@ -350,7 +350,7 @@ createSpinButton()
 local FishSection = OtherTab:CreateSection("Fish",false)
 -- Initialize global variables for auto features
 getgenv().AutoFish = false
-getgenv().FishingInterval = 0.01 -- Default interval time in seconds (adjust as needed)
+getgenv().FishingInterval = 0.0000001 -- Default interval time in seconds (adjust as needed)
 getgenv().SelectedPond = "Regular"
 getgenv().AutoSellFish = false
 getgenv().AutoGarden = false
@@ -458,7 +458,7 @@ local function autoUpgradeSnacks()
                 end
             end
         end
-        wait(1) -- Adjust the interval as needed
+        wait(0.0000000000000001) -- Adjust the interval as needed
     end
 end
 
