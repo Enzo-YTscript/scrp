@@ -640,85 +640,103 @@ for i, zoneName in ipairs(zoneNames) do
     })
 end
 
--- EGG TAB
-local TabEgg = Window:CreateTab("Egg", nil) -- Title, Image
-local EggSection = TabEgg:CreateSection("Egg Options",false)
+--- Tab Egg 
+local EggTab = Window:CreateTab("Egg", nil) -- Title, Image
+local EggSection = EggTab:CreateSection("EGG")
+
+-- Initialize dropdown for egg selection first to avoid 'nil' issues
+local eggDropdown = EggTab:CreateDropdown({
+    Name = "Choose Egg",
+    SectionParent = EggSection,
+    Options = {},
+    CurrentOption = "None",
+    Callback = function(option)
+        getgenv().selectedEgg = option
+    end
+})
 
 -- Function to get the list of zones
 local function getZoneList()
     local zones = {}
-    local zoneParent = workspace:WaitForChild("Zones")
-    for _, zone in pairs(zoneParent:GetChildren()) do
-        table.insert(zones, zone.Name)
-    end
-    
-    table.sort(zones, function(a, b)
-        if tonumber(a) and tonumber(b) then
-            return tonumber(a) < tonumber(b)
-        elseif tonumber(a) then
-            return true
-        elseif tonumber(b) then
-            return false
-        else
-            return a < b
+    local zoneParent = workspace:FindFirstChild("Zones")
+    if zoneParent then
+        for _, zone in pairs(zoneParent:GetChildren()) do
+            table.insert(zones, zone.Name)
         end
-    end)
-
+        
+        -- Mengurutkan daftar zona
+        table.sort(zones, function(a, b)
+            if tonumber(a) and tonumber(b) then
+                return tonumber(a) < tonumber(b)
+            elseif tonumber(a) then
+                return true
+            elseif tonumber(b) then
+                return false
+            else
+                return a < b
+            end
+        end)
+    end
     return zones
 end
 
--- Function to get the list of eggs in a zone
-local function getEggListForZone(zone)
+-- Function to get the list of eggs from the specified zone
+local function getEggList(zone)
     local eggs = {}
-    local zoneObject = workspace:WaitForChild("Zones"):FindFirstChild(zone)
-    if zoneObject then
-        for _, egg in pairs(zoneObject:GetChildren()) do
-            if egg:IsA("Model") then
-                table.insert(eggs, egg.Name)
+    local zones = workspace:FindFirstChild("Zones")
+
+    if zones then
+        local selectedZone = zones:FindFirstChild(zone)
+        if selectedZone then
+            local eggFolderInteractables = selectedZone:FindFirstChild("Interactables") and selectedZone.Interactables:FindFirstChild("Eggs")
+            local eggFolderMap = selectedZone:FindFirstChild("Map") and selectedZone.Map:FindFirstChild("Eggs")
+            
+            if eggFolderInteractables then
+                for _, egg in pairs(eggFolderInteractables:GetChildren()) do
+                    table.insert(eggs, egg.Name)
+                end
+            end
+            
+            if eggFolderMap then
+                for _, egg in pairs(eggFolderMap:GetChildren()) do
+                    table.insert(eggs, egg.Name)
+                end
             end
         end
     end
+    
+    table.sort(eggs)
+    print("Eggs found in zone " .. zone .. ": " .. table.concat(eggs, ", ")) -- Debugging
     return eggs
 end
 
--- Create the "Zona Egg" dropdown
+-- Function to update the egg dropdown based on the selected zone
+local function updateEggDropdown(zone)
+    local eggs = getEggList(zone)
+    print("Updating egg dropdown for zone: " .. zone) -- Debugging
+    eggDropdown:Refresh(eggs, "None")
+end
+
+-- Initialize dropdown for zone selection
 local zoneDropdown
 local function createZoneDropdown()
-    zoneDropdown = TabEgg:CreateDropdown({
-        Name = "Zona Egg",
+    local zones = getZoneList()
+    print("Zones available: " .. table.concat(zones, ", ")) -- Debugging
+
+    zoneDropdown = EggTab:CreateDropdown({
+        Name = "Select Zone",
         SectionParent = EggSection,
-        Options = getZoneList(),
+        Options = zones,
         CurrentOption = "None",
         Callback = function(option)
-            getgenv().selectedEggZone = option
+            getgenv().selectedZoneForEgg = option
             updateEggDropdown(option)
         end
     })
 end
 
--- Create the "Choose Egg" dropdown
-local eggDropdown
-local function createEggDropdown()
-    eggDropdown = TabEgg:CreateDropdown({
-        Name = "Choose Egg",
-        SectionParent = EggSection,
-        Options = {},
-        CurrentOption = "None",
-        Callback = function(option)
-            getgenv().selectedEgg = option
-        end
-    })
-end
-
--- Update the "Choose Egg" dropdown based on selected zone
-local function updateEggDropdown(zone)
-    if eggDropdown then
-        eggDropdown:UpdateOptions(getEggListForZone(zone))
-    end
-end
-
+-- Create the zone dropdown after initializing egg dropdown to ensure it exists
 createZoneDropdown()
-createEggDropdown()
 
 -- Create dropdown for "Hatch Amount"
 local hatchAmountDropdown = EggTab:CreateDropdown({
@@ -741,6 +759,41 @@ local hatchAmountEventDropdown = EggTab:CreateDropdown({
         getgenv().hatchAmountEvent = tonumber(option)
     end
 })
+
+-- Create dropdown for "Auto Delete Pets"
+local autoDeletePetsDropdown = EggTab:CreateDropdown({
+    Name = "Auto Delete Pets",
+    SectionParent = EggSection,
+    Options = {}, -- This will be populated later
+    CurrentOption = "None",
+    MultiSelection = true, -- Allow multiple selection
+    Callback = function(options)
+        getgenv().autoDeletePets = type(options) == "table" and options or {options}
+    end
+})
+
+-- Function to get the list of pets
+local function getPetList()
+    local pets = {}
+    local petFolder = game:GetService("ReplicatedStorage"):FindFirstChild("Pets") and game:GetService("ReplicatedStorage").Pets:FindFirstChild("Normal")
+    
+    if petFolder then
+        for _, pet in pairs(petFolder:GetChildren()) do
+            table.insert(pets, pet.Name)
+        end
+    end
+    
+    table.sort(pets)
+    return pets
+end
+
+-- Populate the autoDeletePetsDropdown with the list of pets
+local function updatePetDropdown()
+    local pets = getPetList()
+    autoDeletePetsDropdown:Refresh(pets, "None")
+end
+
+updatePetDropdown()
 
 -- Create toggle for "Auto Hatch"
 local autoHatchToggle = EggTab:CreateToggle({
@@ -776,12 +829,18 @@ function startAutoHatch()
                 return
             end
 
+            local args = {
+                [1] = getgenv().selectedEgg,
+                [2] = {},
+                [3] = getgenv().hatchAmount == 3,
+                [4] = false,
+                [5] = getgenv().hatchAmount == 8
+            }
+            for _, pet in pairs(getgenv().autoDeletePets or {}) do
+                args[2][pet] = true
+            end
+
             for i = 1, getgenv().hatchAmount do
-                local args = {
-                    [1] = getgenv().selectedEgg,
-                    [2] = {},
-                    [4] = false
-                }
                 game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("EggService"):WaitForChild("RF"):WaitForChild("purchaseEgg"):InvokeServer(unpack(args))
                 wait(0.1) -- Short delay between hatches
             end
