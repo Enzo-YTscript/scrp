@@ -640,93 +640,84 @@ for i, zoneName in ipairs(zoneNames) do
     })
 end
 
---- Tab Egg 
-local EggTab = Window:CreateTab("Egg", nil) -- Title, Image
-local EggSection = EggTab:CreateSection("EGG")
+-- EGG TAB
+local TabEgg = Window:CreateTab("Egg", nil) -- Title, Image
+local EggSection = TabEgg:CreateSection("Egg Options",false)
 
--- Function to get the list of eggs from the specified paths
-local function getEggList()
-    local eggs = {}
-    local zones = workspace:FindFirstChild("Zones")
-
-    if zones then
-        for _, zone in pairs(zones:GetChildren()) do
-            print("Checking zone: " .. zone.Name)
-            
-            local eggFolderInteractables = zone:FindFirstChild("Interactables") and zone.Interactables:FindFirstChild("Eggs")
-            local eggFolderMap = zone:FindFirstChild("Map") and zone.Map:FindFirstChild("Eggs")
-            
-            if eggFolderInteractables then
-                print("Found Interactables Egg folder in zone: " .. zone.Name)
-                for _, egg in pairs(eggFolderInteractables:GetChildren()) do
-                    print("Found egg in Interactables: " .. egg.Name)
-                    table.insert(eggs, "Zone: " .. zone.Name .. " || Egg Name: " .. egg.Name)
-                end
-            end
-            
-            if eggFolderMap then
-                print("Found Map Egg folder in zone: " .. zone.Name)
-                for _, egg in pairs(eggFolderMap:GetChildren()) do
-                    print("Found egg in Map: " .. egg.Name)
-                    table.insert(eggs, "Zone: " .. zone.Name .. " || Egg Name: " .. egg.Name)
-                end
-            end
-        end
-    else
-        print("No Zones found in workspace.")
+-- Function to get the list of zones
+local function getZoneList()
+    local zones = {}
+    local zoneParent = workspace:WaitForChild("Zones")
+    for _, zone in pairs(zoneParent:GetChildren()) do
+        table.insert(zones, zone.Name)
     end
     
-    -- Sort the list of eggs based on zone and egg name
-    table.sort(eggs, function(a, b)
-        local zoneA, nameA = a:match("Zone: (.+) || Egg Name: (.+)")
-        local zoneB, nameB = b:match("Zone: (.+) || Egg Name: (.+)")
-        
-        if tonumber(zoneA) and tonumber(zoneB) then
-            if tonumber(zoneA) == tonumber(zoneB) then
-                return nameA < nameB
-            else
-                return tonumber(zoneA) < tonumber(zoneB)
-            end
-        elseif tonumber(zoneA) then
+    table.sort(zones, function(a, b)
+        if tonumber(a) and tonumber(b) then
+            return tonumber(a) < tonumber(b)
+        elseif tonumber(a) then
             return true
-        elseif tonumber(zoneB) then
+        elseif tonumber(b) then
             return false
         else
-            if zoneA == zoneB then
-                return nameA < nameB
-            else
-                return zoneA < zoneB
-            end
+            return a < b
         end
     end)
 
-    for _, egg in pairs(eggs) do
-        print("Egg in list: " .. egg)
-    end
+    return zones
+end
 
+-- Function to get the list of eggs in a zone
+local function getEggListForZone(zone)
+    local eggs = {}
+    local zoneObject = workspace:WaitForChild("Zones"):FindFirstChild(zone)
+    if zoneObject then
+        for _, egg in pairs(zoneObject:GetChildren()) do
+            if egg:IsA("Model") then
+                table.insert(eggs, egg.Name)
+            end
+        end
+    end
     return eggs
 end
 
--- Initialize dropdown with the list of eggs
-local eggDropdown
-local function createEggDropdown()
-    local eggs = getEggList()
-    if #eggs == 0 then
-        print("No eggs found.")
-    end
-
-    eggDropdown = TabMain:CreateDropdown({
-        Name = "Choose Egg",
+-- Create the "Zona Egg" dropdown
+local zoneDropdown
+local function createZoneDropdown()
+    zoneDropdown = TabEgg:CreateDropdown({
+        Name = "Zona Egg",
         SectionParent = EggSection,
-        Options = eggs,
+        Options = getZoneList(),
         CurrentOption = "None",
         Callback = function(option)
-            getgenv().selectedEgg = option:match("Egg Name: (.+)")
-            getgenv().selectedZoneForEgg = option:match("Zone: (.+) ||")  -- Save the selected zone
+            getgenv().selectedEggZone = option
+            updateEggDropdown(option)
         end
     })
 end
 
+-- Create the "Choose Egg" dropdown
+local eggDropdown
+local function createEggDropdown()
+    eggDropdown = TabEgg:CreateDropdown({
+        Name = "Choose Egg",
+        SectionParent = EggSection,
+        Options = {},
+        CurrentOption = "None",
+        Callback = function(option)
+            getgenv().selectedEgg = option
+        end
+    })
+end
+
+-- Update the "Choose Egg" dropdown based on selected zone
+local function updateEggDropdown(zone)
+    if eggDropdown then
+        eggDropdown:UpdateOptions(getEggListForZone(zone))
+    end
+end
+
+createZoneDropdown()
 createEggDropdown()
 
 -- Create dropdown for "Hatch Amount"
