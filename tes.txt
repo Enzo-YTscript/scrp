@@ -347,6 +347,87 @@ end
 
 createSpinButton()
 
+local isSpinEventActive = false
+local spinEventCoroutine
+
+local SpinEventToggle = TabMain:CreateToggle({
+    Name = "Spin Event",
+    SectionParent = OtherSection,
+    CurrentValue = false,
+    Callback = function(Value)
+        isSpinEventActive = Value
+        if isSpinEventActive then
+            spinEventCoroutine = coroutine.create(function()
+                local args = {
+                    [1] = "Kraken's Fortune"
+                }
+                while isSpinEventActive do
+                    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("SpinnerService"):WaitForChild("RF"):WaitForChild("Spin"):InvokeServer(unpack(args))
+                    wait(1) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
+                end
+            end)
+            coroutine.resume(spinEventCoroutine)
+        else
+            if spinEventCoroutine then
+                coroutine.yield(spinEventCoroutine)
+            end
+        end
+    end
+})
+
+
+local RebirthSection = OtherTab:CreateSection("Rebirth",false)
+-- Rebirth function
+local isRebirthActive = false
+local rebirthCoroutine
+
+local isSuperRebirthActive = false
+local superRebirthCoroutine
+
+local RebirthToggle = TabMain:CreateToggle({
+    Name = "Rebirth",
+    SectionParent = RebirthSection,
+    CurrentValue = false,
+    Callback = function(Value)
+        isRebirthActive = Value
+        if isRebirthActive then
+            rebirthCoroutine = coroutine.create(function()
+                while isRebirthActive do
+                    game:GetService("ReplicatedStorage").Packages.Knit.Services.RebirthService.RE.onRebirthRequest:FireServer()
+                    wait(0.1) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
+                end
+            end)
+            coroutine.resume(rebirthCoroutine)
+        else
+            if rebirthCoroutine then
+                coroutine.yield(rebirthCoroutine)
+            end
+        end
+    end
+})
+
+local SuperRebirthToggle = TabMain:CreateToggle({
+    Name = "Super Rebirth",
+    SectionParent = RebirthSection,
+    CurrentValue = false,
+    Callback = function(Value)
+        isSuperRebirthActive = Value
+        if isSuperRebirthActive then
+            superRebirthCoroutine = coroutine.create(function()
+                while isSuperRebirthActive do
+                    game:GetService("ReplicatedStorage").Packages.Knit.Services.RebirthService.RE.onSuperRebirth:FireServer()
+                    wait(1) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
+                end
+            end)
+            coroutine.resume(superRebirthCoroutine)
+        else
+            if superRebirthCoroutine then
+                coroutine.yield(superRebirthCoroutine)
+            end
+        end
+    end
+})
+
 local FishSection = OtherTab:CreateSection("Fish",false)
 -- Initialize global variables for auto features
 getgenv().AutoFish = false
