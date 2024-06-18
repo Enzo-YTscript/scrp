@@ -363,7 +363,7 @@ local SpinEventToggle = TabMain:CreateToggle({
                 }
                 while isSpinEventActive do
                     game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("SpinnerService"):WaitForChild("RF"):WaitForChild("Spin"):InvokeServer(unpack(args))
-                    wait(1) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
+                    wait(0.01) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
                 end
             end)
             coroutine.resume(spinEventCoroutine)
