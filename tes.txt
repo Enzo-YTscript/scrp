@@ -428,7 +428,7 @@ local SuperRebirthToggle = TabMain:CreateToggle({
     end
 })
 
-local FishSection = OtherTab:CreateSection("Fish",false)
+local FishSection = OtherTab:CreateSection("Fish", false)
 -- Initialize global variables for auto features
 getgenv().AutoFish = false
 getgenv().FishingInterval = 0.0000001 -- Default interval time in seconds (adjust as needed)
