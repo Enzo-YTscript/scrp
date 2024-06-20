@@ -546,7 +546,7 @@ end
 -- Adding toggles and dropdown to the UI
 local AutoFishToggle = OtherTab:CreateToggle({
     Name = "Auto Fish",
-    SectionParent = FishMain,
+    SectionParent = FishSection,
     CurrentValue = false,
     Callback = function(Value)
         getgenv().AutoFish = Value
@@ -558,7 +558,7 @@ local AutoFishToggle = OtherTab:CreateToggle({
 
 local AutoSellFishToggle = OtherTab:CreateToggle({
     Name = "Auto Sell Fish",
-    SectionParent = FishMain,
+    SectionParent = FishSection,
     CurrentValue = false,
     Callback = function(Value)
         getgenv().AutoSellFish = Value
