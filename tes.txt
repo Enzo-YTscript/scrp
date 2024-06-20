@@ -599,7 +599,7 @@ local AutoUpgradeSnacksToggle = OtherTab:CreateToggle({
 
 --- Tab teleport 
 local TeleTab = Window:CreateTab("Teleport", nil) -- Title, Image
-local TeleSection = TeleTab:CreateSection("Teleport")
+local TeleSection = TeleTab:CreateSection("No Unlock Zone")
 
 -- Posisi zona untuk teleportasi
 local zonePositions = {
@@ -634,6 +634,31 @@ for i, zoneName in ipairs(zoneNames) do
     teleportButtons[i] = TeleTab:CreateButton({
         Name = "Teleport To " .. zoneName,
 		SectionParent = TeleSection,
+        Callback = function()
+            teleportToZone(zoneName)
+        end
+    })
+end
+
+
+local GameSection = TeleTab:CreateSection("Teleport")
+
+-- Fungsi untuk teleportasi ke zona menggunakan ZoneService
+local function teleportToZone(zoneName)
+    local args = {
+        [1] = workspace.Zones:FindFirstChild(zoneName).Interactables.Teleports.Locations.Spawn
+    }
+    game:GetService("ReplicatedStorage").Packages.Knit.Services.ZoneService.RE.teleport:FireServer(unpack(args))
+end
+
+-- Menambahkan tombol untuk teleportasi ke setiap zona
+local gameTeleportButtons = {}
+local zoneNames = getZoneList()
+
+for i, zoneName in ipairs(zoneNames) do
+    gameTeleportButtons[i] = TeleTab:CreateButton({
+        Name = "Teleport To Zone " .. zoneName,
+        SectionParent = GameSection,
         Callback = function()
             teleportToZone(zoneName)
         end
