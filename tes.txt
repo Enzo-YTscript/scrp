@@ -403,6 +403,33 @@ local SpinEventAtlantisToggle = TabMain:CreateToggle({
     end
 })
 
+local isSpinEvent4thofJulyFortuneActive = false
+local spinEvent4thofJulyFortuneCoroutine
+
+local SpinEventAtlantisToggle = TabMain:CreateToggle({
+    Name = "Spin Event 4th of July Fortune",
+    SectionParent = OtherSection,
+    CurrentValue = false,
+    Callback = function(Value)
+        isSpinEvent4thofJulyFortuneActive = Value
+        if isSpinEvent4thofJulyFortuneActive then
+            spinEvent4thofJulyFortuneCoroutine = coroutine.create(function()
+                local args = {
+                    [1] = "4th of July Fortune"
+                }
+                while isSpinEvent4thofJulyFortuneActive do
+                    game:GetService("ReplicatedStorage").Packages.Knit.Services.SpinnerService.RF.Spin:InvokeServer(unpack(args))
+                    wait(0.01) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
+                end
+            end)
+            coroutine.resume(spinEvent4thofJulyFortuneCoroutine)
+        else
+            if spinEvent4thofJulyFortuneCoroutine then
+                coroutine.yield(spinEvent4thofJulyFortuneCoroutine)
+            end
+        end
+    end
+})
 
 local RebirthSection = OtherTab:CreateSection("Rebirth",false)
 -- Rebirth function
