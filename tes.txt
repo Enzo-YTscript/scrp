@@ -533,12 +533,27 @@ local function autoSellFish()
     end
 end
 
--- Function for auto gardening
+-- Fungsi untuk mengambil daftar seeds yang memiliki "/1" pada namanya
+local function getSeedList()
+    local seedList = {}
+    local seedsStorage = game:GetService("Players").LocalPlayer.PlayerGui.GameUI.Menus.Inventory.Display.Items.MainFrame.ScrollingFrame.SeedsStorage.Objects
+
+    for _, seed in pairs(seedsStorage:GetChildren()) do
+        if seed.Name:match("/1") then
+            local seedName = seed.Name:match("([^/]+)") -- Mengambil nama seed tanpa "/1"
+            table.insert(seedList, seedName)
+        end
+    end
+
+    return seedList
+end
+
+-- Daftar seeds yang diperoleh secara otomatis
+local seedList = getSeedList()
+
+-- Fungsi untuk auto gardening
 local function autoGarden()
     local harvestArgsList = {1, 2, 3, 4, 5, 6}
-    local plantArgsList = {
-        "Banana Seeds", "Apple Seeds", "Dragon Fruit Seeds", "Pear Seeds", "Phoenix Fruit Seeds", "Starfruit Seeds"
-    }
 
     while getgenv().AutoGarden do
         -- Harvesting
@@ -554,7 +569,7 @@ local function autoGarden()
         wait(0.1) -- Adjust the interval as needed
         
         -- Planting
-        for _, seed in ipairs(plantArgsList) do
+        for _, seed in ipairs(seedList) do
             for i = 1, 6 do
                 local success, err = pcall(function()
                     local plantArgs = {seed, tostring(1), tostring(i)}
@@ -569,11 +584,26 @@ local function autoGarden()
     end
 end
 
--- Function for auto upgrading snacks
+-- Fungsi untuk mengambil daftar snack yang memiliki "/1" pada namanya
+local function getSnackList()
+    local snackList = {}
+    local snacksStorage = game:GetService("Players").LocalPlayer.PlayerGui.GameUI.Menus.Inventory.Display.Items.MainFrame.ScrollingFrame.SnacksStorage.Objects
+
+    for _, snack in pairs(snacksStorage:GetChildren()) do
+        if snack.Name:match("/1") then
+            local snackName = snack.Name:match("([^/]+)") -- Mengambil nama snack tanpa "/1"
+            table.insert(snackList, snackName)
+        end
+    end
+
+    return snackList
+end
+
+-- Daftar snack yang diperoleh secara otomatis
+local snackList = getSnackList()
+
+-- Fungsi untuk auto upgrading snacks
 local function autoUpgradeSnacks()
-    local snackList = {
-        "Banana", "Apple", "Dragon Fruit", "Pear", "Phoenix Fruit", "Pet Bone", "Starfruit"
-    }
     local tierList = {1, 2}
 
     while getgenv().AutoUpgradeSnacks do
@@ -626,6 +656,7 @@ local AutoSellFishToggle = OtherTab:CreateToggle({
 -- Adding GardenSection and Auto Garden toggle
 local GardenSection = OtherTab:CreateSection("Garden", false)
 
+-- Menambahkan toggle untuk Auto Garden ke UI
 local AutoGardenToggle = OtherTab:CreateToggle({
     Name = "Auto Garden",
     SectionParent = GardenSection,
@@ -638,7 +669,7 @@ local AutoGardenToggle = OtherTab:CreateToggle({
     end
 })
 
--- Adding Auto Upgrade Snacks toggle
+-- Menambahkan toggle untuk Auto Upgrade Snacks ke UI
 local AutoUpgradeSnacksToggle = OtherTab:CreateToggle({
     Name = "Auto Upgrade Snacks",
     SectionParent = GardenSection,
