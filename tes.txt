@@ -770,6 +770,7 @@ local function updateEggDropdown(zone)
     end
 end
 
+
 -- Fungsi untuk mendapatkan daftar zona
 local function getZoneList()
     local zones = {}
@@ -795,7 +796,7 @@ local function getZoneList()
     return zones
 end
 
---- Inisialisasi dropdown untuk zone selection
+-- Inisialisasi dropdown untuk zone selection
 local zoneDropdown = nil
 
 local function createZoneDropdown()
@@ -844,26 +845,36 @@ local hatchAmountDropdown = EggTab:CreateDropdown({
     end
 })
 
--- Create dropdown for "Hatch Amount Event"
-local hatchAmountEventDropdown = EggTab:CreateDropdown({
-    Name = "Hatch Amount Event",
-    SectionParent = EggSection,
-    Options = {"1", "3", "8", "50", "100", "1000"},
-    CurrentOption = "1",
-    Callback = function(option)
-        getgenv().hatchAmountEvent = tonumber(option)
-    end
-})
+
 
 -- Membuat dropdown untuk "Auto Delete Pets"
-local autoDeletePetsDropdown = EggTab:CreateDropdown({
-    Name = "Auto Delete Pets",
+local autoDeletePetsDropdown1 = EggTab:CreateDropdown({
+    Name = "Auto Delete Pets 1",
     SectionParent = EggSection,
     Options = {}, -- Ini akan diisi nanti
     CurrentOption = "None",
-    MultiSelection = true, -- Mengizinkan beberapa pilihan
-    Callback = function(options)
-        getgenv().autoDeletePets = type(options) == "table" and options or {options}
+    Callback = function(option)
+        getgenv().autoDeletePet1 = option
+    end
+})
+
+local autoDeletePetsDropdown2 = EggTab:CreateDropdown({
+    Name = "Auto Delete Pets 2",
+    SectionParent = EggSection,
+    Options = {}, -- Ini akan diisi nanti
+    CurrentOption = "None",
+    Callback = function(option)
+        getgenv().autoDeletePet2 = option
+    end
+})
+
+local autoDeletePetsDropdown3 = EggTab:CreateDropdown({
+    Name = "Auto Delete Pets 3",
+    SectionParent = EggSection,
+    Options = {}, -- Ini akan diisi nanti
+    CurrentOption = "None",
+    Callback = function(option)
+        getgenv().autoDeletePet3 = option
     end
 })
 
@@ -885,12 +896,14 @@ end
 -- Mengisi autoDeletePetsDropdown dengan daftar pets
 local function updatePetDropdown()
     local pets = getPetList()
-    autoDeletePetsDropdown:Refresh(pets, "None")
+    autoDeletePetsDropdown1:Refresh(pets, "None")
+    autoDeletePetsDropdown2:Refresh(pets, "None")
+    autoDeletePetsDropdown3:Refresh(pets, "None")
 end
 
 updatePetDropdown()
 
--- Membuat toggle untuk "Auto Hatch"
+-- Menambahkan toggle untuk "Auto Hatch" ke UI
 local autoHatchToggle = EggTab:CreateToggle({
     Name = "Auto Hatch",
     SectionParent = EggSection,
@@ -899,19 +912,6 @@ local autoHatchToggle = EggTab:CreateToggle({
         getgenv().autoHatch = value
         if value then
             startAutoHatch()
-        end
-    end
-})
-
--- Create toggle for "Hatch Event"
-local hatchEventToggle = EggTab:CreateToggle({
-    Name = "Hatch Event",
-    SectionParent = EggSection,
-    CurrentValue = false,
-    Callback = function(value)
-        getgenv().hatchEvent = value
-        if value then
-            startHatchEvent()
         end
     end
 })
@@ -925,8 +925,14 @@ function startAutoHatch()
             end
 
             local deletePets = {}
-            for _, pet in pairs(getgenv().autoDeletePets or {}) do
-                deletePets[pet] = true
+            if getgenv().autoDeletePet1 and getgenv().autoDeletePet1 ~= "None" then
+                deletePets[getgenv().autoDeletePet1] = true
+            end
+            if getgenv().autoDeletePet2 and getgenv().autoDeletePet2 ~= "None" then
+                deletePets[getgenv().autoDeletePet2] = true
+            end
+            if getgenv().autoDeletePet3 and getgenv().autoDeletePet3 ~= "None" then
+                deletePets[getgenv().autoDeletePet3] = true
             end
 
             local args
@@ -936,17 +942,23 @@ function startAutoHatch()
                     [2] = deletePets,
                     [4] = false
                 }
+            elseif getgenv().hatchAmount == 3 then
+                args = {
+                    [1] = getgenv().selectedEgg,
+                    [2] = deletePets,
+                    [4] = true
+                }
             elseif getgenv().hatchAmount == 8 then
                 args = {
                     [1] = getgenv().selectedEgg,
                     [2] = deletePets,
-                    [4] = false,
+                    [4] = true,
                     [5] = true
                 }
             end
 
             game:GetService("ReplicatedStorage").Packages.Knit.Services.EggService.RF.purchaseEgg:InvokeServer(unpack(args))
-            wait(0.001) -- Wait for 2 seconds after hatching the selected amount
+            wait(0.001) -- Wait for 1 millisecond after hatching the selected amount
         end
     end)
 end
@@ -971,3 +983,26 @@ function startHatchEvent()
     end)
 end
 
+-- Create dropdown for "Hatch Amount Event"
+local hatchAmountEventDropdown = EggTab:CreateDropdown({
+    Name = "Hatch Amount Event",
+    SectionParent = EggSection,
+    Options = {"1", "3", "8", "50", "100", "1000"},
+    CurrentOption = "",
+    Callback = function(option)
+        getgenv().hatchAmountEvent = tonumber(option)
+    end
+})
+
+-- Create toggle for "Hatch Event"
+local hatchEventToggle = EggTab:CreateToggle({
+    Name = "Hatch Event",
+    SectionParent = EggSection,
+    CurrentValue = false,
+    Callback = function(value)
+        getgenv().hatchEvent = value
+        if value then
+            startHatchEvent()
+        end
+    end
+})
