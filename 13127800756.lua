@@ -181,7 +181,7 @@ local AutoTapNPCToggle = TabMain:CreateToggle({
         getgenv().AutoTapNPC = Value
         while getgenv().AutoTapNPC do
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ArmWrestleService"):WaitForChild("RE"):WaitForChild("onClickRequest"):FireServer()
-            wait(0.00000000001) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
+            wait(0.000000000000000000000001) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
         end
     end
 })
@@ -309,7 +309,7 @@ local function autoTrain()
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("IdleTeleportService"):WaitForChild("RF"):WaitForChild("SetLatestTeleportData"):InvokeServer(unpack(args))
         end
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RE"):WaitForChild("onClick"):FireServer()
-        wait(0.00001) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
+        wait(0.00000000000001) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
     end
 end
 
@@ -328,31 +328,16 @@ local AutoTrainToggle = TabMain:CreateToggle({
     end
 })
 
---- Tab Other 
-local OtherTab = Window:CreateTab("Other", nil) -- Title, Image
-local OtherSection = OtherTab:CreateSection("Other Stuff")
-
-local function createSpinButton()
-    OtherTab:CreateButton({
-        Name = "Spin",
-        SectionParent = OtherSection,
-        Callback = function()
-            local args = {
-                [1] = false
-            }
-            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("SpinService"):WaitForChild("RE"):WaitForChild("onSpinRequest"):FireServer(unpack(args))
-        end
-    })
-end
-
-createSpinButton()
+--- Tab Event 
+local EventTab = Window:CreateTab("Event", nil) -- Title, Image
+local EventSection = EventTab:CreateSection("Event Stuff")
 
 local isSpinEventActive = false
 local spinEventCoroutine
 
 local SpinEventToggle = TabMain:CreateToggle({
-    Name = "Spin Event",
-    SectionParent = OtherSection,
+    Name = "Spin Event Summer",
+    SectionParent = EventSection,
     CurrentValue = false,
     Callback = function(Value)
         isSpinEventActive = Value
@@ -363,7 +348,7 @@ local SpinEventToggle = TabMain:CreateToggle({
                 }
                 while isSpinEventActive do
                     game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("SpinnerService"):WaitForChild("RF"):WaitForChild("Spin"):InvokeServer(unpack(args))
-                    wait(0.01) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
+                    wait(0.00000000000001) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
                 end
             end)
             coroutine.resume(spinEventCoroutine)
@@ -380,7 +365,7 @@ local spinEventAtlantisCoroutine
 
 local SpinEventAtlantisToggle = TabMain:CreateToggle({
     Name = "Spin Event Atlantis",
-    SectionParent = OtherSection,
+    SectionParent = EventSection,
     CurrentValue = false,
     Callback = function(Value)
         isSpinEventAtlantisActive = Value
@@ -403,33 +388,52 @@ local SpinEventAtlantisToggle = TabMain:CreateToggle({
     end
 })
 
-local isSpinEvent4thofJulyFortuneActive = false
-local spinEvent4thofJulyFortuneCoroutine
+---local isSpinEvent4thofJulyFortuneActive = false
+---local spinEvent4thofJulyFortuneCoroutine
+---
+---local SpinEventAtlantisToggle = TabMain:CreateToggle({
+---    Name = "Spin Event 4th of July Fortune",
+---    SectionParent = OtherSection,
+---    CurrentValue = false,
+---    Callback = function(Value)
+---        isSpinEvent4thofJulyFortuneActive = Value
+---        if isSpinEvent4thofJulyFortuneActive then
+---            spinEvent4thofJulyFortuneCoroutine = coroutine.create(function()
+---                local args = {
+---                    [1] = "4th of July Fortune"
+---                }
+---                while isSpinEvent4thofJulyFortuneActive do
+---                    game:GetService("ReplicatedStorage").Packages.Knit.Services.SpinnerService.RF.Spin:InvokeServer(unpack(args))
+---                    wait(0.01) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
+---                end
+---            end)
+---            coroutine.resume(spinEvent4thofJulyFortuneCoroutine)
+---        else
+---            if spinEvent4thofJulyFortuneCoroutine then
+---                coroutine.yield(spinEvent4thofJulyFortuneCoroutine)
+---            end
+---        end
+---    end
+---})
 
-local SpinEventAtlantisToggle = TabMain:CreateToggle({
-    Name = "Spin Event 4th of July Fortune",
-    SectionParent = OtherSection,
-    CurrentValue = false,
-    Callback = function(Value)
-        isSpinEvent4thofJulyFortuneActive = Value
-        if isSpinEvent4thofJulyFortuneActive then
-            spinEvent4thofJulyFortuneCoroutine = coroutine.create(function()
-                local args = {
-                    [1] = "4th of July Fortune"
-                }
-                while isSpinEvent4thofJulyFortuneActive do
-                    game:GetService("ReplicatedStorage").Packages.Knit.Services.SpinnerService.RF.Spin:InvokeServer(unpack(args))
-                    wait(0.01) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
-                end
-            end)
-            coroutine.resume(spinEvent4thofJulyFortuneCoroutine)
-        else
-            if spinEvent4thofJulyFortuneCoroutine then
-                coroutine.yield(spinEvent4thofJulyFortuneCoroutine)
-            end
+--- Tab Other 
+local OtherTab = Window:CreateTab("Other", nil) -- Title, Image
+local OtherSection = OtherTab:CreateSection("Other Stuff")
+
+local function createSpinButton()
+    OtherTab:CreateButton({
+        Name = "Spin",
+        SectionParent = OtherSection,
+        Callback = function()
+            local args = {
+                [1] = false
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("SpinService"):WaitForChild("RE"):WaitForChild("onSpinRequest"):FireServer(unpack(args))
         end
-    end
-})
+    })
+end
+
+createSpinButton()
 
 local RebirthSection = OtherTab:CreateSection("Rebirth",false)
 -- Rebirth function
@@ -528,7 +532,7 @@ local function autoSellFish()
                 [2] = i
             }
             game:GetService("ReplicatedStorage").Packages.Knit.Services.MerchantService.RF.BuyItem:InvokeServer(unpack(argsSell))
-            wait(0.1) -- Interval time between sales
+            wait(0.00001) -- Interval time between sales
         end
     end
 end
@@ -566,7 +570,7 @@ local function autoGarden()
                 warn("Error harvesting item with ID:", id, "Error:", err)
             end
         end
-        wait(0.1) -- Adjust the interval as needed
+        wait(0.00000000000001) -- Adjust the interval as needed
         
         -- Planting
         for _, seed in ipairs(seedList) do
@@ -580,7 +584,7 @@ local function autoGarden()
                 end
             end
         end
-        wait(0.1) -- Adjust the interval as needed
+        wait(0.00000000000001) -- Adjust the interval as needed
     end
 end
 
@@ -607,26 +611,36 @@ local function autoUpgradeSnacks()
     local tierList = {1, 2}
 
     while getgenv().AutoUpgradeSnacks do
+        local coroutines = {}
         for _, snack in ipairs(snackList) do
             for _, tier in ipairs(tierList) do
-                local args = {
-                    {
-                        ["Item"] = snack,
-                        ["Tier"] = tier
+                table.insert(coroutines, coroutine.create(function()
+                    local args = {
+                        {
+                            ["Item"] = snack,
+                            ["Tier"] = tier
+                        }
                     }
-                }
-                -- Attempt to upgrade snack and catch any errors
-                local success, err = pcall(function()
-                    game:GetService("ReplicatedStorage").Packages.Knit.Services.ItemCraftingService.RF.UpgradeSnack:InvokeServer(unpack(args))
-                end)
-                if not success then
-                    warn("Error upgrading snack:", snack, "to tier:", tier, "Error:", err)
-                end
+                    -- Attempt to upgrade snack and catch any errors
+                    local success, err = pcall(function()
+                        game:GetService("ReplicatedStorage").Packages.Knit.Services.ItemCraftingService.RF.UpgradeSnack:InvokeServer(unpack(args))
+                    end)
+                    if not success then
+                        warn("Error upgrading snack:", snack, "to tier:", tier, "Error:", err)
+                    end
+                end))
             end
         end
-        wait(0.0000000000000001) -- Adjust the interval as needed
+        
+        -- Jalankan semua coroutine
+        for _, co in ipairs(coroutines) do
+            coroutine.resume(co)
+        end
+
+        wait(0.0000001) -- Interval yang sangat kecil untuk mempercepat proses (sesuaikan dengan kebutuhan)
     end
 end
+
 
 -- Adding toggles and dropdown to the UI
 local AutoFishToggle = OtherTab:CreateToggle({
@@ -909,6 +923,36 @@ local autoDeletePetsDropdown3 = EggTab:CreateDropdown({
     end
 })
 
+local autoDeletePetsDropdown4 = EggTab:CreateDropdown({
+    Name = "Auto Delete Pets 4",
+    SectionParent = EggSection,
+    Options = {}, -- Ini akan diisi nanti
+    CurrentOption = "None",
+    Callback = function(option)
+        getgenv().autoDeletePet4 = option
+    end
+})
+
+local autoDeletePetsDropdown5 = EggTab:CreateDropdown({
+    Name = "Auto Delete Pets 5",
+    SectionParent = EggSection,
+    Options = {}, -- Ini akan diisi nanti
+    CurrentOption = "None",
+    Callback = function(option)
+        getgenv().autoDeletePet5 = option
+    end
+})
+
+local autoDeletePetsDropdown6 = EggTab:CreateDropdown({
+    Name = "Auto Delete Pets 6",
+    SectionParent = EggSection,
+    Options = {}, -- Ini akan diisi nanti
+    CurrentOption = "None",
+    Callback = function(option)
+        getgenv().autoDeletePet6 = option
+    end
+})
+
 -- Fungsi untuk mendapatkan daftar pets
 local function getPetList()
     local pets = {}
@@ -930,6 +974,9 @@ local function updatePetDropdown()
     autoDeletePetsDropdown1:Refresh(pets, "None")
     autoDeletePetsDropdown2:Refresh(pets, "None")
     autoDeletePetsDropdown3:Refresh(pets, "None")
+	autoDeletePetsDropdown4:Refresh(pets, "None")
+	autoDeletePetsDropdown5:Refresh(pets, "None")
+	autoDeletePetsDropdown6:Refresh(pets, "None")
 end
 
 updatePetDropdown()
@@ -965,7 +1012,15 @@ function startAutoHatch()
             if getgenv().autoDeletePet3 and getgenv().autoDeletePet3 ~= "None" then
                 deletePets[getgenv().autoDeletePet3] = true
             end
-
+            if getgenv().autoDeletePet4 and getgenv().autoDeletePet4 ~= "None" then
+                deletePets[getgenv().autoDeletePet4] = true
+            end
+            if getgenv().autoDeletePet5 and getgenv().autoDeletePet5 ~= "None" then
+                deletePets[getgenv().autoDeletePet5] = true
+            end
+            if getgenv().autoDeletePet6 and getgenv().autoDeletePet6 ~= "None" then
+                deletePets[getgenv().autoDeletePet6] = true
+            end			
             local args
             if getgenv().hatchAmount == 1 then
                 args = {
@@ -989,7 +1044,7 @@ function startAutoHatch()
             end
 
             game:GetService("ReplicatedStorage").Packages.Knit.Services.EggService.RF.purchaseEgg:InvokeServer(unpack(args))
-            wait(0.001) -- Wait for 1 millisecond after hatching the selected amount
+            wait(0.00000000000001) -- Wait for 1 millisecond after hatching the selected amount
         end
     end)
 end
@@ -1009,7 +1064,7 @@ function startHatchEvent()
                 game:GetService("ReplicatedStorage").Packages.Knit.Services.EventService.RF.ClaimEgg:InvokeServer(unpack(args))
                 wait(0.0000001) -- Short delay between hatches
             end
-            wait(0.01) -- Wait for 1 second after hatching the selected amount
+            wait(0.00000000000001) -- Wait for 1 second after hatching the selected amount
         end
     end)
 end
