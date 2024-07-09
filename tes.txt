@@ -435,6 +435,133 @@ end
 
 createSpinButton()
 
+-- Fungsi untuk toggle Index
+local function toggleIndex()
+    local indexUI = game:GetService("Players").LocalPlayer.PlayerGui.GameUI.Menus.Index
+    indexUI.Visible = not indexUI.Visible
+end
+
+-- Fungsi untuk memeriksa dan menambahkan pet ke index
+local function checkAndAddToIndex()
+    local args = {
+        [1] = game:GetService("Players").LocalPlayer
+    }
+    game:GetService("ReplicatedStorage").Packages.Knit.Services.PetService.RF.getOwned:InvokeServer(unpack(args))
+end
+
+-- Fungsi untuk memeriksa pet yang sudah dimiliki
+local function getOwnedPets()
+    local args = {
+        [1] = game:GetService("Players").LocalPlayer
+    }
+    return game:GetService("ReplicatedStorage").Packages.Knit.Services.PetService.RF.getOwned:InvokeServer(unpack(args))
+end
+
+-- Fungsi untuk auto hatch egg sampai semua pet di index didapatkan
+local function autoIndex()
+    local indexPath = game:GetService("ReplicatedStorage").Data.WorldEggIndexes
+    local allEggs = indexPath:GetChildren()
+    
+    while getgenv().AutoIndex do
+        for _, egg in pairs(allEggs) do
+            if not getgenv().AutoIndex then break end
+            
+            local ownedPets = getOwnedPets()
+            local missingPets = false
+            
+            for _, pet in pairs(egg:GetChildren()) do
+                if not ownedPets[pet.Name] then
+                    missingPets = true
+                    break
+                end
+            end
+            
+            while missingPets and getgenv().AutoIndex do
+                local args = {
+                    [1] = egg.Name,
+                    [2] = {},
+                    [4] = false
+                }
+                game:GetService("ReplicatedStorage").Packages.Knit.Services.EggService.RF.purchaseEgg:InvokeServer(unpack(args))
+                wait(5)  -- Jeda untuk mencegah lag
+                checkAndAddToIndex()
+                
+                ownedPets = getOwnedPets()
+                missingPets = false
+                
+                for _, pet in pairs(egg:GetChildren()) do
+                    if not ownedPets[pet.Name] then
+                        missingPets = true
+                        break
+                    end
+                end
+            end
+        end
+        wait(10)  -- Jeda antara loop untuk mengurangi beban
+    end
+end
+
+-- Fungsi untuk menghapus pet yang sudah dimiliki
+local function deleteOwnedPets()
+    while getgenv().AutoDeleteOwnedPets do
+        local ownedPets = getOwnedPets()
+        
+        for _, pet in pairs(ownedPets) do
+            if pet.owned then
+                local deleteArgs = {
+                    [1] = pet.uuid
+                }
+                game:GetService("ReplicatedStorage").Packages.Knit.Services.PetService.RF.delete:InvokeServer(unpack(deleteArgs))
+                wait(0.5)  -- Jeda lebih lama untuk mencegah lag
+            end
+        end
+        wait(10)  -- Jeda antara loop untuk mengurangi beban
+    end
+end
+
+-- Tambahkan section khusus untuk Index di tab Other
+local IndexSection = OtherTab:CreateSection("Index")
+
+-- Tambahkan tombol Open Index ke section Index
+local function createOpenIndexButton()
+    OtherTab:CreateButton({
+        Name = "Open Index",
+        SectionParent = IndexSection,
+        Callback = function()
+            toggleIndex()
+        end
+    })
+end
+
+createOpenIndexButton()
+
+-- Tambahkan toggle untuk Auto Index
+local AutoIndexToggle = OtherTab:CreateToggle({
+    Name = "Auto Index",
+    SectionParent = IndexSection,
+    CurrentValue = false,
+    Callback = function(Value)
+        getgenv().AutoIndex = Value
+        if Value then
+            spawn(autoIndex)
+        end
+    end
+})
+
+-- Tambahkan toggle untuk Automatically delete pets that you already own
+local AutoDeleteOwnedPetsToggle = OtherTab:CreateToggle({
+    Name = "Automatically delete pets that you already own",
+    SectionParent = IndexSection,
+    CurrentValue = false,
+    Callback = function(Value)
+        getgenv().AutoDeleteOwnedPets = Value
+        if Value then
+            spawn(deleteOwnedPets)
+        end
+    end
+})
+
+
 local RebirthSection = OtherTab:CreateSection("Rebirth",false)
 -- Rebirth function
 local isRebirthActive = false
