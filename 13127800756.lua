@@ -186,147 +186,147 @@ local AutoTapNPCToggle = TabMain:CreateToggle({
     end
 })
 
-local TrainMain = TabMain:CreateSection("Train",false)
--- Fungsi untuk mendapatkan daftar nama Zone
-local function getZoneList()
-    local zones = {}
-    local zoneParent = workspace:WaitForChild("Zones")
-    for _, zone in pairs(zoneParent:GetChildren()) do
-        table.insert(zones, zone.Name)
-    end
-    
-    -- Mengurutkan daftar zona
-    table.sort(zones, function(a, b)
-        if tonumber(a) and tonumber(b) then
-            return tonumber(a) < tonumber(b)
-        elseif tonumber(a) then
-            return true
-        elseif tonumber(b) then
-            return false
-        else
-            return a < b
-        end
-    end)
-
-    return zones
-end
-
--- Inisialisasi dropdown dengan daftar Zone
-local zoneDropdown
-local function createZoneDropdown()
-    zoneDropdown = TabMain:CreateDropdown({
-        Name = "Select Zone To Train",
-        SectionParent = TrainMain,
-        Options = getZoneList(),
-        CurrentOption = "None",
-        Callback = function(option)
-            getgenv().selectedTrainingZone = option
-        end
-    })
-end
-
-createZoneDropdown()
-
--- Inisialisasi dropdown dengan daftar opsi latihan
-local whatToTrainDropdown
-local function createWhatToTrainDropdown()
-    whatToTrainDropdown = TabMain:CreateDropdown({
-        Name = "Select What To Train",
-        SectionParent = TrainMain,
-        Options = {"Dumbells", "Hands", "Knuckles"},
-        CurrentOption = "Dumbells",
-        Callback = function(option)
-            getgenv().selectedTraining = option
-        end
-    })
-end
-
-createWhatToTrainDropdown()
-
--- Inisialisasi variabel global untuk auto training
-getgenv().AutoTrain = false
-getgenv().selectedTrainingZone = "None"
-getgenv().selectedTraining = "Dumbells"
-local initialAutoTrainExecuted = false
-local unequipExecuted = false
-
--- Peta berat berdasarkan zona
-local weightMapping = {
-    ["1"] = "250Kg",
-    ["2"] = "4000Kg",
-    ["3"] = "45000Kg",
-    ["4"] = "300000Kg",
-    ["5"] = "...",
-    ["6"] = "3T",
-    ["7"] = "150T",
-    ["8"] = "1QD",
-    ["9"] = "50QD",
-    ["Garden"] = "...",
-    ["JazzClub"] = "...",
-    ["Rewind"] = "Rewind12",
-}
-
--- Fungsi untuk eksekusi satu kali sebelum auto training
-local function executeInitialFunction()
-    local weight = weightMapping[getgenv().selectedTrainingZone]
-    if weight then
-        local args = {
-            [1] = getgenv().selectedTrainingZone,
-            [2] = getgenv().selectedTraining == "Hands" and "Grips" or getgenv().selectedTraining,
-            [3] = weight
-        }
-        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RE"):WaitForChild("onEquipRequest"):FireServer(unpack(args))
-    end
-end
-
--- Fungsi untuk unequip satu kali
-local function executeUnequipFunction()
-    local args = {}
-    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RE"):WaitForChild("onUnequipRequest"):FireServer(unpack(args))
-end
-
--- Fungsi untuk auto training
-local function autoTrain()
-    while getgenv().AutoTrain do
-        if not unequipExecuted then
-            executeUnequipFunction()
-            unequipExecuted = true
-        end
-
-        if not initialAutoTrainExecuted then
-            executeInitialFunction()
-            initialAutoTrainExecuted = true
-        end
-
-        local zonePath = workspace:WaitForChild("Zones"):FindFirstChild(getgenv().selectedTrainingZone)
-        if zonePath then
-            local args = {
-                [1] = {
-                    ["Value"] = getgenv().selectedTraining,
-                    ["AutoType"] = "AutoTrain"
-                }
-            }
-            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("IdleTeleportService"):WaitForChild("RF"):WaitForChild("SetLatestTeleportData"):InvokeServer(unpack(args))
-        end
-        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RE"):WaitForChild("onClick"):FireServer()
-        wait(0.00000000000001) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
-    end
-end
-
--- Menambahkan toggle untuk auto training ke UI
-local AutoTrainToggle = TabMain:CreateToggle({
-    Name = "Start Training",
-    SectionParent = TrainMain,
-    CurrentValue = false,
-    Callback = function(Value)
-        getgenv().AutoTrain = Value
-        if Value then
-            initialAutoTrainExecuted = false
-            unequipExecuted = false
-            autoTrain()
-        end
-    end
-})
+---local TrainMain = TabMain:CreateSection("Train",false)
+----- Fungsi untuk mendapatkan daftar nama Zone
+---local function getZoneList()
+---    local zones = {}
+---    local zoneParent = workspace:WaitForChild("Zones")
+---    for _, zone in pairs(zoneParent:GetChildren()) do
+---        table.insert(zones, zone.Name)
+---    end
+---    
+---    -- Mengurutkan daftar zona
+---    table.sort(zones, function(a, b)
+---        if tonumber(a) and tonumber(b) then
+---            return tonumber(a) < tonumber(b)
+---        elseif tonumber(a) then
+---            return true
+---        elseif tonumber(b) then
+---            return false
+---        else
+---            return a < b
+---        end
+---    end)
+---
+---    return zones
+---end
+---
+----- Inisialisasi dropdown dengan daftar Zone
+---local zoneDropdown
+---local function createZoneDropdown()
+---    zoneDropdown = TabMain:CreateDropdown({
+---        Name = "Select Zone To Train",
+---        SectionParent = TrainMain,
+---        Options = getZoneList(),
+---        CurrentOption = "None",
+---        Callback = function(option)
+---            getgenv().selectedTrainingZone = option
+---        end
+---    })
+---end
+---
+---createZoneDropdown()
+---
+----- Inisialisasi dropdown dengan daftar opsi latihan
+---local whatToTrainDropdown
+---local function createWhatToTrainDropdown()
+---    whatToTrainDropdown = TabMain:CreateDropdown({
+---        Name = "Select What To Train",
+---        SectionParent = TrainMain,
+---        Options = {"Dumbells", "Hands", "Knuckles"},
+---        CurrentOption = "Dumbells",
+---        Callback = function(option)
+---            getgenv().selectedTraining = option
+---        end
+---    })
+---end
+---
+---createWhatToTrainDropdown()
+---
+----- Inisialisasi variabel global untuk auto training
+---getgenv().AutoTrain = false
+---getgenv().selectedTrainingZone = "None"
+---getgenv().selectedTraining = "Dumbells"
+---local initialAutoTrainExecuted = false
+---local unequipExecuted = false
+---
+----- Peta berat berdasarkan zona
+---local weightMapping = {
+---    ["1"] = "250Kg",
+---    ["2"] = "4000Kg",
+---    ["3"] = "45000Kg",
+---    ["4"] = "300000Kg",
+---    ["5"] = "...",
+---    ["6"] = "3T",
+---    ["7"] = "150T",
+---    ["8"] = "1QD",
+---    ["9"] = "50QD",
+---    ["Garden"] = "...",
+---    ["JazzClub"] = "...",
+---    ["Rewind"] = "Rewind12",
+---}
+---
+----- Fungsi untuk eksekusi satu kali sebelum auto training
+---local function executeInitialFunction()
+---    local weight = weightMapping[getgenv().selectedTrainingZone]
+---    if weight then
+---        local args = {
+---            [1] = getgenv().selectedTrainingZone,
+---            [2] = getgenv().selectedTraining == "Hands" and "Grips" or getgenv().selectedTraining,
+---            [3] = weight
+---        }
+---        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RE"):WaitForChild("onEquipRequest"):FireServer(unpack(args))
+---    end
+---end
+---
+----- Fungsi untuk unequip satu kali
+---local function executeUnequipFunction()
+---    local args = {}
+---    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RE"):WaitForChild("onUnequipRequest"):FireServer(unpack(args))
+---end
+---
+----- Fungsi untuk auto training
+---local function autoTrain()
+---    while getgenv().AutoTrain do
+---        if not unequipExecuted then
+---            executeUnequipFunction()
+---            unequipExecuted = true
+---        end
+---
+---        if not initialAutoTrainExecuted then
+---            executeInitialFunction()
+---            initialAutoTrainExecuted = true
+---        end
+---
+---        local zonePath = workspace:WaitForChild("Zones"):FindFirstChild(getgenv().selectedTrainingZone)
+---        if zonePath then
+---            local args = {
+---                [1] = {
+---                    ["Value"] = getgenv().selectedTraining,
+---                    ["AutoType"] = "AutoTrain"
+---                }
+---            }
+---            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("IdleTeleportService"):WaitForChild("RF"):WaitForChild("SetLatestTeleportData"):InvokeServer(unpack(args))
+---        end
+---        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RE"):WaitForChild("onClick"):FireServer()
+---        wait(0.00000000000001) -- Interval waktu antara interaksi (dalam detik, sesuaikan dengan kebutuhan)
+---    end
+---end
+---
+----- Menambahkan toggle untuk auto training ke UI
+---local AutoTrainToggle = TabMain:CreateToggle({
+---    Name = "Start Training",
+---    SectionParent = TrainMain,
+---    CurrentValue = false,
+---    Callback = function(Value)
+---        getgenv().AutoTrain = Value
+---        if Value then
+---            initialAutoTrainExecuted = false
+---            unequipExecuted = false
+---            autoTrain()
+---        end
+---    end
+---})
 
 --- Tab Event 
 local EventTab = Window:CreateTab("Event", nil) -- Title, Image
