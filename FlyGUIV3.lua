@@ -1,1 +1,474 @@
-do local a=[[77fuscator 0.6.0 discord.gg/7ZQ244HpVp]];return(function(a)local b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,ba,bb,bc,bd,be,bf,bg,bh,bi,bj,bk,bl,bm,bn=0 while true do if b<=6 then if b<=2 then if b<=0 then c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,ba,bb,bc,bd,be,bf,bg,bh,bi=nil else if b==1 then bj=4 else while true do if bj<=1 then if bj<1 then bj=2 u=function(bo)local bp,bq,br,bs,bt,bu,bv local bw=3 while true do if bw>=2 then if bw>=3 then if bw<=3 then bw=1 br,bq,bt="","",{}else bw=2 for bx=0,bv-1 do bu[bx]=n(bx)end end else break end else if bw>0 then bw=0 bv=256 else bw=4 bu={}end end end local bw=1 while true do if bw<=1 then if bw==0 then bw=3 bt[1]=br;else bw=2 bs=1 end else if bw>=3 then if bw==4 then bw=0 br=n(bp())else break end else bw=4 bp=function()local bw,bx local by=2 while true do if by>=2 then if by<=2 then by=1 bw=bc(o(bo,bs,bs),36)else if by<=3 then break else by=3 bs=bs+bw;end end else if by>=1 then by=0 bs=bs+1;else by=4 bx=bc(o(bo,bs,bs+bw-1),36)end end end return bx end end end end local bw=2 while true do if bw>=1 then if bw<=1 then bw=0 return w(bt)else bw=1 while bs<#bo do local bo local bs=4 while true do if bs>=2 then if bs>=3 then if bs>3 then bs=0 bo=bp()else bs=2 bt[#bt+1],br,bv=bq,bq,bv+1 end else break end else if bs==1 then bs=3 bu[bv]=br..o(bq,1,1)else bs=1 if bu[bo]then bq=bu[bo]else bq=br..o(br,1,1)end;end end end end;end else break end end end else bj=3 m=function(bo,bp)local bq local br=1 while true do if br>=2 then if br~=2 then br=0 return bq;else br=3 for bs=0,31 do local bt local bu=2 while true do if bu<=1 then if bu<=0 then bu=4 bp=bd(bp/2);else bu=3 if bt~=bd(bt)then bq=bq+2^bs;end;end else if bu<=2 then bu=1 bt=bo/2+bp/2 else if bu>3 then break else bu=0 bo=bd(bo/2);end end end end end end else if br~=0 then br=2 bq=0 else break end end end end end else if bj>=3 then if bj<4 then break else bj=0 y,n,o,w,bf,l,x,s,z,bc,c,bd=string.byte,string.char,string.sub,table.concat,math.ldexp,getfenv or function()return _ENV end,setmetatable,select,unpack,tonumber,next,math.floor end else bj=1 bi=u(a)end end end end end else if true then if b<=4 then if 3<b then while true do if bk>=2 then if bk<=2 then bk=m(m((933172)-628215,496373),210379)t=function(a,c,u)if u then local u=(a/2^(c-1))%2^((u-1)-(c-1)+1);return u-u%1;else local c=2^(c-1);return(a%(c+c)>=c)and 1 or 0;end;end else if bk>3 then break else bk=((m(386229,753392))-318591)-638406 p=1 end end else if bk>0 then bk=((m((((2387046)-421040)-394880)-566074,330836))-362143)-316165 d,k=nil else bk=((m(393377,290307))-71372)-88021 f=m((((3027670)-485546)-890313)-996421,655448)end end end else if true then bk=2 end end else if b~=6 then bl=3 else while true do if bl>=2 then if bl>=3 then if bl<=3 then bl=m(m(((((3116817)-79177)-475340)-831504)-857339,485365),668676)d=function(a,c)if c<0 then return k(a,-c);end;return bd(a%2^32/2^c)end;else bl=m(m(((m(m(2018867,342712),592523))-547014)-338036,531161),878110)bb=function(a,c)return((a+c)-m(a,c))/2 end end else break end else if bl~=0 then bl=(m((((m(2566905,238647))-927289)-61693)-709991,103502))-734845 e=2^32-1 else bl=m(m((m(((649056)-135802)-31847,608183))-70309,586691),392932)k=function(a,c)if c<0 then return d(a,-c);end;return(a*2^c)%2^32;end;end end end end end end end else if b<=9 then if b<=7 then bj=3 else if true then if 9~=b then while true do if bj>=2 then if bj<=2 then bj=(m((m(m(m(1847520,800222),430984),108456))-976409,25643))-536362 bg=function(a)return e-a;end else if bj<4 then bj=((m(m(m(876296,778212),633861),485820))-422680)-119355 v=function(a,c)return e-bb(e-a,e-c)end else bj=m((((1870985)-927627)-529475)-41691,372193)be=function(a,c)return bd(a/c);end end end else if bj==1 then bj=((((((1685793)-12075)-320114)-161329)-454673)-247563)-490039 ba=function()local a,c,e,u local x=0 while true do if x>=2 then if x>=3 then if x~=4 then break else x=2 u=m(u,f)end else x=3 c=m(c,f)end else if x<=0 then x=1 e,u,c,a=y(bi,p,p+3)else x=4 e=m(e,f)end end end local x=3 while true do if x<=1 then if x<=0 then x=2 p=p+4;else break end else if x~=2 then x=0 a=m(a,f)else x=1 return(a*16777216)+(c*65536)+(u*256)+e;end end end end else break end end end else if true then bm=2 end end end end else if true then if b<=11 then if 11~=b then while true do if bm>=2 then if bm<=2 then bm=m(m((m(1357555,897449))-631007,840314),242693)r=function()local a local c=3 while true do if c>=2 then if c==2 then c=0 return a;else c=1 a=m(y(bi,p,p),f)end else if c>0 then c=2 p=p+1;else break end end end end else if bm==3 then break else bm=(m((((2695986)-764439)-848620)-945572,335325))-460117 g=function()local a,c,e,u,x,bc local bd=1 while true do if bd<=1 then if bd~=1 then bd=4 a=1 else bd=2 bc,c=ba(),ba()end else if bd>=3 then if bd~=3 then bd=3 x=(t(c,1,20)*(2^32))+bc else break end else bd=0 if bc==0 and c==0 then return 0;end;end end end local bc=1 while true do if bc<=1 then if bc<1 then bc=3 if(u==0)then if(x==0)then return e*0;else u=1;a=0;end;elseif(u==2047)then if(x==0)then return e*(1/0);else return e*(0/0);end;end;else bc=2 u=t(c,21,31)end else if bc<=2 then bc=0 e=((-1)^t(c,32))else if bc==4 then break else bc=4 return e*2^(u-1023)*(a+(x/(2^52)))end end end end end end end else if bm>0 then bm=(m(((1572542)-879238)-435087,331210))-458083 h=ba else bm=m((m(188558,861028))-771752,261441)q=function(a)local c,e local u=0 while true do if u>=2 then if u>=3 then if u>=4 then u=1 e=o(bi,p,p+a-1);else u=2 a=h();end else u=4 if(a==0)then return'';end;end else if u<=0 then u=3 e=nil else break end end end local h=3 while true do if h>=2 then if h>=3 then if h~=3 then h=0 c={}else h=4 p=p+a;end else break end else if h>0 then h=2 return w(c);else h=1 for a=1,#e do c[a]=n(m(y(o(e,a,a)),f))end end end end end end end end else bn=0 end else if true then if b~=13 then while true do if bn>=2 then if bn==3 then break else bn=((m(m(((2159057)-439613)-592973,428293),292523))-644999)-653409 i=function(...)return{...},s('#',...)end end else if bn<1 then bn=m(m(((1268652)-425523)-652846,982069),793468)j=ba else bn=m(((m((1625223)-410462,777320))-438134)-254517,967573)bh=function()local a,c,e local f=0 while true do if f>=2 then if f<=2 then f=1 c={}else if f==4 then f=2 a=ba()else break end end else if f==0 then f=4 e={}else f=3 for f=1,a do local a=r();if(a==1)then c[f]=(r()~=0);elseif(a==3)then c[f]=g();elseif(a==2)then c[f]=q()end;end end end end local a=3 while true do if a>=2 then if a<=2 then a=4 for f=1,ba()do e[30][f-1]=bh();end else if a==4 then a=0 e[13]={};else a=1 e[223]=c;end end else if a>=1 then a=2 e[30]={};else break end end end local a=1 while true do if a>=2 then if a>=3 then a=0 return e;else a=3 e[36]=r();end else if a~=0 then a=2 for a=1,ba()do local c,f,g,h,j local n=4 while true do if n<=1 then if n>=1 then n=2 c=t(j,1,2)else break end else if n>=3 then if n~=3 then n=3 j=m(ba(),162)else n=1 f=m(ba(),75)end else n=0 g=t(f,1,11)end end end local n=1 while true do if n<=1 then if n<=0 then n=3 if(c==0)then h[151]=t(j,12,20);h[246]=t(j,21,29);elseif(c==1)then h[151]=t(f,12,33);elseif(c==2)then h[151]=t(f,12,32)-1048575;elseif(c==3)then h[151]=t(f,12,32)-1048575;h[246]=t(j,21,29);end;else n=0 h={[7]=g,[159]=t(j,3,11),nil,nil,[97]=f}end else if n<=2 then break else n=2 e[13][a]=h;end end end end else break end end end end end end end else break end end end end end end b=b+1 end local a={};local function a(b,c)local e=b[36];local f=b[223];local g=b[13];local b=b[30];return function(...)local h,i,j,l,n,o,p,q,r,s,t=i,1,{...},l(),{},s('#',...)-1,{},-1,{};local u=o-e+1;for w=0,o,1 do if w>=e then r[w-e]=j[w+1];else p[w]=j[w+1];end;end;while true do s=g[i];t=s[7];if t<=142 then if t>=71 then if t<=106 then if t<=88 then if t<=79 then if t<=74 then if t>=73 then if t~=74 then local e=s[246]p[e]=p[e](z(p,e+1,s[159]))else if(f[s[159]]<p[s[246]])then i=i+1;else i=s[151];end;end else if t<=71 then p[s[246]]=p[s[159]][f[s[151]]];else local e=s[159];local j=p[e]for o=e+1,s[151]do j=j..p[o];end;p[s[246]]=j;end end else if t<=76 then if t~=75 then local e=s[246]p[e]=p[e]()else p[s[246]]=p[s[159]][f[s[151]]];end else if t>=78 then if t<79 then g[i]={[7]=158,[246]=s[246],[159]=s[159],[151]=s[151]}i=i-1;else g[i]={[7]=275,[246]=s[246],[159]=s[159],[151]=s[151]}i=i-1;end else p[s[246]]=p[s[159]][f[s[151]]];end end end else if t<=83 then if t>=82 then if t~=82 then p[s[246]]=p[s[159]][f[s[151]]];else local e=s[246]p[e](p[e+1])end else if t>=81 then p[s[246]]=p[s[159]][f[s[151]]];else if(p[s[159]]<p[s[246]])then i=i+1;else i=s[151];end;end end else if t>=86 then if t<=86 then p[s[246]]=p[s[159]][f[s[151]]];else if t>=88 then p[s[159]]=(not p[s[151]]);else local e=s[159];q=e+u-1;for j=e,q do local e=r[j-e];p[j]=e;end;end end else if t<=84 then local e=b[s[151]];local j={};for o=1,s[246],1 do i=i+1;local u=g[i];if u[7]==66 then j[o-1]={p,u[151]};else j[o-1]=c[u[151]]end;n[(#n)+1]=j;end;p[s[159]]=a(e,j);else p[s[159]]=(s[151]~=0);i=i+1;end end end end else if t<=97 then if t>=93 then if t<=94 then if t<=93 then p[s[246]][f[s[159]]]=p[s[151]];else local e=s[246]p[e](z(p,e+1,s[151]))end else if t>=96 then if t~=96 then p[s[246]][f[s[159]]]=p[s[151]];else p[s[246]][f[s[159]]]=p[s[151]];end else p[s[246]][f[s[159]]]=p[s[151]];end end else if t>=91 then if t<92 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[159]][f[s[151]]]=f[s[246]];end else if t<=89 then g[i]={[7]=109,[246]=s[246],[159]=s[159],[151]=s[151]}i=i-1;else p[s[246]]=p[s[159]][p[s[151]]];end end end else if t<=101 then if t>=100 then if t<101 then p[s[159]]=p[s[151]]+p[s[246]];else p[s[246]]=#p[s[159]];end else if t~=99 then if(p[s[159]]~=p[s[246]])then i=i+1;else i=s[151];end;else g[i]={[7]=259,[246]=s[246],[159]=s[159]+1,[151]=s[151]+1}i=i-1;end end else if t>=104 then if t<=104 then p[s[159]]=p[s[151]]*p[s[246]];else if t<106 then local e=s[159];local j=p[e];local o=s[151];for u=1,o do j[u]=p[e+u]end;else p[s[246]][f[s[159]]]=p[s[151]];end end else if t<=102 then p[s[246]][f[s[159]]]=p[s[151]];else local e=s[246];local j=p[s[159]];p[e+1]=j;p[e]=j[f[s[151]]];end end end end end else if t<=124 then if t<=115 then if t>=111 then if t<=112 then if t~=111 then p[s[246]]=p[s[159]][f[s[151]]];else local e=s[159];local j=p[e];local o=q-e;for u=1,o do j[u]=p[e+u]end;end else if t<=113 then local e=s[159];do return z(p,e,q)end;else if t>=115 then p[s[246]]=p[s[159]][f[s[151]]];else local e=s[159];local j=s[151];for o=e,j do p[o]=r[o-e];end;end end end else if t<=108 then if t==108 then local e=s[246]p[e]=p[e](p[e+1])else local e=s[246]p[e](z(p,e+1,q))end else if t>109 then p[s[159]][p[s[151]]]=p[s[246]];else do return end;end end end else if t>=120 then if t<=121 then if t~=120 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[246]]=p[s[159]][f[s[151]]];end else if t<=122 then p[s[246]]=p[s[159]][f[s[151]]];else if t~=124 then p[s[246]][f[s[159]]]=p[s[151]];else p[s[246]]=p[s[159]][f[s[151]]];end end end else if t>=118 then if t<119 then p[s[246]]=p[s[159]][f[s[151]]];else i=s[151];end else if t==116 then do return p[s[246]]end else g[i]={[7]=279,[246]=s[246],[159]=s[159],[151]=s[151]}i=i-1;end end end end else if t<=133 then if t>=129 then if t>=131 then if t>=132 then if t==132 then local e=s[246];local j=p[s[159]];p[e+1]=j;p[e]=j[f[s[151]]];else local e=s[159];do return p[e](z(p,e+1,q))end;end else local e=s[246];local j=p[s[159]];p[e+1]=j;p[e]=j[f[s[151]]];end else if t>129 then g[i]={[7]=87,[246]=s[246],[159]=s[159],[151]=s[151]}i=i-1;else l[f[s[151]]]=p[s[159]];end end else if t<=126 then if t==126 then g[i]={[246]=s[246],[159]=s[159]+1,[151]=s[151]+1,[7]=259}i=i-1;else local e=s[246]p[e]=p[e](z(p,e+1,s[151]))end else if t>=128 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[246]][f[s[159]]]=p[s[151]];end end end else if t>=138 then if t<=139 then if t==138 then do return end;else local e=s[159];local j={};for o=1,#n do local n=n[o];for o=0,#n do local n=n[o];local o=n[1];local r=n[2];if o==p and r>=e then j[r]=o[r];n[1]=j;end;end;end;end else if t<=140 then g[i]={[7]=267,[246]=s[246]+1,[159]=s[159]+1,[151]=s[151]+2}i=i-1;else if t==141 then local e=s[246]p[e]=p[e](z(p,e+1,s[159]))else p[s[159]]=k(p[s[151]],p[s[246]]);end end end else if t<=135 then if t~=135 then local e=s[159]local j={p[e](z(p,e+1,q))};local n=0;for o=e,s[246]do n=n+1;p[o]=j[n];end else p[s[246]]=p[s[159]][f[s[151]]];end else if t>136 then local e=s[246]p[e](p[e+1])else g[i]={[246]=s[246],[159]=s[159]+1,[151]=s[151]+1,[7]=26}i=i-1;end end end end end end else if t>=35 then if t>=53 then if t>=62 then if t>=66 then if t>=68 then if t>=69 then if t~=70 then local e=c[s[151]];p[s[159]]=e[1][e[2]];else p[s[246]]=p[s[159]][f[s[151]]];end else local e=s[159];local j=(s[246]-1)*50;local n=p[e];local o=s[151];for r=1,o do n[j+r]=p[e+r]end;end else if t==67 then local e=p[s[246]];if not e then i=i+1;else p[s[159]]=e;i=s[151];end;else p[s[159]]=p[s[151]];end end else if t>=64 then if t<=64 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[246]]=p[s[151]][f[s[159]]];end else if t>=63 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[246]]=p[s[159]][f[s[151]]];end end end else if t>=57 then if t<=58 then if t==57 then p[s[246]][f[s[159]]]=p[s[151]];else p[s[246]]=p[s[159]][f[s[151]]];end else if t<=59 then g[i]={[7]=166,[246]=s[246]+1,[159]=s[159],[151]=s[151]+1}i=i-1;else if t>60 then p[s[246]]=p[s[159]][p[s[151]]];else p[s[246]]=p[s[159]][f[s[151]]];end end end else if t<=54 then if t<=53 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[246]]=p[s[159]][f[s[151]]];end else if t~=56 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[246]][f[s[159]]]=p[s[151]];end end end end else if t<=43 then if t<=38 then if t<=36 then if t~=36 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[246]]=p[s[151]][f[s[159]]];end else if t~=37 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[159]]=bg(p[s[151]]);end end else if t>=41 then if t<=41 then p[s[246]]=p[s[159]][f[s[151]]];else if t==42 then g[i]={[7]=26,[246]=s[246],[159]=s[159]+1,[151]=s[151]+1}i=i-1;else local e=s[246];local j=p[s[159]];p[e+1]=j;p[e]=j[f[s[151]]];end end else if t~=39 then p[s[246]]=p[s[159]][f[s[151]]];else g[i]={[7]=267,[246]=s[246]+1,[159]=s[159]+1,[151]=s[151]+2}i=i-1;end end end else if t>=48 then if t>=50 then if t>=51 then if t~=51 then p[s[246]]=p[s[159]][f[s[151]]];else g[i]={[246]=s[246]+1,[159]=s[159],[151]=s[151]+2,[7]=267}i=i-1;end else local e=s[246]p[e](z(p,e+1,s[151]))end else if t==48 then local e=s[246];local j=p[s[151]];p[e+1]=j;p[e]=j[f[s[159]]];else local e=s[246]p[e]=p[e](p[e+1])end end else if t<=45 then if t==44 then local e=s[246];local j=p[s[159]];p[e+1]=j;p[e]=j[f[s[151]]];else local e=s[246];local j=p[s[159]];p[e+1]=j;p[e]=j[f[s[151]]];end else if t>46 then g[i]={[246]=s[246],[159]=s[159]+3,[151]=s[151]+1,[7]=1}i=i-1;else p[s[246]][f[s[159]]]=p[s[151]];end end end end end else if t<=16 then if t<=7 then if t<=3 then if t<=1 then if t==0 then local e=s[246]local j,n=h(p[e](z(p,e+1,s[159])))q=n+e-1 local n=0;for o=e,q do n=n+1;p[o]=j[n];end;else do return p[s[159]]end end else if t~=3 then p[s[246]]=p[s[151]][f[s[159]]];else p[s[159]]=a(b[s[151]],nil);end end else if t>=6 then if t~=7 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[246]][f[s[159]]]=p[s[151]];end else if t<5 then local b=s[159];local e=(s[246]-1)*50;local j=p[b];local n=q-b;for o=1,n do j[e+o]=p[b+o]end;else local b=s[246];local e=p[s[159]];p[b+1]=e;p[b]=e[f[s[151]]];end end end else if t<=11 then if t<=9 then if t==8 then if(f[s[159]]<=p[s[246]])then i=i+1;else i=s[151];end;else p[s[159]]=p[s[151]]/p[s[246]];end else if t==10 then g[i]={[7]=109,[246]=s[246],[159]=s[159],[151]=s[151]}i=i-1;else p[s[159]]=p[s[151]][f[s[246]]];end end else if t<=13 then if t>12 then local b=s[246]p[b](z(p,b+1,s[159]))else p[s[246]]={z({},1,s[159])};end else if t<=14 then p[s[246]][f[s[159]]]=p[s[151]];else if t<16 then local b=s[159]local e={p[b](p[b+1])};local j=0;for n=b,s[246]do j=j+1;p[n]=e[j];end else p[s[246]]=p[s[159]][f[s[151]]];end end end end end else if t>=26 then if t>=30 then if t>=32 then if t>=33 then if t>33 then p[s[159]]=p[s[151]]*f[s[246]];else g[i]={[7]=281,[246]=s[246],[159]=s[159]+1,[151]=s[151]+3}i=i-1;end else local b=s[159]p[b](p[b+1])end else if t>=31 then p[s[159]]=bb(p[s[151]],p[s[246]]);else p[s[246]][f[s[159]]]=p[s[151]];end end else if t<=27 then if t==26 then local b=s[159]local e,j=h(p[b](z(p,b+1,s[151])))q=j+b-1 local j=0;for n=b,q do j=j+1;p[n]=e[j];end;else p[s[159]]=p[s[151]]/f[s[246]];end else if t==29 then p[s[246]]=-p[s[159]];else p[s[246]][f[s[159]]]=f[s[151]];end end end else if t<=20 then if t>=19 then if t==20 then p[s[246]][f[s[159]]]=f[s[151]];else p[s[246]]={};end else if t<=17 then p[s[246]][f[s[159]]]=f[s[151]];else p[s[246]][f[s[159]]]=p[s[151]];end end else if t<=22 then if t~=21 then p[s[246]][f[s[159]]]=p[s[151]];else local b=s[246];local e=p[s[159]];p[b+1]=e;p[b]=e[f[s[151]]];end else if t<=23 then p[s[159]]={};else if t<25 then local b=s[246];local e=p[s[159]];p[b+1]=e;p[b]=e[f[s[151]]];else p[s[246]]=p[s[159]][p[s[151]]];end end end end end end end end else if t<=213 then if t<=177 then if t<=159 then if t>=151 then if t>=155 then if t<=156 then if t<=155 then p[s[159]]=f[s[151]];else g[i]={[246]=s[246]+1,[159]=s[159],[151]=s[151]+1,[7]=267}i=i-1;end else if t>=158 then if t~=158 then p[s[246]][f[s[159]]]=p[s[151]];else local b=s[159]p[b](z(p,b+1,q))end else g[i]={[7]=267,[246]=s[246]+1,[159]=s[159],[151]=s[151]+1}i=i-1;end end else if t>=153 then if t~=154 then p[s[246]][f[s[159]]]=p[s[151]];else p[s[159]]=d(p[s[151]],p[s[246]]);end else if t<152 then p[s[159]]=(s[151]~=0);else local b=s[246];local d=p[s[159]];p[b+1]=d;p[b]=d[f[s[151]]];end end end else if t<=146 then if t>=145 then if t>145 then local b=s[246]p[b](z(p,b+1,s[159]))else p[s[246]]=p[s[159]][f[s[151]]];end else if t~=144 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[159]]=p[s[151]]-p[s[246]];end end else if t>=149 then if t~=149 then p[s[159]]=be(p[s[151]],p[s[246]]);else g[i]={[7]=100,[246]=s[246]+1,[159]=s[159]+2,[151]=s[151]+2}i=i-1;end else if t<=147 then local b=s[159];local d=p[s[151]];p[b+1]=d;p[b]=d[f[s[246]]];else local b=s[246]p[b](z(p,b+1,s[159]))end end end end else if t<=168 then if t<=163 then if t<=161 then if t>160 then p[s[246]]=p[s[151]]+p[s[159]];else p[s[246]][f[s[159]]]=f[s[151]];end else if t>162 then local b=s[159];p[b]=(p[b]or 0)-(p[b+2]or 0);i=s[151];else p[s[246]]=p[s[159]][f[s[151]]];end end else if t>=166 then if t>=167 then if t~=168 then p[s[246]]=p[s[159]][p[s[151]]];else p[s[246]]=p[s[159]]+p[s[151]];end else local b=s[159]p[b]=p[b](p[b+1])end else if t==165 then local b=s[246]p[b](z(p,b+1,q))else local b=s[159]local d={p[b](z(p,b+1,s[151]))};local e=0;for j=b,s[246]do e=e+1;p[j]=d[e];end end end end else if t<=172 then if t>=171 then if t<172 then local b=s[159];local d=s[246];local e=b+2;local j={p[b](p[b+1],p[e])};for n=1,d do p[e+n]=j[n];end;local b=p[b+3];if b then p[e]=b else i=i+1;end;else p[s[159]]=m(p[s[151]],p[s[246]]);end else if t<=169 then p[s[246]]={z({},1,s[159])};else p[s[246]]=p[s[159]][f[s[151]]];end end else if t>=175 then if t>=176 then if t<=176 then local b=s[246]p[b]=p[b](z(p,b+1,s[159]))else do return end;end else p[s[246]]();end else if t~=174 then if(p[s[159]]<=p[s[246]])then i=i+1;else i=s[151];end;else p[s[246]]=p[s[159]][f[s[151]]];end end end end end else if t>=196 then if t>=205 then if t<=208 then if t>=207 then if t==208 then local b=s[159];do return p[b](z(p,b+1,s[151]))end;else p[s[246]]=p[s[159]][f[s[151]]];end else if t>=206 then g[i]={[7]=219,[246]=s[246]+1,[159]=s[159],[151]=s[151]}i=i-1;else local b=s[159];local d=p[b+2];local e=p[b]+d;p[b]=e;if(d>0)then if(e<=p[b+1])then i=s[151];p[b+3]=e;end elseif(e>=p[b+1])then i=s[151];p[b+3]=e;end end end else if t>=211 then if t>=212 then if t~=213 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[159]]=-p[s[151]];end else do return end;end else if t<=209 then p[s[246]]=p[s[151]][f[s[159]]];else p[s[246]]=p[s[159]][f[s[151]]];end end end else if t>=200 then if t<=201 then if t~=201 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[246]]=p[s[159]][f[s[151]]];end else if t>=203 then if t>203 then p[s[159]]=v(p[s[151]],p[s[246]]);else for b=s[246],s[159]do p[b]=nil;end;end else local b=s[159]local d,e=h(p[b](p[b+1]))q=e+b-1 local e=0;for j=b,q do e=e+1;p[j]=d[e];end;end end else if t<=197 then if t>=197 then p[s[159]]=p[s[151]]%f[s[246]];else p[s[246]][f[s[159]]]=f[s[151]];end else if t>=199 then if(p[s[159]]<=f[s[246]])then i=i+1;else i=s[151];end;else p[s[246]][f[s[151]]]=p[s[159]];end end end end else if t<=186 then if t<=181 then if t>=180 then if t~=180 then p[s[246]]=p[s[151]][f[s[159]]];else local b=s[246];local d=p[s[159]];p[b+1]=d;p[b]=d[f[s[151]]];end else if t<=178 then if(p[s[159]]==p[s[246]])then i=i+1;else i=s[151];end;else p[s[246]]=p[s[159]][f[s[151]]];end end else if t<=183 then if t>182 then local b=c[s[151]];b[1][b[2]]=p[s[159]];else p[s[246]]=p[s[159]][f[s[151]]];end else if t<=184 then p[s[246]][f[s[159]]]=p[s[151]];else if t~=186 then local b=s[246]p[b](z(p,b+1,s[159]))else do return end;end end end end else if t<=190 then if t>=189 then if t>189 then local b=s[246]local c={p[b](p[b+1])};local d=0;for e=b,s[151]do d=d+1;p[e]=c[d];end else p[s[246]]=p[s[159]][f[s[151]]];end else if t==187 then local b=s[246]local c,d=h(p[b](z(p,b+1,s[159])))q=d+b-1 local d=0;for e=b,q do d=d+1;p[e]=c[d];end;else if(p[s[159]]~=f[s[246]])then i=i+1;else i=s[151];end;end end else if t<=192 then if t==192 then local b=s[246]p[b](p[b+1])else local b=s[151];local c=p[b]for d=b+1,s[246]do c=c..p[d];end;p[s[159]]=c;end else if t<=193 then g[i]={[7]=279,[246]=s[246],[159]=s[159],[151]=s[151]}i=i-1;else if t<=194 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[246]]=p[s[159]][f[s[151]]];end end end end end end end else if t>=250 then if t>=268 then if t>=277 then if t<=280 then if t<=278 then if t~=277 then p[s[246]]=p[s[159]][f[s[151]]];else g[i]={[7]=109,[246]=s[246],[159]=s[159],[151]=s[151]}i=i-1;end else if t~=279 then p[s[246]]=p[s[159]][f[s[151]]];else for b=s[159],s[151]do p[b]=nil;end;end end else if t>=283 then if t>=284 then if t>284 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[246]]=p[s[159]][f[s[151]]];end else p[s[246]][f[s[151]]]=p[s[159]];end else if t~=282 then local b=s[159]p[b](z(p,b+1,s[151]))else p[s[246]]=p[s[159]][f[s[151]]];end end end else if t>=272 then if t<=273 then if t>272 then p[s[246]]=p[s[159]]*f[s[151]];else p[s[159]]=l[f[s[151]]];end else if t<=274 then local b=s[246]p[b](z(p,b+1,s[159]))else if t~=276 then p[s[159]]();else p[s[246]]=p[s[159]][f[s[151]]];end end end else if t<=269 then if t<269 then p[s[246]][f[s[159]]]=p[s[151]];else p[s[246]]=p[s[159]][f[s[151]]];end else if t~=270 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[246]]=p[s[159]][f[s[151]]];end end end end else if t<=258 then if t<=253 then if t<=251 then if t~=251 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[246]]=p[s[159]][f[s[151]]];end else if t>252 then p[s[246]]=p[s[159]][f[s[151]]];else local b=p[s[246]];if b then i=i+1;else p[s[159]]=b;i=s[151];end;end end else if t<=255 then if t~=254 then p[s[246]]=p[s[159]][f[s[151]]];else if p[s[159]]then i=i+1;else i=s[151];end;end else if t>=257 then if t==257 then g[i]={[7]=281,[246]=s[246],[159]=s[159],[151]=s[151]+2}i=i-1;else p[s[246]][f[s[151]]]=p[s[159]];end else p[s[246]]=p[s[159]][f[s[151]]];end end end else if t<=262 then if t<=260 then if t<=259 then p[s[159]]={z({},1,s[151])};else p[s[246]]=p[s[159]][f[s[151]]];end else if t<=261 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[246]]=p[s[159]][f[s[151]]];end end else if t>=265 then if t>=266 then if t>266 then local b=s[159]p[b]=p[b](z(p,b+1,s[151]))else p[s[246]]=p[s[159]]+p[s[151]];end else p[s[246]]=p[s[159]][f[s[151]]];end else if t<=263 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[246]]=p[s[159]][f[s[151]]];end end end end end else if t>=232 then if t>=241 then if t>=245 then if t>=247 then if t<=247 then p[s[159]][f[s[151]]]=p[s[246]];else if t~=249 then if not p[s[159]]then i=i+1;else i=s[151];end;else p[s[159]]=p[s[151]]%p[s[246]];end end else if t<=245 then p[s[246]]=p[s[151]][f[s[159]]];else local b=s[246]p[b]=p[b](z(p,b+1,s[159]))end end else if t>=243 then if t<244 then p[s[246]][f[s[159]]]=p[s[151]];else p[s[246]]=p[s[159]][f[s[151]]];end else if t==242 then p[s[246]][f[s[159]]]=f[s[151]];else local b=s[246]p[b]=p[b](z(p,b+1,s[159]))end end end else if t<=235 then if t<=233 then if t<=232 then p[s[246]]=p[s[159]][f[s[151]]];else p[s[159]]=p[s[151]]-f[s[246]];end else if t>=235 then p[s[159]]=p[s[151]]+f[s[246]];else local b=s[246]local c={p[b](z(p,b+1,s[159]))};local d=0;for e=b,s[151]do d=d+1;p[e]=c[d];end end end else if t>=238 then if t>=239 then if t<240 then g[i]={[7]=267,[246]=s[246]+1,[159]=s[159]+15,[151]=s[151]+2}i=i-1;else g[i]={[7]=158,[246]=s[246],[159]=s[159]+1,[151]=s[151]}i=i-1;end else p[s[246]][f[s[151]]]=p[s[159]];end else if t~=236 then p[s[246]]=p[s[159]][f[s[151]]];else g[i]={[7]=202,[246]=s[246],[159]=s[159],[151]=s[151]+1}i=i-1;end end end end else if t<=222 then if t<=217 then if t>=216 then if t<=216 then p[s[246]]=k(p[s[159]],p[s[151]]);else p[s[246]]=p[s[151]][f[s[159]]];end else if t>=215 then if(p[s[159]]<f[s[246]])then i=i+1;else i=s[151];end;else g[i]={[246]=s[246],[159]=s[159]+1,[151]=s[151],[7]=23}i=i-1;end end else if t>=220 then if t<=220 then p[s[246]]=p[s[159]][f[s[151]]];else if t>221 then if(p[s[159]]==f[s[246]])then i=i+1;else i=s[151];end;else local b=s[246]p[b]=p[b](z(p,b+1,s[151]))end end else if t>218 then p[s[159]]=p[s[151]][p[s[246]]];else local b=s[246]p[b]=p[b](z(p,b+1,s[159]))end end end else if t<=226 then if t<=224 then if t<=223 then g[i]={[7]=32,[246]=s[246],[159]=s[159],[151]=s[151]+1}i=i-1;else local b=s[246];local c=p[s[159]];p[b+1]=c;p[b]=c[f[s[151]]];end else if t<=225 then p[s[159]]=#p[s[151]];else local b=s[246]p[b]=p[b](p[b+1])end end else if t<=228 then if t>=228 then p[s[246]]=p[s[151]]*p[s[159]];else p[s[246]]=p[s[159]][f[s[151]]];end else if t>=230 then if t<231 then g[i]={[7]=109,[246]=s[246],[159]=s[159],[151]=s[151]}i=i-1;else local b=s[159]p[b]=p[b]()end else p[s[246]]=p[s[159]][f[s[151]]];end end end end end end end end i=i+1;end;end;end;return a(bh(),{})();end)('23T21Y27521X27527825I101627727821Y25I1B1621W22E2781B21521F21H1Z1421F21E21E21521423B1221521D21427D2791C27I21T2781M21621321R1Z21G21H28227525I1127C27E27522Y27I2252781A21521121321628828A28C21W2862751L1Z21E1521521G1Z28Y2782942142141Z21121E21W21S27821127V28S21E21X2711Z24E23D25D21N24G23D21W22029921A21321G21329E28C171Y1Y1Z1Y21W2242781L21E2A021E28C1121F21B21W21U2AC21B21O2972AM2751027V29F28229621I21W21Z2AC21W28229C21D21W22628721521H21B21E21B27V2AL2781Y21F2172AY21W2781J1M2BF275182132171Z28F27F1F27I2AR21Y1Y27Z28128K2121Y28J28K21A27I222278142151Y21R1G1Z21628R2BB21R29W2781S1F2142A721Q141Z29Z21C2BD21G2BV25I122C727E1L28529I27V29C29E2BV21Y1827I2272781I1Z21Q21E1A2132102CI2AA2781P1P27U21H21E21G21B2141X2BV161N27I2B72752DT2DV2DX1X2982752DR2DX2CS2D02E22DB23J27I29H2751729E21B21C2972E421Y1P1G131K1L1F191821W2DF2751529Z2A12A321G2AZ2781U2F927522Z2EA2ES1P21I21321B28D2FC21Y2162FM1521W2CB2751K1Z27P21E192141L2FI2802BP21Y21D29Z29M22N21J26U22U25V26G27329V2AB2751129229121G2CX2112BU28K25I1E2D327523Q2E22G321427Z2GO27E25I1D2GS27522A2H326E2192BY2781W21F21421121Z21Z2BV23Q1V2H92752DX1W2152BV22U2102EJ27821H21I1Z2A828E28K21Y152H322U2132HK21Y1F29J2C328K2BX2DB21127I21V2DG2BB2162GZ27E2D22BV24M2182IE2782CJ21D28C2IM2152H321Y28421W228278102ED2J228D29321A21B2161Y1H2J721121A1F21H1721X23S21M2271626225824B29V27K2901Z2CR182152BC1W21B29L2BD2I927E27B2G312191H2F02FS21Y1H2FJ21E2AT21G2F42J81Y2D01M2H323Q2HR2FF1X2921W2JT21C2FM21T2DP2EB1P2B42ED2DI2FM21H21W28O2752DH2DJ1H2A121I2HV2A92B027523B2D01327I2821W21621R2DB23C27I2GG21Y102LN22U2EM2BC2EP21W22F27L27N27P27R27T27V23B152162JZ2192B62DQ1P21B2FI2FK2L42LS2L821E2M527U21421W22X27821G2102DJ21A2BI21023G22X22X21E21R2HV23F1721H2FW22O21B1Y23F23723B23A23523B23I23823B23B23622O21D23F23B23723A22O21A2NP2NR2DB2HJ2G32ML2HH2D529G2992152CJ21G2392DB2H22KX21Y27M27O1Z1A1Z2132EP2DB1K2LR2781K2HC2GK2GM29728Z21Y1W21G2152171K11142G321721321E21A2B02DB2EG2GP2O22IF27521I28S2162FO2PC2I02CJ27P2E02KL2D0142I521I21627O2HH2162LK2HT21F2102E02142KM2KL2MD2752172DX21B2Q62AP2FR2HT2922BT2AE2AE2102II2O32KY2BB2IT28K24M2Q12DB2LJ2E01O2I52P32DX2G31X2BS2EQ2DG2DI21E1L2AO2IJ28P2DE28728928B21G2AI21B2D01927I22927828C2OW21G22U2DX22U2RK29522U29Z2CR2MA2DY2FM1W2QJ21Y2DU2DW2RW2BZ1P13181G21W22B29I21329B2JW2HQ1Z22U2II2N722U2P52SC22U2LH2GP2I12B227822R1Y23121W2PI2P321E2JD2DB1H2I527V2152RY2F221Y2Q62142Q82R52382OB2ML1L2PF2A82D0172I22IV2F12AC2112962JT2RD2SW2HT2HV2TI2HZ23E2H62IO2DB27H2TT2PD2S229M28K23Q2QT28225I25X24A23M2JH2HZ25226X21X2641622Z24M1121I24923D2BV26E2122HS2752HC2FI21121921X25G25K23G21221F2272482UR28K162O22JR21Y142A22191X2OW2HC1Y2942O62392OB1L27N21G2GN1L2SC2HY28K2PP21W22D278172TA2SY2K129A2DV2O52II2F82PI1J122Q82TD2ER2CD2CF1121R2OW2U32LT2A12BT2G3132142BI2FF2R42QH2E82D02DD2DB2Q32ER2CQ2DU2SC2GN2TE2R22VM2952O82U72OL2FM2312HP2PV2TN275122A11X2QY2QH2R627F2XD2BZ2T92BU22S25K23R25521226A23V29V2KA2CD21G2A72KG2O52XA2G32JD2A02DB25229V2PI2A721021F2E92OT2KQ2BC2142HN2DB2752G32JY2CR2DB2GR2E02XD2PI2QG2II21X22Q26F25Q26E23N1B29Q2E01J2IW28I2D01A2PW2751T151R2RZ1M2A02JT29F2ER1221F2A12BC2BE2OT1G21B2BA2XO2HH1X27I2BL2UW2AY2BZ1X21H2PY2RZ2DX27P21G2U628K23F2I52PS21321F2Q421Y1E2BI2SC2152NA2DB2RG2OB2LU21R22U111J1F22U1G2XB28K23H162RI2YR2782RZ2S12E82G32BH2BJ27E22327826D2262522551T2F226C21Y22U21Y1627826827829X27526K2E42202E4268226311S25Y2E426C22E27K2192JR26C2E422O2E424826M21121X25626M27721G22626C21S1P2262BL21027321221V1527227524O25J2JH1525I2B025S23Q24621Y1U23Q27526W23Y24721T1K23Y2LF1U2782E01I2KM313Q310M2M92Q8210311D2M1275310O2P32GX2NA2AD2P41Z1I2N32XP25I1G2R82Q521321Q1I29521J21F2AQ2782QY2WP2OT28V2RB2L42EK2LT2LN311D2OT2W22Q831452XI21Y21E21I21D28T219311D311I2FT2JT2Y62AD1Z2LC2TW2HZ21Y2S92J12J32MI2J62KI191W2M92132N72DB2ZB2RZ2W21X2SI28224625Q23P2VE2FM2102RZ1E2OH2162P52WM2HU2132G22L62I02RT2KQ31442AG2FF2OO29B314V28721A21R2BA21121H2B021W31582I02ZS2962142932QZ2A12G32KC2BB31502F42A02A22AG2CZ2UG29V2X22142X42HD297314S2HU2HW1Y2L42OT1C2BI21I316O2752CH29E2Y92LS2CJ215219317W27U2F82LF21Y2BO313Y21Y2AD2A12YT1X2JV1M316Q316S2L42VD28V21E2HN21G21731442CR2E82HF2RX2OB2GI2R328C2OR2L52J128T2RV1X27Y316E28P28R28T314P28X2BZ29C2DJ2GW2GY2D0315U316F2A521827O2R32TV2A92VD316M2TA2DY318F318H2JZ314R28P2SC2A72KJ2U7314B21W2212O42951Y2DX3145102WO297316X318L318N318P2AE2CR21W22N278318W314P2E8314X2W427V1I2F6219319X2F331AB2QZ2SR2752A12A9314S29131452A92T7318W2YN1X1J21I2D0313Q2BV25B24Z27I31A52JS2R32QF1Z2WR2DM2II31B72781H29531AV2UY29731862AY2ER2EP2CJ2112CL2FM2F82XS2P421A2G331542BB2DB314B2UJ26731CH31CH2GE310M3140310Q2NA21W310421Y1K23431B021Y2B42HH315U2ER1L21D2Q82T92DZ2VA31A32BZ2WR2BI2ZA2IW2BX31A427831CM31421Y1K21B1X31472HV2DB24M317F2J12TQ1W3192310M2WD21H31BQ2A8316L2131X2C12PG2FM21631CG31CI26723Z2GF2BM315E21G314G28D215310M2P321Q2KF2X62OT31DI31DK31482FF122FV2W72CM2PI31EE21H31EG314S2112OV2QZ31862VD2ZL2ZN31712O12OM2GH2GJ318Y2JZ2972T731672AF2DN2P4316W2M22EP2WD2962EN2ZV2R928W2FL2T71B31E02TA21E21F2A7319027528Q2PF319A317D28K313S310731AZ316F31AT2VV2892AG142CM2T73152315421631562S331BT2KD2IZ315J2CR2J42DU2KH2J92JB2JZ2JE2JG31782F5317B2QM315G27E235311J1M311M1T1N275311Q23A21Y24E27826K311X31HI22E311S16312D31HM311T313Y311Q311U311U275312427524A2E4269212311M23W21227526931H9311N31HC21Y312431I516312322625I311T31IF25231II27526N25Q27K26P25Q27F26E25Q311M23E31IR25I312024M31HG2E426S31HK27526S22U25Y311T311S21Y26K22U31HN22V27526H31I2311N21327526J23I2B026R31JN25I26E23I25325523E31JQ26G21Y313B31HH27526G31HQ24R2JR31JM31JO31JQ31JS31JU31JW21Z25I26B31JN21Y31JP31KD31KA31JV31JQ26N31KG31KI31JR31JT31KL31KD31K327K31HO31JL31KO31K931KR31KC25I31K31M311T2JR26G22M21I311T22M27524N25Q31HF21Z31IX31IT31IV31IX26G22626U31J127526O22E31L431KW21Y26G23227K1K23327531LI31JV31IX312E275312G31M01E2B023E31M831JR1M31M931MD31JR1U31M931MH31JR21231M931ML31JR2P621Y23E2P631JR21I31M931MU31JR21Q31M931MY31JR313731MQ313725I22C23A25H21Z25623A27726823I2HE1K23I27721D21I23R21V21531MU21Y23C25Y21221S1V31J831CV26F25I21W1V26E31M51M2BO31O327823O27D26D1U31JU1T1V2B026F26E1I21W25V26E21U31JR26E24Y31JV31OK25I311Q31HY311J31OA25523W31MH21Y31OS21Y311Y31OZ21Y26U21Z31HV31P323A21U31P7311Q26E21X31K121Y26L1E250311N1F2BL26K22E31HU2JR31PN31HF31LT31LL31HY312822M31LX31AL31P327531P2311Q31P531PB21Y31P931Q531PD31PF31PH31PJ1T31PL31JB31PO31L5311Z1631JF21K162B031PU21Y31HZ31HD31PX31CR31PZ31P031Q231K122E31K131HE31PA27831PC31PE27831QB31PK31PM31QG31LT31PN31J831PT2E431QQ31OZ22627K1C311P31J431P331Q431R222M2BL22M31RP31P331Q931R531PI31R731QF31PP311Z22E24M31PA31L631RE31PW31PY31HD31RL31Q331P631R231Q631R131S831RU27531R631QD31R831RZ31QF31BD31RD31PV31QR31S731Q031P131SC31RN31S831Q731SC31SG31PG31RW31SJ31RY31QH31QF25231P631S431SP31OZ31QS1K31QU31S931K124C31QZ31SD31Q831R431SH31T131QE31PN31SL31PN25221W31SO31QP31S631QT31S831Q131SU31SB31SW31SE31RT31TK31T031QC31TN31R931PQ22E31MU31TT31RF26C31TB31TD31TY31S831SV31P831U231R331QA31TM31SK31T431TO31TS31T831TU31SQ31TW31SS31Q231P431U031UK31TJ31UN31U631UP31RA27K21V31UC312331LB21Y22B31VB31QV31TZ31Q531SX31SF31U431SI31U731TP22E31ML31V931UV31TC31TX31ST31UI31V031R031V231RV31V431T331V624M31US31K231S531VR31UG31VU31RM31VW31RS21L31RS31UM31VZ31RX31TO31UQ31VO21X31VQ31TA31SR31VF31VV31VH31UL21Y31SZ31VL31V52JR22W31HQ25W31UT31RF31QO250312831S931UZ31WR31PB2462B01W31XA31U531WH31U8311Z23I22S21Y23H23I2BL31QO31UD31UF31VT31P223S2781F31SC31VI31P331MD31V331XF31VN31W331LT312931LX313Y26E1U25831JV1U22431OR31W621Y31O931JU31OX2B026D24M311M24631J021Y26925231HA25331SH31YM25531YO31M025231OO24U25231OL26T26E31HA26F27526R25A22H21Y22H25A25521L31M431P131J2312A21Y312C31M024631OO25C24631OL26D23I31HA23J31S831IH31PB31M821Y225320131SA31Q8311T31R221Q1K21W22921Q2BL31ZU31ZW31ZY320731S825Y31TS31VG311V21Y31J031PF31QO312231K231QS1631VB26822M31HN31PZ26B2662SA26T26621V31JR26624Z31JV321525I311W320P278320R2E431L725I31WL320W320Y311T31PZ26L1M31OB1N31QN22631NB24E321H31QG122JR26E246321923E246321626W23A24621W24E31HF21Y25D21A31YN21A313F1E31LX31XV31JB311R320O27826E2723223272321631HJ31UH31QF31Q431U931Q731U931Q92JR26T31UO21Y31J631HU31JA31J631PS31JA26O27824A27826O31252LT2E4322V31W931PN322Y31S03230311Z24631JF23T31XD323431W0323731J931J522U31NY16323C323E31HI31LW31CR31LZ322M322W323N31T7323P31S331S03232275323W31RX323Y3243324031RC324431OT311Z324731LY311Z31RL324C31V6323Q31QF324H21Y324J31T2324L323922U31S2324M21Y323D324Q31JB324S3249323L31P2324W322Z324F324Z31PE323332353254324031SN324P31QP324631LX325E324V22E323O31QF324Y31PN3250325231QE325O323622U31T63258325A325S31LP323I1V2F2325F31HL325Y31PR325J3261325L324I325N22U3238324031TR32693245324R325U324U324B24E311S1D24F324E31V63262326O326Q326631UB325R323F326V3248326X323M325X324D31JB22M31XJ21131RS326L24E325M323X326P323Z326627I326T325B26K325D327E325G327G324X326K22E3275327Q327731J621Y31V8327A325T327D324A327F326I22E32603284326M32513276327S31J631VP328B327C324T328E3280328G3260323S21Y1O323V328M1G31JF326631Y3328Q325C326W328T326H327H26K327J21Y26X327M328J327O326N3286328N22U21231WL3296327X3298326G31S0328V32833285324K327R3258323A31TS329P327Y3299329T329B328H329V328K32632BL326531J621I31PA32A2329R325W329U31V631XZ327P329X328722U32AE325831JC31LX3293320F311N31ZX31P32AY31PF312031Q1323K31HQ31Y432B431HS21Y320K31Q531UJ311Q321E311Z312132B331IK32B531HN32B71M31V8278269323526821222C21Y25H2122BL31241631PA2E426F25Y2W025B32C231JR25Y25131JV32C532AV1T32AX311Q31ZZ31SC32B9320N31UJ312421I31V8323K31YF31XO31J232071Q27826S23A24721Y22923A2B026S25Y313B22931NV24G21B311U1P322H323625232CW22931T6325932CR323G32CV32CX32CZ325932D232CX31NV26O25Q24432CX25Q2BL26O32DC32CX32DF2711U31PJ2462FB329E322F31YX32DA25H31Z2311N24V27525G161M31PA31HV25C32BF27525C1E31OK161E27525O2E42272E425G1M31HN31IA25G22E25Z21X22922E2B025D21Y31OB2HF21Y32EM32EG32EP27525P31IU31YX31IR21Y25L32FH316027525X32FM32FJ25C21231HN31JK32FB23A31IH25N322C32EJ27C31IE32ED23Q25W21Y26Y23Q2BL25D32EA1T32EC32591F31J826W32EQ21Y32ES32B232ER1M32G932EF27525K32ET2E425C1U31HN1V32FF32F8311N32FA25O31O331PA31L432FK32E624632DA25X22E32E222E2BL25T32H832DA25O21A31HN21B32EL24U31Z826Y24U2B025P32H01T32H232H432GQ32FK32FQ32FO32I021Y25T32I232HJ32HL32EL26E311Q26Y26E2BL25P31OV31OC2B025R23Y1Q31OI23Y22231JR23Y25631JV32IM25I25O31X727832H331Q732H625O25Y1N320B25Y32HS32IF31OD21Y25R23I2ZK24X23I22331KQ25731KL32JE25P31ZV32AW32GN32AZ32H625W32EK21Y25W23A23O2DC23B2BL25O32FT311T32FV32H332B932IZ1M31Q432K432IY32GN32CZ32HY25R26M32DS25V26M22C31JR26M31PJ23E32KG25I32JJ320G32GK1M32JN27532JP32GM32JR21222E31PA31I532GK32JZ1632K132GO311T32K426E21Z24E32IZ31ZL31ZN32GK22U22E328A32GR3256329O32GN31LN22X32H632II24B21Y25V23Y32JE26E23Y32JG23E32LT32IT329M32A132LI22U31P631JA32H332LM32LO21Y24821Y24X31P131JR21Y25431JV32ME25O23I31ZS31JS32GR23I31I51423I313F32K521Y32LN27527325I21K21Y22L25I22031N132MH23E32N325I3227275227322C26E25I32N632N826S25Q311Q26132DU21Y25K32LJ325832M732MV32LO25I32MB25V32N832NE32NG32N432CU31Z823832DL32NO32M432NQ32MU32MW32J832NU32LR32NX32NF31JV32N826Z32OB24X32OD32NZ32N923I23Q21Z26C32MS21Y32OH32MB26232OK32OF32N426X32HH32ER32LF32LH32NN32NP32M632O832LO24632NV24632N4322132N632PB32M032BV329Z25Y31LN23I31NV32NR32O925R16313B24X31HO31JR1631IV32PT32KO32JL32KQ26U31WL32K432J432HY32H322E32Q232GN32HE32HY32NO32PH31JA25W31JD32M532GR313D32MV313N32Q021Y22T32H625L32JK32CC32QI32Q11632QL25K1U32Q432QW1U32Q732QV32FO26E31OB26F2B025W21232FD32L032NI32DS25G32NM26432P527525S21A31J022X32DA32RH32QD27526032QG325826421I31IK22X31L921Y32RV22U21V2MG27526132P032JR21Q31HN21R32KT21223Q31WL32L032QX313E22T32QL25X32QR32AX32R932QU32L032R932Q432SQ25Q23R2I025R32R824M32SV23U24M2B032SH21Y24D32QL32PN32K431L932QO32HN32HP32HR32GK32DH32LI32RQ32GK23A26V32G732DL32D131LN22J32PM32PJ32G731NV32NO32LG325824G31O021Y23632QW32RI32GK25232TL26Y32DF26O32H622732H626E25A31KB25A22F32M032TW31JA32NO24M32LK32QM32PO23Q32CW25V23Q32UH26E23Q31KB32UT32PG32M232P432O632P632M827525R32UQ32LR32UY32UV32UX32UH26Z32V724X32V932UW31JV32UY32PY32QS32Q032Q832GK23Y31O124N23Y32Q932VN32Q631TS32H625K23232PH23232KT23232O632W132NN32QJ22X32T732MU32TB32FK32SM32QT31WL32R032QZ32QI32R232SK32R5311N32R732KW32RB32RJ31LW31V832W532DW24N2G432DF32RK32RM32RO32VZ31TS32W526032W331P632W532RV32RX32RZ32S132S332RZ32S6322G32KT32S9311T32SB32KW32SE1632SG32QJ32SJ32FO32WD32KW32SP32SC32SS32KT32SU21Y25725Q32SY32SV21M32T232W6313E32T632LL32NS32MT31O126H32H625C32HO32G732TE32UD32UF32UH32HT32F92B032H332FD32QP32S725X32S732HG32XF32GK32HK311T32HM32FB32YF32HQ32HS32XR32M732VU1M32Q432IZ25Q31Z81N32SX32FK32WL1T32WN32QX21Y31P632SK32UE311N25B2B021C32SD21Y22432L025S32M132RU32RT31JA26421A313B24S32DA32RK26U21U21B330421A32TA330932MQ32DA31X0311S31K532SC32RR32L032YU32E727526532S725K21I31HN21J32Y832WB25G23Q32IA32G931WT32IP32IR32IN32IU311U32CS32ER32DJ32CY32YN32DN32D432ER32DR32DT32JX32DX32DE32D032UA32H626C22U31O132GW331732DD32DL32J032D332PM331E22932NM1S21A31O12JB31LP331K27532OZ32YV25O32XM21V24E31HV25O32LC2JR25O1E312Y24E32GJ312031O123O2E432IU31UJ32IX32H532ER25Y25J21Z32D432Z332KP32H331ZZ32Q332VW32LL31P632L721Y21032IZ21Q25G332W320D32TF325B32IE31I332QL26E22632IQ23E22622I25I32CB32CD27F320I31P332CH31HW32IV31HW321U32CM32BE31T932CP31J532TG3236331832TN331B31NV32RD331F32DB32DD32U8334526O33472B026O334931LP331W32NM32DW334E2B032E032E232E43326330M32BT32GC32GE32EE32FD32EI32JQ32EM25I31PA32GJ32GL21Y32EU32ER22E31IH2702JR32F032F232F432F632HU32FA32FC335632FF32I232FL31YN32FJ32FP335R32EL32L232FV25G23A31J826Y32G022632G22E423O1F31IH1V32GJ32GB31HA32GE335M32FE32GK32JQ32YO32L632GR32GT32EL331P1632GY21Y32YL32H132YN32HX32YQ32YV32HB32HD32HF32S732I632YY32TC32YG32HS335K336T32YP275335Q32FI32I1335U32I332I532YX1632YZ25C32I932G732IC336Q32J632IH21Q1J31OI21Q22B31MX3223337T32IT333X32KQ32K832GK32J132J332J531OB32J725R24U337R24X24U337U26E24U3223338C32KN32Z432KR322A32JO32JQ32R921Y32SF32KT328421Y23K332F32Z7333332Q0333532K9332S3380338Z32J823224D32LR23232N226E23225931JV339832KN21Y31QC21Z32JX31RH313C2F225O32P2325832UL32UN32T832V51E24032LR1E22831JR1E24W31JV339X32UZ339P32ZY32Y832PO25I339V32OJ339Y32NE33A132N7339Y32MK32MM32OR25K32MP2VE32OR25O1U31L924L32QL2732G432N132CX32MF24X32MI22932N9322C32NC31M032MC33AZ32UI32P3339Q32O732V432J821Y24132LR33AW31O133AY23E33AW339N32TI32O532QH32UO32M933BE25V33BG33B533BJ33B026Z33BD32MC33BT33BI33AW26W32ON32OP32OR33BX33BE26233C033B6334V32H932P132UJ32LI32UM33BA32Y932J81M33BR1M33B026E1M33BI33CN33A432UK33A633BP32V523Q31HH32VF22M31JR23Q31ZF23E23Q33D132VK32AX32Z532Q532Z7339332Q632Z632QA32VX32ZW32QE33CV32T432W8330U32QP32XR32QX32QU32WG32ZK32WI32WF32R432R632R832RA32KZ32RJ339O32ZZ32U332WY32MV32DA32CU32WV1023B2B032RS32V227532X832MV32XA330R32XC32S532S725W32XH1632XJ32R932XL32XN32SI32SK32XR32SO338Q32KW32XV32KW32R232SQ32SD33EY32T432Y732GK1U31O117336P32H332TA32YD32Z132TE331421Y331632P432TI25O32TK32TM32D032TS1R25Z332T31LN26Y334A25Q31J332DQ32JX33FY32G732NM33B932M632U532G732U8332431WT21Q31YA23E21Q22K33B733A533CH32V333CJ32PP24C32LR1633GG26E1633GD33GP33CT32M333BO339S32J81633GN25V33GU33GR33GT33GG26Z33H032MC33H333GS31JV33GU33D832LL32Z632Z832VT33DB33DG32GR32X11632W525W32X533HN32QI313E33DM32QM32WB32QQ32KP33DQ33DV32W632WH32W632WJ33DW32WM33DY32WP21Y25S32WR33HR32S023233CH32W533E532RN33EF33HM32X333HQ32X732RW33EH33EF33EJ32S421Y32XE334W33EN32SA32SC33ES33HS32QN33EV32KP33EX32XM32XU31P633F333F232KT32SZ31LU32Y433F632W933BB33FD32QN33FF32TD2B026E33GC31JV33GF339F32YM32KQ337832H7336W32YT3370337G337I33FG332Y32PZ33DA32Q333DD32ZA21Y26732Y032ZE33DX32W632ZJ32R321Y25X32ZM1T32ZO32WO33EY32ZV32TI32RH33EE33I932RL33E632RJ1U32DS1S1V2BL32RK330B32RJ21A330D338R330G2JR32G6313E1G278330L33CD21Y330O32YV330Q330S33DN32G4330Y2BL33JM337W337U33FI33FK33FN331R331A331U331D32DS331X331G334Q323633GA33LP32IW334I338233LU32GK334N33LY32DY334J33GA33CC32HI3329332B335B312B332F332H332A3357332E32ER337Z332R32HY21823Q31O1273313E336Q338J333132GN32K3333433DB31O132Q5333A333C32JX326U337N333H31HD312F2E426E22M2CB23E22M333O26E22U33NH22U33NK23233NH23233NK23A33NH23A33NK23I33NH23I33NK1633NH1633NK1E33NH1E33NK1M33NH1M33NK1U33NH1U33NK21233NH21233NK21A33NH21A33NK21I33NH21I33NK21Q33NH21Q33NK25I33NH25I33NK25Q33NH25Q33NK25Y33NH25Y33NK26633NH26633NK26E33NH26E33NK26M33NH26M33NK26U33NH26U33NK27233NH27233NK23Q33NH23Q33NK32IM31MQ23Y33NK24633NH24633NK24E33NH24E33NK24M33NH24M33NK24U33NH24U33NK25233NH25233NK25A33NH25A33NK21Y311I33BJ22J31JR22633QR22633QT26E22E33QR22E33QY22M33QR22M33QY22U33QR22U33QY23233QR23233QY23A33QR23A33QY32JD31MQ23I33QY1633QR1633QY1E33QR1E33QY1M33QR1M33QY1U33QR1U33QY21233QR21233QY21A33QR21A33QY21I33QR21I33QY21Q33QR21Q33QT31P02T733SK31SC32NB33SN335933SP33SL27833SS33SO31VT33SU33SQ33SW33SR33T02752302672TD26K2662BL25425R24421Z1532NM24C23J23B21V1L31KG1026F26T21Y332027724027225G21X1M2722BL1427222S21U1P33TW2752OT2GW2R22WM2Z0317K278310C28C310F27E2YE2G32N22HV311B2E72DY2YQ315H33ST311A31862KW2AW315D21W31ZC2E521A2FV2SG2ZN22U31EX2BT2RN317H2SC2SG2I8317I21E2L42BZ33UI2IJ2UB2UD2UF315G2WM21I2U52YD29V317L33UL1X27E23G32BN23A31YN322C329S31QF31S031JG32PV31YX31HV26A21231JU24U31MN26P3267311N329327031RL27023A311U25Y322C31LQ33L531Z921233FT25V31MN2UT31KB31MN326A31P226O23233WI32W526F21231HC25B33WR33W631JV33W932XR27122M31YN31VB33WG311S322B27525H23231YN32W527031HV2E231LP21Y27K24327826P33X9311L31YX2E4335E31I526L2JR33XI33XK31LP32OR23P32OR323D33XR322P32RW31JV31L925I33XU32KP26R31OY33YI31KJ31OV23E31MJ33YG32PZ33XA33XC27533XE31HG322C33Y331YX33XL33XN31HV33Y921Y33XS27533YP32VL27133XW24633XY23A33XF33YW33XJ33YY33YT33Z033XP33YA31M024E31IV31HH31YE31M52E426A33WB25C311S33ZP21Y31M633GB31MZ31KJ31N232N731KJ33K931IW31KJ32J431MQ32J4321731M926631KD25W21J25G21U1E21J2BL23C25J277313627725024V25J21V21A32TE24G26725121W21A26627721W25A321S1K25A2B01K23J31P51932OR21Z2LS33U831DX33VN33VK2U52YS2ED33UV2782P533UZ2I329633V22OX2SG310C33V722U33V931AI33VB2UA2UC2UE2KV31CU2AX33UN310M2E62S233VR27823C32BN31I831HB327E2T7312427K21I2E431PH31YN32GJ31JY322W31L7311Z31VB26T22E31YN2JR26M21A33W731MS33Z831HA2F2270329M21Y25A31JA26W33UP32ED31RL335032B831HV33XM31HN1732MX31MP26R31MS26E343231JV343433XB311N31PZ26X33ZF24632W533C331IH24E32OR25D33VV31YX322C32GI2751N32GJ33WE33ZK21Y33YR343W332532JK24632OR344231HG34453447246344932GJ344C33YT33XQ33Z3322P21Q31IV21Q27F344H1T31PZ312X31JO33X533WT31KD3453343X343Z344123I3443344P33VW322I344B344D344W33Z4344G343V3454344J31YN344M345F344O2753446345I21Y344A21Y344U31RG31I522U33NE31YW23E31J0321C27825827826M32JK25C32MS31IY33N931PN2751C312D33ND31M0340823E340A26E340D31MQ340D31OM31M932L832KI31M926M31KD33SM33SZ27522K1N26V21Z1I31MD21Y23O24626C21V1V322932JR24624721S1Q31XD24O330T21U1D32RZ24G22N24N21T1O22M33EC1U25H21W1R1U27721Z1L320N324B27822I320N31V7348A33FJ31HI348C348E21Y22Q31R5344K32OR31QO32B1325133WB24631JA26M22U33W732M425I27133ZF1T324926W22631L4312733YT31K42JR273343B32LR25A31IS25A31IV349F349033XW311O313F349632B832EV333S31IH31M03467346925L3492324925W33GA323N21Y26N2JR25N24M31I525V346926E349U27F25L342Y311N313Y32QX31PS32QL32KU31ZJ32RJ33GA25K21A31LX32YZ33WE311S31YP31WT25Y31IV31J831JR348X31JV348Z27134AE1T313Y33WG31PS344932JQ26823231IH22F33YZ31LX343M21Y26M1E311M32EM27F26N344W33UW31OR2JR22031K631ZB31ZD31ZF31ZH34BS3233348O326C3341344G348T31JA26U25233W731T625I33YX349332EL22631L9349821Y32F033WM21Y25J26U31JF25V31P531JR26U31KB34CQ32F032NB2JR32EJ34CG32EV33MN31WT34C831JV34CA34CC324931ND31J821C32OR34CJ21Y330H34CL25231JK25V34CA31Z631KB34CA25G31VB22731VB34CY349P32ED34D126U343S25C31MS311W27531YU31M0312U31MQ312U31JR32HE31MQ32HE31JR31RS33NI21W34AZ2BL23E22U34ED339A34EF23234EI23A34EF34EN31KQ34EF31XM32PU34EF27I31OR343E31SS33SX34EZ27825W22M26D327I277224316R21X1V21Q27723X24N23R21T21532Y41D346121U322H2B021K33FY21Z1M32NM26W2I721W171E27D31CQ2FF2I82D929F2LS2OD27P2WR317C3186341G2T731792F6317C27J31DE310P31DG1K2152JW2ZM310E31CB31GP31G92WP316F31G331992RA31H433UF2V933VJ314S1531AY2WP2B31Z2B5314O34GV28D27E31XJ31XR27826F33MW26R313E33D231IV34HH26D345P31PZ31HX21Y24I2E426D33WB1T329331PC333T311Q31LS31SC31KV31SC31HN32BN34HT3293312433N431IF31LS31IF31KV31IF31HN31IF31ZZ342O33W21T34BH31RB31T426H34C13251344Q322C33YP344L324R31HN34D7323I22T312831KW26Y31HV32UD25531JV34BX31ZI33ZY3221275322431IS31K123E33ZO24O2531N312L32DF25O25325X21Z1K25227722W25Q1521U1N25Q2771C23B24K21U1R34EN21Y25524N21H21T1H32UM21Y21G24N246313J34AU31Q232JQ311Q34I331S827K31PF26N34BV31ZE31ZG31WP33VZ32OS312D27825631R2346O21Y22C24621021Z22D347J24C23B24M21V1U322C24S24U1721W1M32TE23421R25Z21V1731MY31NP27222C21T1D33U324024U25H21U1K24U33UN33SV31IB348J333W27533VT33NC33ZQ27524C26722C21X24733T721Y23822E26F21W1D32F521Y21O25222D33TC34JQ2OU2732L433U22771821A25W21W1Q31CA21Y24C32K5313J32H633SY315H2BZ31CC29F319C319G317E2NZ2R22HH2T2315031GJ3155318S339I2PI316C2G2317L319O316U27831F4316X27M31FM2FK29D2ZU2MP31FF2OH310E31FI33UE28K2FF31G533VC31GO317734GB31H22F7315031FV1X31FX31FZ31FE341P315334NP2RW2J02AS315K2J531GV2JA2JC31GZ34LG34GQ29731GB2A1317H31GE27Q2CM314S34GM2ZO31G121Y34GT28U34H82E01U31F921Y318W2OQ31FD2DB34PL31H631H831HA31IA311Q31IK32B0325W33KD34KW27K345131S834KL31IB31YF26933W223W31HV31I734PV333Y31HU31IF313B32G334Q731ID2E431IN31IP31LH32FH31IW27F312031J8321W3344322W31J631J032AR31JD311T329326H34II34BH31K731KH31KZ31KB31JX318731HG321F349A31KX31K831KJ31L031JQ31KF34RH31KQ34RA31KD31KN34RM31KK31L131K3313E31LT34R731KP34RS31JX31ZL31PT31L831LA31JL31LE32ZJ34QP31LJ27F26834LC21Y22Y32QL31LQ31KV31L632A331M134QR33ZW34J8320131MA31KJ347C23E31MF31Y831MI31KJ31ML31MQ33WR31MP31MR31KJ31NO23E31MW33JM340031N131M931N422O22F31LN34BT27523832SU21U33TD2B026W21325I21V1932L026C25A244312Z25A32AB26N22C21U1Q26M2BL21823R25121X1H32SE28L311J34BK31PK27526F21A31HF25V322H31MO31IV34UI34KT34HO320S34Q734IA31HD32LF32G731JA311K343631I6343V24631VE339K25U31X5322W32BO31HA322L331M27K26Y31JA333J31KB22631KD26D34UB31QD31SW31SS34VG31I332GJ34KT34V534UC31OZ34US34VA27526D34B4313Y26F226330T25V34VE33QU34VD347333N926D344723W322C34HL33YS31YQ34VH322L26L34UY31VB31O133W732ZJ25I26T34R531Z934KQ34J632JQ26S34D134AA34BL346934J733NE348031MQ348034AZ31M9348Z339A31M923231KD21821J21X21V22731BD34KC25Z31QM32QY31K224M32G91V31YP26S322934FL347J23K26F23O21W1F337M24824N1N21S1R32Y431H521Y2OT34WY27522C22V34N232RS2BL23O1U2CZ1P32E423424E21321T1N24E2B023S34AP2KB32DA22O24731TR1M313B21Y24G23I2BO1P32OR34Y5342K2E423J31232JR346M34M934L12E4260212347M1Q2132B023422N1K21T21A31RS23023232TL1U34X832MG24F2BO1Q31K121W2JZ21X1D21A27724C22U21G21T32GW310431862OB31DV34G134O427E2VD34KT26F32OR31JP31IS32JK31JW27F34KT311Q34KN31R234D131P01Q2LF31P034KY34ZD34SN34JA32EQ25I24Y21234YM23N31MN24K1V24431NZ32E423121I31N833AP27723Y25B26S21S21534TV25I23022N1721U1734X023O31L834FQ31VB32ZJ313O317E27E2KA350T344W31O131VT351231RG32KV312E27K21U312327832SV27521K22F313B2142JR23G22V22S21W350C2VE1F1M21X21A32GJ21C27324521S34LU27721S25A2O81E25A27722O22U24N21X1Q32M4275316F34292PI34H229734H42B52ER1M2B92BB2K1316V2WB2WD2172TD34OV2VE2VG2VI27N2CR31GC317H2FI317021121R318T2ZW2ZY21B31002HZ31162YD26X27E22T33SP31Q21E31IH22934VN34KJ354S32CX34VN34BZ31HD354X354U31QR31Q131VE355234VN31JA22031JA26C355731HD32W522032W5355C354T34VN322C220322C355I354Y31HD32OR22032OR355C31L4355331OZ31HV22031HV312927521S312D23I27K229355T32GJ22032GJ26934471T23B333Y31PS342O33Z92E426H356J324I1U31YN32QL26P31I824632H634BB34IV34UR34V9355B34L0258349F21Y22G357226021Q23P34FV34FB34CI32F221U1H25Y2771K25I251340U321J34KC1734832TK27726K25J26V34MM31N221Y2BZ341K2DX2AV2MS315D342333VH33VN27E3543269349L2F226B32H626R31L431MC31IV358E358834UW32A431W131U933XF323334WH31HW31VB213320W345M322P31ZF34J531ZG33CP358G350S34L0343R34JA34UI26E32RZ34T431IS34Q433GE350S1E31L924Y32GJ22O22E26C21Z1F34E71024M32BS1L31W321Y1S24V23P340U34M132S01N23A21S1N32H624O17313B2I1311A311A2OT350H29E2OB34G531BO317128C34G9311A34H0353P34GF313Z34GH310R31DH34GK21E34GM34OB27E354M31CU2B431H1317A34OK34P434OD34H834OF27534NE34PF34PH31G534HA354Q34HD34HF34HH32UV34HJ27F34VL34VQ352G339L34VU32XR32CE34HX31WT35BQ31ID34I2333T26932XR312434IG31HW1M27K223356U22634QL333Y34IE333Y27K132F226L358931S031LS2JR26H358P348S31YN31JA26P35CJ320X27K216320W34IX31IF31G233NE358W23E34WR34MA31WT34YZ34JB31JR34JD33ZO1K21323721S265312Y21Y26P25I142I031NY2LT25B331O357223G31PD34TI31PD359S21J24L31CR34XF27422C21S1H33UO31W931ZI34UO34KK34HX2E41L34QM34WQ34KS31S9339K24034V321Y352D34DZ21Y26627824W24U31BD26524U27523K21A24435DY34N525C23A313E1P322C34KD26V312S32Y422C26N21X31NT312N33ZX2531621T1R31IK275322C338P2HZ310H2DB22S2E32DQ2EU2EW2EY182DB2392UV2S033VQ2DB33WH2DB2342IP2U4357Z2DB33WY2WM2SY2JD2QB2752FW2QE2P431DX31CB2G62DB162IW23B2IW2EI2DB23D2IW2382ZG34KC35822HZ22O2IW2TY2DB2302IW23G314C31512F61Z2102VG2YQ2I5311F2AY2YG35H62YJ2DB2352I52DI31CD354K2I52HM31EG2YL29235HN2DB23635G22FN2GY31G627E28M31CP2782B92DB22W2IW2YE2LP2IW23I2IW22Q2D333VG3425316F211316Z2ZO2RV2XP21Y2TK34PF35IJ2A72YT315F2HZ2D035GJ33VK2PF31E52HZ23735FC35252762HZ326P2DB22I2IW311935J22YR34ND2KD33UN3585278354326F34R125V33ZV33NL31IV33ZV356L358J342X342Z31K234D131QO335A323634M5322M27K271321F31RL31J331HF352B3259336L31LU32A334Y831WT32DA31MR350S34EX347421Y21826721X21T1I341221Y1G25R352U1E32NM22O1V31651M32E423824E1521Z1O24E350725R357T1P33K91426E247347S32L835E02HZ34Y734L024S24632WV23N31XD32OQ2SW1O31XM21Y24K1F25Z21U19320121C21Z22V21V32CS2B021825J25321V357H2B027023Y25W21Z1723Y31041527834KP31ZC34KR34BY34CW31JG33XW1E32CQ322W31LQ35MO345O34WC26W34DO31VB26G34US218323931RL35MU33592JR344H34UZ313F35MZ31J5356531CR32AX31J335MT2JR22735N835CJ343D34M325G35JX31J3344F35NH31W935N635NK27535N931VB35MY32NB35NZ33WY21Y26F33XL31RL26W35NJ33Y235CJ25C34EX32IU275348D344V31L923V27825J1U343M22631MJ31Y831KB31MJ25G32JQ32EE31HN31HV358D25J21Y25B34ST321Q31JV31MF35OL31JK35OO33YL35OR31KD35OT32KV32EE31KV31HV26Z1M35OZ23335P231KB31MF35NP27522G27835PC31UU322M31IH23D34KZ35D0359631MV31KJ34LP33GE340134T9340431M932Y034EW34M335KG35QB35KF35QD35QA35QE34NB35QC35QF34M325K23Z27722G23Y27723C21221I313J32L022023333TB1O34EL2IX21Q351W1R34LP1923Z173488313L32GK24632L821534YZ339I35AJ2HT33VQ311E317S311H311J35CE31P334Q635EH325G34BA339K25F3128350X34L01G26F23522524P26E2862142A034JO32BV31IB2321M313J355F34YP34U634YP31JB21Q34MS1P357A25W1E22S35041E31042PI2RZ2A121D2YM2WM2YH35HF2HZ2H535GA21Y2YM35GD33U92DB22M31P721Y32W531YQ34VW27526B34US26T35JK33WB34EG34SA31RL342L35BM31YQ34I5342J311V34RF21Y26B32VS31KH32VS32IO31IV35TZ35CD358J35JU31J234WS22U323B31HW31ZL23L2JR26N27227K26T313131JR27231IV35UI35U3311N2F235U531J535U731LS31JA31JC31JE31IM35TX26R35TZ32LV35U134QS324V339K1U311P359235D531IS31YP346831IS35EP31MQ35EP31JR35FF23E31IK35Q935QH35QG2T721K23Q2L421434U822G253340H35FE2BL1K26N24521X1E35F923423J25X21W31NG2772543519351X34SX22O32DX34BK2B0318628K35LH35D026035EJ21U24P35EJ21Y25924724N352V31XD26S2G934FL32RZ23C25A22E347Y357225G26M23O21S21A34U121Y1925A2AY1M357221Y314S35H92DB33632DB31PO2KP35HQ2YO31EG2BZ35HN35SY35HE342D27522L35BC34UD358C358E358Z35P435BI356D356F31XY35BV356M31JB32JQ31PN31HN31HP330N34KW34M7322P34QQ31IX34W731HA35Y931HT35YB31YN32CN32KV329C311S23B31VE2JR26535YJ21Y34M8352E33ZX33NE35WR23E35EJ31OM34JA31O125I31OX21121W24H348634MI350934MM34EH21Y24O24V35A01Q35VE34ZG32SE1732SG35R834JO31QM21Y27031MD21X1K347C35242YR314S21Q2PE31DT34Y534M335EH23Z348G35Z435KA26G21R22F21W357631381M24L21X15352Z328Y24F23R21Z1D35SH25S22V31N8353J27721H32F821V32EQ2B021G31I5348832L03607315H314S2UX2VG35RM34HC31I635RO348R34UO34HO358831VT31XT31VT360I34L023G22625121Y26022627726G25I23Q21T1V349S25S320K3410320K31IB25I27C21A349S26O24F22T21T350027726O21226F21S34TP2LF2W034M621Y26335K135OF348I27K348M35MP358J32TL311S34BQ35QB35O933Z521Y311M32GJ35K8330N32W5342S35Z335PX35Z6347534EY321F340K21T2472AY21Y24S25A25Y34Y2357235ER22V21U1V31MP25S1V1L360Y35ZJ23S23Q25X21X21534U8360K251351X357A35WJ27E35WL363L21Y24W34E124Y35FF26O26U22C352V26U2BL21425B32TL1H341821Y22W25Z26V34K9340823O24V25H21X1F359X1X22E23R21X1N34MO21Y24F2LF26D349X34KM320L34UX31HA31QU35TU35RR311V23Q27K24J33MW26F31KW233311U32PU32PW35KE35PP363K31RF34HO335826N321M22H31LB35VL33SX31P226J323I22H2B733ZW35E331RL26T33ZF1E32W531ZA2MR35MM331M32NB355B31RL349131JU344034TK3550345Z32OR26K32OR33XI367434ZW27232EA24U35VG25O35NC32NN367732QX31J825Y32T734D127223Y34BL35TZ367333YY34TK31VB22035NZ3679367B232367D2B027231KR24U31JQ25O32W522732W525K367Z31VB367N32B832QL332L336Q2E427222M31JU25C34X227124631HA32CW360133VV31P6322C32MY2M126T31N432NE31KB31N4368T368V33YT23A32T216369035X431KH35X434E633BI369H26F24632BS26T322931JR24632KK369P367W3675345Z368G313F368233XH3684367X21Y27223Q31PJ24U32G932IT363A336G311S26I332O1M32IC32HY25L368U311N368W32QX326834AJ369X33EZ32B832ZU31RL32RK31HN32DA34AO32I732JR313D31TS32QL22B23Q32JU1536A832UV32KK36A825Z330X34Z036B736A532VI34ED25T356O311N336P32RH31Q131JA32X431Q133IG21Q31LX32XJ25T34WO32S031RL2UK32WV268360032S132L932RZ24L1E36743201264349S1N3629358U31M01M32KK2BO25I25T368P343W313821A32OO16330435V52F226E25Y32KK320K33D236B934EI36BF33D534ED272272368Q27231KJ25A32C835CY21X25I26F353D31KH353D31JR36D934J536DC369U34ZW35O031P1368131XH36A0368536A325232C831Z236DC332D35MV32ES36AC2E436AI369932W6369C36AO355532XU36AR32RJ36AT34UF31P636AW33JY32KT32QL22736B225231621534JQ35VH36DA36EP25Z25234F424G36EP31Z636ER36DC36BI31HA36BL355936BO355F36BR36BT27536BV31HA34BH26436BY21I31RC33EI32M424E36C536C731YX36C936CB36CD344F346T36DA341235D436DA35L436EQ34D436DC36EY36FY25I272361Y25532EJ36DC26F321531KH321B346T3223321B36DM367Y36E9367836DR32BT36A1369V27225Q321924U25Q321625P36AJ1T368W32H3369C32VX36AP368I367P32KT31RL32R931MD33J532L132FU32GR31RL32QX34EH33KE25R24E26Q35P024E31OL26E24E31OO34JE31OL36GT36E536GX339325L343V1E31VB32G6322W32QF32SV1T353K32JY36H932NN36HB1U31ID32QL25R25Q26R35P036GR31JR36GO31M236GS36BJ31OC32LI36BN32W236BQ32ER32KX31CR32FV25P36BW25R32CL31KH32CL31MT322336IZ367J36GH32H3311Z32H625F21I26B21Y23336IZ359636J136GS36BW25K36HB21I31LN25T32RZ36HC32L932QL25T36FL246320134AO344B32DA311W31O124O358V36HN25A36HK21I36JF36IG322336IF31IT36K8321627223A31ZQ31P9369I31JV369H36GF369W36GH33C336GJ367C36A236G333AY24U22621T32KN36GU36GW31H93393368F36GH36H1367Q34CK32H334RV32VX36I732F536HE1U323D25B1U21S31MG33AE36LF36KW36HR36KZ36AH34471E322C332D36L532L532QB36HB22U31LN348W32V522626P35P036KU33QU33BI36M3333G36BK36IM31P132QE36F636IQ31LX36IT36IV25229H26R36MH35VH33AE36MK36J336DP32GN36J627525F252311W23336MK31Z636MM36LG36IU36FB36HA322W32ZI36B132QI36FI36JQ36JS36JU32DA1N32HI36CE33GB33AE21Q36LG36MY34D436NJ22636M536KV333J36NO36G223Q321925C23Q3216349131HA324933WG32Q436902262B726R36O433QU33D436O736KK36DO3680313F21Y31L922W27836KP36GM343A25535EP31IG25P21Q31OB354E21Y25N322N363836AP355C32NB332K33F921Y24Z36IA25A28631ZA36NP25A33BI36P52UB36IK336P32ZV36IN33ID36IP32S0226313E2492E425X36BW25S36ED338P36CQ33L136FI32DA26136NA33EC31JZ21Y34FJ36H336FQ26U33BI26U36NP25233BI25236KV35OC2GT2782721U33AY32GV36KV369836AK369A369C369022M2DF26R36QQ34EA25B31JV36QT335E35MV26831VO34Y62JR26X36KX369Y369C368336DT36QD31W932EM31L9336F32GI31HN322L335Y31Q1322C35OT27K35V632MX22M32SB23336QT33NF36QV33NI22734CB36PD32EL36F432ER36MC34CI35C131CR32EZ35OU36CS31M027233D436G334CB36BW25J36QQ31KH36RS22M36RU36QT25H36BW36RA31P225C24E31J822K31K132EM36FI32GJ25L36PY32FB32QL1N32QL35NP36FQ33D332VI31IG36QL36GV369A31UB369033OM31KH33OM31MO333L36TG26F26U2AB26R36TL34CR33GD36TO36NY311N36O023A33N4322C36R436E533C336R733XH36R534CI1631UB32EI31RL36RC31TS32GJ36RF311T322L349536E2343F322W32EE32BH343J324M1634BH36TY36QM345Z27231L921F3131345Z323I36AD32ED355L36RK36S836GK36NZ32ED1633N432EI32OR22733AN31RL32H331VP32H632EW32EY343N25M36JB36TG343R36TI32IN25H36RY32FB36S032GK36S232EW31LX36S635PD36V226E1E33GD1E31YD36SM36N234CL36TE343P32IN36VM343T36VO36SN36U81E31XA336F36SV32L936SX36SZ32GV344B36T336NF33CP33GD1M31YD36WB31MR32IN36T9368W33WG326836TX36U333C331UB34DB343G35GJ31P631HV32F031I525Z2JR35NN31W933C331KV32OR33WG34CG322C27036UX2E4343Y36V4367833N4367B36U336UJ36X932EL36AA35OE31W936VD338X36VG311T31IA36SO27834BM31P632GJ32EE367O36XA36XO36V536AG36U7322W32EM34QI36UB1E36RG36UZ36RJ32ED36V234D636YG311T32EI33B236LQ36VC1M31Y336VF32EX36Y527525J21A21M36VK36WA21A36VN36RX36F236RZ36PG368B36PI36VV36S536YR36VY36RM36CT333K31JV22636WD36W636Z62CB36W936TH36WC36SD36W636Y732EL1E364W36WI36YN36WK337936WM36T136WP36FQ22E333L22E32IN35KA33JM33OV36WA33OY31N336WA33P231MQ33P232C633P736WA33PA346V36WA33PE31MQ33PE32KI33PJ36WA33PM31MQ33PM35UJ33PR36WA33PU31MQ33PU32IO33NH32IS322133Q336WA33Q631MQ33Q631JR33QA31MQ33QA31JR33QE35VF36WA33QI31MQ33QI36DI33QN36WA33QQ31MQ33QQ33QU33QW32LU33R034E832LU33R434X132LU33R831MQ33R831JR33RC31MQ33RC31JR33RG31MQ33RG31KQ33QR32JD32PU33RP32LU33RS31MQ33RS31MC33RX32LU33S031MQ33S031MK33S532LU33S831MQ33S831MT33SD32LU33SG31MQ33SG31N133QR25I32LU25Q33QR373H32C633QR25Y32LU26633QR373O31OM33QR26E32LU26M33QR373V34CR33QR26U32LU27233QR374233D233QR23Q32LU32LT33PZ32LU24633QR374C35D433QR24E32LU24M33QR374J371P33QR24U32LU25233QR374Q36DI33QR25A32LU31ST33BJ32PC22629X333M32PC22E3751375434EA375122M32PC22U3751375B372E375123232PC23A3751375I366I33T1363N363M35QI35VM35QJ375Q375S34F0363M1G24U34YC24U2BL35VP35ET34U733T832PQ33TC31HV23021I31W31K32RZ360525134K9360U21031JT33U131KG361F33U62DJ358631R535RO363I2T7328833FJ329326E344723E31HF25I27323A27K25B376Z376W31IV376Z348R1Y323K322N34AU33NF31IV366H346K33FJ313Y377H34ZC35Z534J832L023E31I531MO359431IS359733YE35KG24C25A34ME33KG2BL26C23J21G33TC35LR24425A1421V1N34TV21Y23026V1M35XA31LN357324V35LV1P340W21A211350B3506315H318635JE353L35Y131P327K35K53511363K33ZY31ZI172E424425B22T21W24736DF22G310X34JO34Q422023Y35351U35QP35KH23335M71734ZW25127331IK1V36UV25W273316521A33U3376L2OT31ER2S121532XJ2752LS350T2E421235YU21Y22N312834L0379V313B22736UV25S32MS21X341D32ED1V25X34LZ35ZJ35KI24L21Z1N35KN240357F34LB357F21Y22K25Y32G617362D34Y635A835RH35GB35RJ2BZ2YB35HX28K2IU35I529V282310934L435J135FI2HZ35J737BO34GX27E23731R535CJ26H34AE24635UD31NV21Z34AY36CU34AX34BN25Y27K37C231IS34AW32C927F35NR36I6326C27K32GS275378F31L435PK31IS31I834SS27F31L7311S22X33XD32073396369A27K1M34B931L424D2E436XH3187367931ZL21B2JR31ND32NB355T36YX34E231IV366O26F26M27K22L26M31IS26M31IV37DL33ZW35JV34BO35WI34WL34WJ32MI31KD37CE36JI31IM33MG32L934JC33ZN34SA339K2482E4323D311U37CW325932471M32W531PN27K37D8355E32NB32W526E37DN31JV37DP31K3346L346N35PY34X033NI31KJ353K34EG31KJ34ZW23E34X8372I31M932CZ31KQ31M931K936002TY31KJ34SO31MB33CP31ME34W5375R375U375N32NN1F23921Y1I34FX32FB22636561F34VE21Y21C21I31OK1R32RZ26S27214350433U323024N26E347N31YP23W23Y31BD35MF2YR34BH21Y26H363C255363E35NT33FK26P35TE37EC36RD32W534B331HA34B623A34B836OE27533FK25H34C5345W345D32FF34IQ28G344Z36OM345125I32JS32NB322C25S36EJ368K22E313E21O36XE32QJ22R32QL26W21231LN22R32L025I31I825C358E34CV35N7345W35YC25P37H637CF328E25X37I325Q35P324U31MF330031I526C32RO21I27K26S33EI31I5359632RR32GJ22732GJ24K367K24G368C32W524S34EX24O32DA22732DA25037IY32DA26K37C721Y26A32D5356537C232OR24S37IT313231HV2JL27525032RZ34XE27524W37JJ32RZ24S36LY1634BO363T23I32M425Y32OR24K25Y31HN33FT345Z31IH21Z24Q349S26025I31J836DC27525Q34C736G531LN25I25C34ZB37ES364M375P37FI37KL375M37KN375O35VN37KO34EX24C36CO21S24B32DA24826U352U17364W35KH246340H1L347J26O35DS34F934XF312P357J153622362021I24K21T2G02BL33UN364L366L34M725Q347924Y33K923826U2CZ1937L324424N32CW34XN2B01025323R21W1L32DF1O25Z34FF31NU2B0141M21J3618360633U52BZ2ML311B34NW316B2G12K227833UG31GI34OS31GL34NQ319F2IS31F337BN34OC35B234P631GD314531GG35B8319834PI31FS31FK27534O11Z31FN34O42K131F5317029F34O731FH2OH34G331AM31FB2GL31FD34NN37MW31GM2E92BZ317635AU25I34NM34OI35B034GE34H731FS2L435432J231GS315L34OZ31GX2JD2JF33VI2781637O327L31FW2BB34OP34PT34VU37GP35BP34PZ324B342Y31T4312932BJ31S836RD311V34Q834UB23W356B37GP312434QI31IF34QG333Y34RV34QM31IO35DD34S831M234QS226320P35MS31W931J631LN34R035UW37GH34WE34RG34R834RI34RO31L235BR32B0328H21Y22P31K631KY37PW31KS31KE37Q534RN37Q734RQ37PV37QA34RT36R134RW37Q934RZ31KT31LR31T4342U31P631VB26B34S631LG31IS35YM37CQ321U31LO325937QL31PT34SJ37QU34SM33NE37FC34SQ37FF31MG34SV31MK31MM31KJ34T0343Q34T334T535Q231N032NE35Q531OR24V21J21U21432TE2541726S21W2QT2BL1C24V1635DY35VE22G26E26U21S15352B361B35MD1Q35S926222E22V352V32F531IH35OG31YG37OS320735K534VV31I335Z231P226937OS339K26Y34HR32XR36G834A735ZA346T31IV35ZA31P0327B31YG33ZF23W32W534HS35CL31I637GP26L37H234AV311M24U34AY26T34HM34WP35ML35CZ34AL323634WU33YC25C377V2E41O36CT37DL31MQ37DP21S24F21X21X25D35L421Y24T22U26F21V1P353K22S21Z25H21T343M361524U24L34TO359X24822V31NL1H353K32RH1L21U32EX27D350E2LS350G2D8350I34NY378W350M31Z9346H31JS31IV346H3529350V31HD350X342E33SP352D370H32GJ31MA27F1S24637U225D37VM35ZO1F22T21U1O37FP23W22E25333TU34MO25K23B36NW1Q322C23G2FI341031NO23S36XD353631NV3202311A37O434GD28X37O7314Q31DU2ZY31DX2A935JB31CD1W37WR37WS29U31CL35AO31CO37N4319731G434H82FF31AQ314Z31AE31GE31AG318Q1Y364J358735TR31PG37H431IB34D135BW32KP312435C834Q735BZ34Q734IC333Y35C631IB32MU22932H637XH32PZ37XJ31IL37XL37XY35TO34QJ312431RC31VA31LN22934V035D026K24U24K21V23N375Z35LS25A340K21A365226025A34LM34172B022026626S21T1E34MH1824N312R1D359R25W27222D35A127234872KA310M353U2BA34O52WM35AL35432VF2UZ35462VK3549316C354C2CM354G2ZZ2Z12UG26X2WM2WC2WE33VN2HF2P72GP2ZF3429353R354O378W331M31J8229356Z352F31J732CX355B367726S32GJ1S34VN36OX3809380634UR36PG3804380A37EJ31P1355H380I355B36V034UR3805355B355R355T3241380N355X31Q13560322N31PB34S337Y7355131Q1356B35Y837PC37XY26L36BJ32E331JG381F32QL366S33Y435DD356S356U34US241356Z34V937AE35D023W24U32JU24H37YF1S26V24K2KB37L31L26733FT1K346U21125J22S357K2BL21W33EB21X1732DL23W23324521T1523227D2302AR26D23Y321924623Y2IF269338F32EB2IF34SB27K1L336P26L32JK1E32OR26H36KE311N23B2AM31L71M225320V324I27231OO1T2732AM26P383032GD2IF33WX26E383I366V34YS26T359532E635KD33YF383R24V2IF27133YC359D31LP2461Z32G7322537PG363D32FJ23421Y31I53822332532KJ31YX35XC36VP33A132E329H25D36OQ31YX34LP36OP367434LP25L23A367432DL25X26U32E237L325T22U31OO348U2AM265385A31YX22U2AM26137CB24631NV24L384N24635XC24H384V24634LP24T385O35XC24P27232E233U325122E384R22E29H24X385Z31YX33U3259386331YX386534K5385W2BL23P25I367431N223L386J31YX31N223X386G21Y23T386R245385S34LP241386R24D232385B2322AM2491M385B32EG33JI38772AM22P386R231387133YY2AM22X24E367435SH239387F34402AM235387J31YX35SH23H387631YX387823D387V356T2AM21X386R21T386R22525Y385B25Y2AM22123A382V23A2IF2W032C8313B2772RI388H35FI35Y0388L27722H37VX386D2B021121Y388O35T4388R37BZ2B0219388V31YX35FI2153892388I2S0389635FI21D389927721P36DV31YX34MU21L22E385B32KY2I023I384R23I29H27025Y2M122S340826X37KD246378I25H367T31YX35TX25D25I32E235DI25P21A385B21A2AM25L24E32E224E2BL25X21I384R21I29H25T266388H35KN26536K531YX36IX261266385B2662AM24L23Y32E235MG21Y24H25Y382V25Y2IF24T343S32H92B024P357I386O277251226382V2262IF24X33X624634SX25923Q388H34U825538BJ33XX2IF23P38BB31MP23L21I385B32AE21Y23X38BW33ZA2IF23T38AS24636IX24537XE241212384R31NS32T533YC38CD27524921I32E2363S22T38AJ38AT29H22P24U32E237YF23136G433ZA27722X1E388H37FP23938CI31YX38CK23538DA38BP29H23H22M382V22M2IF23D37XE21X38DE38CK21T232382V2322IF22531YW31YY21Y22137XE22D38D636FM388J38DS33YY2IF22L38DX31YP22H37XE21137XE1X38E336JT27721938DP29H2IV385B32BY2S038EH37FP21D38EL360121Q31JF22134LP27031VB23231VB25H322R311N2732IF32GB3219383S336Q383C356E38AC1U32C831OC27726W34US22S32ZZ333S1127825D26E31QC34ML21Y36MT2W026T36EX389F35VJ36DC38F9383132FB3703311T32GJ25P24U383M24V2AM25R22M22A325122M36HK22M36HN38GI32KN38442IF32H32462JL32QP38GO32W637PP32SK21Q38FH2LO32I338FD383E33KQ383H36PT33LD38F5383N2IF26423Q24J33TO36NW33K721I38GG26T32AE31MT36HN38HK26538H838F732S0376931WL32XD23Y38FH35QM21Y24L38H22AM24K25I36LA349S24H38I034Z037I821T1632FJ24T38I724S32PJ336331NV24P38I724O26626U336335WR25136A134932B0338B38FA3845364N26M33P61637TX25938I7258161W21Z1H1729H25G37IG21Y22S32RZ36J827K22H377V35OD27833FK3851383M38H3367N31PA32SK35P331HB32T335TU25N23I26R22232JC321631JS322323I321637DZ357327837CI35PT25X38FS32WM2BL25Z21I321336JD38AS34T4321632SL383M23J2AM25Z36G926R36GB3218321A321625Z37QW366N350S31JA227355B33GA26C37DD33KF383L31OW2722AM25X38HP2IF32R925I383I32L025Z24E321324E38K224E322338LN2UB38LE359S32ZR26438LJ22E36QR38LY34E636RU38M025N25I36P638M531N133BI38M738LD38FA38HQ32R933CH330K38L9383N385D386824633U325W330R311T330T21Y25Z21Q22O22225V36NI31MX36NH36LG38LD383M383O38MR38AL36IY36NJ38CU34T438N038MH38N325T386R25S25Q313B25532FJ26123Y385B23Y2AM25S34Q41N34Q432G636FQ22U33AE22U38N733AE38AL2UB26U382V26U2IF25S31HV26K31HV26538O231YX38O432B821I36KS35QT25I24L38LT38I233CH349S24G32PV343I27524T38MK33U337JY37K031LC22622P38MV36M336NQ36ZQ36KV38OJ38MC2IF38OL31WL38I537CB1E31NV38OS38602BL38OV311T37K124N21I38OZ25V38OH359633BI38OH38OJ38N22AM24N1U36P638PW31MG33BI38PY38PS38F62AM24H386R24G31IO32L932FJ24P38NL38A22AM24G35WR37AW275382236FQ36NN38P338PZ31YB36NP38OF33YD38QP38PQ36KV25Y26633A125C26636NJ22E38M236RW385538O338O538O738O938OB389Y2IF312736QV36KT36RW38P538F638P725I38LH1638I538NB38I135TU38I222U38P931LC23A362225V38RU372I33D438RX38Q238MI21Y24N23236O538S5372E33D438S738S138N338Q532E235XC38Q732F524E38QA38QC382W38QE38QG35WR38QJ344X33ZL33BI24E36NP23238S931IG38RG38H935LS38RJ383I349S25G36BS379E38QI38RP25I38RR38RL31LC333J21X31OJ31IG26E34J323E333J38OI38OK38T138TB38B436LO322C24K35TU21837K3254349S24N22622738TE38TZ33QU36RU38U238SB38PU25236O538U835VH33D438UA38U638B438Q638Q838SI27538QB38NM2AM36K032F535FF35LS36WQ38TI38TK31Z638UC38TG22638U436RW333J38UY37K826E36QI35S42UB38I725W26M313E25Q37TX38LK36QR24E38UZ24E36RU38VF38O138R533I938R7330N38R938OD32D238RD38GR38OI38GY311N38H024J25A366X34J637JF356034Q422734Q438TS32F5321Z31LC23Y36QR38WB32IO36RU38WD38OS38PT21Y24P386R24O31LE21Z23Y32FJ24X38SK38NN35ZO37TX1N37TX37IV36FQ25Q36RU25Q38UZ23Q36RU23Q36RW26027833MW32B81M36QV37HW36RW36Y038XA25P382U38A22IF25N324M22H366526C38L537HG27525Z36S422H358E38L637HD36EC37GZ27836FD38Y132RR38JL27824L33WB36YN27524G384J348H38YB32CZ21Z33612B024G364W38YH37L324G31MU38YH31NO24K377Y34FQ25B2BL24G37VM38YH37VP24G348038YH34X038WY38YE363T38Z226Y34X038QB38HW340Q37J237JL31NV22731NV24O37DI31CR37JS38ZB311N38HX37JI32NB32RZ24W38ZG38ZI38ZK35VZ38UJ38HV38ZO340Q38W434Q438ZT32NB38ZV31LX37JS24R35QS31ZD377Q38XY3359355N38XS31OZ36V9355T38W231HD38ZE31OZ32FJ22732FJ36OY335932GJ25035WR22735WR31X436ZN33MO36QE34UD26626522525M2662253217339C35Z9391825P38RN32J825Y28O26R391G32C6391A391J391D38WI25K31HF2JL322C32QX38SH36JQ38WS2AM36JV346136NE36FQ16391A16391836CU391L391835UH31OO23W38LB337N38FA1V38GP37CZ3393335E36ID23F32LG32GK35TU25L1U392E2IF34AH33DT32JR33ZC38IA391S35TU25X392Q36BK38LF21232KA32ZU377231PA322C330F34DD2JR36BI392R33KQ32KA32DA2701E24I31511E38NO35TU265393131OC38HA26631J024V35WR27023I25021Y22235LR26435TU261393Q392F362021Q32KA38W6369B368Z32RR35TU33AR393E38I232KA349S27024M34MS21N34KB38TS34CK35ZI393E38Q732KA32FJ27024637UD26Q347J24G35TU24T39462IF38IF32KA31NV27021Q23821Z23X333D24S35TU24P395535ZO26632KA390X3772311T322C24O35TU251395J250376W31P6352B24W31HF222369D37JH35TU24X395J24W26M32KA37TX25823A31ID322C24W35TU396B26U383I36LQ27231ML26Y36UV25936DJ33KI27725826U31LS378I396T31ZZ396W26U32LG24E378I23O23A352Z396221Y25823Q31HN352L367J38J638Z929H25923I38FA23J2IF396T36WH396Z25I22416378I25O33W838YH35VE1W21234F425L329N32NN22M311W397F35WS23238FH233396S26U37G8397R275389G31YX34YZ23P36CG387W2BL35UC336Y397823Y31HN360G36I61Z38YH328939863988398A398C378I36OM367432TE23P246367431XD23L26M385B26M2AM258398P311T398R21G26S31LN21G378I25922U38FA35M1397826U32KA39902663674346U23P38XJ382W2IF23L252382V2522IF23X399Y382X3978348U311T36AL2UT38YH352B399M399O397L399R31P6399039A738BY23A384R35A021Y23L39AM38C6226384R22629H25839AA1636AL21Q396M34Q4396B32BY397725426U313E1J378I26G1T313E11336P259398736TT398Y21S398D34K522U388H38RR21Y398I32E22BO39AR23232E235R0338U31ML35AM32G6398T26Y398V39AG33WC39AI399S398E39AT23P21Q32E2333D39AS382V39A823X31ON31YX31OK31JB38BP21Z23434YZ26039BA21Y228399L397I32AW39AI33KD396Z22E397Q378I25W25I396M349S396B3137397734F22HE38Z927739BJ398X399Q398Z39CC39CJ38BY39AT39CI38XK398O398Q32SC39C535DC32G621E32CX357W397823A330639B826U313B22V378I25S22M323D398539DI39BL39781M2HE378F2772551632E227I39BT398J356T398L24U388H359X399D39DT33I921Y39C539C7399N39C9399Q39CB34K539CD39DP36HM387S2AM39A639DN39A931HN368W25S39AD32IB27539C834HU39CA39AK39DM39DR39CE39CG398L39AT39CL385B39CO39AZ39FE32RJ39B338YH34Q4397H397J39D139FN399Q39D439BO25S39D838YH39DA33WH395P32RJ22M39DF22M39DH39BK349339BM39BO25539F639FC39DQ399Z39DS399F32RJ21239DV38O5315139DZ2AM33WG2HE395Z35WA26U31J0230378I26439EA32G722M397G39GL398939DK39BN399039EP39BW23P25Q385B25Q2AM23L36IH3160397L399E16398R36FD39EZ2IF39FK399P25826631ML1P267398E31JI38BP275399X39GR39F824636HJ38C639AT39FX39AB33EF39FH39AF39F139FL39F339G639GP39FC23P226385B22639HR39FT39CM35RC399C39B0368W39CU31J025139CY39G4399Q39D2275396T39G839HA39GB26Y39GD321J397739HB39GI39GK39DJ396T39DL39F539IU39DP39IJ39HW398R25821238HD1F21338HA39H02RI2AM26039HC39EC39HG39GN399026U388H32Q139BT226367437FU23L39HL2BL39EV39GV362039EY398U39I139IP39I339AJ39GO31Z0389G2AM39ID39DR39GS39CK39IJ39J432RR39IN39FJ39KT39FM39GO39CD22E388H32Q739AR39J039FV39J339FY394839B439FJ39CZ32CC39G539BO258226398T25E38BL397825I31IK26B39GD22E3363322C22W26V31IK272399L39KA39HI39LB39JT39GR39JV39EW22C26S31IK22Z378I357623M32F321Q39K639K439E026036B432F3330Z396B370F397724K396L38YH36UV37IQ39EB39HE398W39EE39JQ39HJ398E24M385B31S239BT32ZM246365239KK39BV39KM39JW38QI39KQ39C639KS39AH397839I521Z23935WR25538KV24636G939L039GT39L239A539L439LK25031LN21Z21H399L39L939IR39MC39FP35YC39O338C639J139CO26K39CQ25S34YZ24K39G026Y39G239LO397K39JB39G639JE39D538QI39O839E233YT26U37X91926V38I139GH38Z339JO39N8398B39NA39JS39FP39JU39FC39KN39HX38QI39GX38YH35DC39OP39MN320C38I139MR38I139MU22939MW33ZC39GF34Z039N1396N38YB39K839N639ED39GM39MB39HK39NK39NF382V25A39A039MF39KO38YC39I035WS39OC396T39F425521A32E234N539O139A823L39IF39IH39FB39DR39IK39B137JH397021Z1Z39OB39NR39QK39IS39CD39CF384W39FS39FC39FU39CN39LJ39IL34Z039OQ39OS39JA25839GB333S39G739OY34Z039JH39M131TS322C38Z139JN39N739Q639N939OE39GT39QQ39QD39PH39NM34Z039PL26Y35DC26024K22F21Z24T32Y438YC39DY39K536BD31O739PV39KM335Z397Q34LD39Q036UV24S39Q339HF39JP39PC39GO23Q385B23Q39KZ39KL39AR24E388H37U539PI398R37IV39QH39I239LA399T382V39O039F7385B39QU39O539RF24S39L739QI39R439KV39AL39IU39OG39FT1M384R378G39FD39RF39CU32M41R39J939D039OV39LR397039RO24S39RQ32RJ38D921Z21534LD39P839DG39RW39HH39RY39TP39PF39ME39S339MG31J621Z242378I24S21Q39PP39MP363T39PS363T39PU330Z38F037X91A22N38UM39SP39JD1M212397Q35A322M397E39Q439MA25839EG21Z217360U25521Q382V21Q38BY163674360039OH39T6313239NO398V396B26E39SN313239U839TM39F239R539RZ39A839IV35YT27539OH39RC39J221Y37VW31ML386B313239RH39JD3772392X313239UE39GJ35ZO21Y23M21V39SH39TA39NS31ML23M39NW39GQ39L131ZP398G39FA21Q384R36NI39TW39QY35ZO39TL389R34L425R362D25039V639EF39V932HY25039VC38Z339ST39N839VH1B39VK33ZM387S39IC26632E234MH23L26E388H35DQ39VU339G39VW397L23A35QT397725039W239WV39W539UJ39S039TR39RB39OJ39RE39X925039WJ39E124639BN39M426V31QM22A378I393Z21E21U39WU39QJ39TO39FO39S039R8385T398L39X224631ZS38C639X5384W39AY39L5339G26U31QM244396W33WH39RS37JL39XH39VG39XJ32H624W39XM39K939SU39JR25539XT39IG39XV39XX398L39Y039CN396S39S424W39Y539E12AY397724W39YB39YZ39QL39CD39YG39DR39WC39FW39ZD39CU31MD1339ZI329N3A0939WO2773A0539YW39YY39TN3A0D39IU39Z339CH39Z639Z838C739AW39ZC39O6396U21Z231378I24W23223K21S229232397G38VP39I1339G31OW33UO396P38FH25B398A27C3972275397425I39YP39JD397A311T352L396X311T3990396Q3A1O32MG27231LS36UV25427231ZZ3A281U21J21Z1B32J723R23Q21O21Z26P23Q33GQ23Q33GD3A2N25I23O36A421U24E36UV34W923Q396J3A1S39ZD23K33N923L36D538LA2B023L3A2327723K23Y3A1Q35TX23S37723A30338T326Z311T3272338T23Y34QU35TX27021A26R21Z1421B2IF32DS31HF33FK240368Y397724423A33TB33612BL3A41252391R27524422M24539P921Y3A4124M3A1V21Y3A4D3A4631RS23K24M31LX32WV39LG367435RA23L38NV31OW38NX32NN1E365H354U32T325I23N32F334TN32S022M32J421J31VB3A3C315H24E35TX35OJ363728G26C378I227378I390D33B33A3J31LX3A3M3A5E33FJ398R34F232L834HL27523W313B322A34YZ24731HQ388Q350S35TX22735TX26C32L022732L026824M32L821R37GA35QS39BN32L022S35RC21Z21P3A6426638JH37T23A6935TX23W3A4Q31CR3A4S3A6137GZ39FF22M31P523531VB23S31HH322A31K1243331P22H313N31OR34YZ22734YZ37IE32NB32DA23S24U31LX32GE34YR38AL38H63A793A5F3A7C35NE22H37V93A7I34YZ3A7O3A7Q27523T3A3A21Y3A793A1Q31K13A4123Q39M32753A7O31HN3A7R24E31ZZ31K13A7934QI3A8L24E31O124E31K1386Y363D37TX35ED31P524F2E437IQ31P51231PZ31XT3479245352424337JZ31ZD34AY26C390O390Q38L73A8331CR3A7R33WJ311T31NV3A7V3A7B27524334R122H33ZV3A9C32NB3A9E38XZ3A883A7P3A9H3A8F393T31V835WR3A793A8Q3A7C36BS31ZD37HA38XQ32NB32H63A9G1K32GE25025226S21Z34C72BL23S32K521Z1832H624326M31O122H37DP3A6C32NB34TQ390M26C37JN31HD349S36RW31HD3A9D31HD38ZU31HD352B227352B26C37TX22737TX3AAA3359331L390V3AA33A9Y3AAE3A8F26M34LA38J03A8F3AAN1X3AAQ32EN31ZD35163AAW33593AAY3A7M31HD3AB131OZ3AB3349S3A9T3359390Q3AB831OZ3ABA3ABC3ABE3ABG38L53ABK3A8F3ABM32GE370H375434E822G375734X13ACP33NL375C3ACS375G372G3ACS375I372K3ACS23I375123I3ACS163751163ACS1E37511E3ACS1M37511M3ACS1U37511U3ACS21237512123ACS21A375121A3ACS21I375121I3ACS21Q375121Q3ACS32N331N33ACS25Q375125Q3ACS25Y375125Y3ACS26637512663ACS26E375126E3ACS26M375126M3ACS26U375126U3ACS27237512723ACS23Q375123Q3ACS23Y375123Y3ACS32PB31MQ2463ACS24E375124E3ACS24M375124M3ACS24U375124U3ACS25237512523ACS25A375125A3ACS38DZ372022H33QU31A5333M3AFV33QZ3AFX22E3AFZ22M3AFX22M3AFZ22U3AFX22U3AFZ2323AFX2323AFZ23A3AFX23A3AFZ23I3AFX23I3AFZ163AFX163AFZ1E3AFX1E3AFZ1M3AFX1M3AFZ1U3AFX1U3AFV37KP37FJ3AH43AH637KR37KQ37FH37KS3AHA3AH9375T3AHB3AHE3AHD37KM3AH83AH53AHJ3AH73AHC3AHK3AHN3AHM3AHG3AHO3AHR3AHQ3AHI3AHP3AHL3AHX3AHW34M327022F32SV34BT2B024123Y23934FL379K23426N38M538WW38QI1N26T34FG360U313935LC36B62B039SR35LV347Z2LF');end;
+local main = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local up = Instance.new("TextButton")
+local down = Instance.new("TextButton")
+local onof = Instance.new("TextButton")
+local TextLabel = Instance.new("TextLabel")
+local plus = Instance.new("TextButton")
+local speed = Instance.new("TextLabel")
+local mine = Instance.new("TextButton")
+local closebutton = Instance.new("TextButton")
+local mini = Instance.new("TextButton")
+local mini2 = Instance.new("TextButton")
+ 
+main.Name = "main"
+main.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+main.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+main.ResetOnSpawn = false
+ 
+Frame.Parent = main
+Frame.BackgroundColor3 = Color3.fromRGB(163, 255, 137)
+Frame.BorderColor3 = Color3.fromRGB(103, 221, 213)
+Frame.Position = UDim2.new(0.100320168, 0, 0.379746825, 0)
+Frame.Size = UDim2.new(0, 190, 0, 57)
+ 
+up.Name = "up"
+up.Parent = Frame
+up.BackgroundColor3 = Color3.fromRGB(79, 255, 152)
+up.Size = UDim2.new(0, 44, 0, 28)
+up.Font = Enum.Font.SourceSans
+up.Text = "UP"
+up.TextColor3 = Color3.fromRGB(0, 0, 0)
+up.TextSize = 14.000
+ 
+down.Name = "down"
+down.Parent = Frame
+down.BackgroundColor3 = Color3.fromRGB(215, 255, 121)
+down.Position = UDim2.new(0, 0, 0.491228074, 0)
+down.Size = UDim2.new(0, 44, 0, 28)
+down.Font = Enum.Font.SourceSans
+down.Text = "DOWN"
+down.TextColor3 = Color3.fromRGB(0, 0, 0)
+down.TextSize = 14.000
+ 
+onof.Name = "onof"
+onof.Parent = Frame
+onof.BackgroundColor3 = Color3.fromRGB(255, 249, 74)
+onof.Position = UDim2.new(0.702823281, 0, 0.491228074, 0)
+onof.Size = UDim2.new(0, 56, 0, 28)
+onof.Font = Enum.Font.SourceSans
+onof.Text = "fly"
+onof.TextColor3 = Color3.fromRGB(0, 0, 0)
+onof.TextSize = 14.000
+ 
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(242, 60, 255)
+TextLabel.Position = UDim2.new(0.469327301, 0, 0, 0)
+TextLabel.Size = UDim2.new(0, 100, 0, 28)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Fly GUI V3"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+ 
+plus.Name = "plus"
+plus.Parent = Frame
+plus.BackgroundColor3 = Color3.fromRGB(133, 145, 255)
+plus.Position = UDim2.new(0.231578946, 0, 0, 0)
+plus.Size = UDim2.new(0, 45, 0, 28)
+plus.Font = Enum.Font.SourceSans
+plus.Text = "+"
+plus.TextColor3 = Color3.fromRGB(0, 0, 0)
+plus.TextScaled = true
+plus.TextSize = 14.000
+plus.TextWrapped = true
+ 
+speed.Name = "speed"
+speed.Parent = Frame
+speed.BackgroundColor3 = Color3.fromRGB(255, 85, 0)
+speed.Position = UDim2.new(0.468421042, 0, 0.491228074, 0)
+speed.Size = UDim2.new(0, 44, 0, 28)
+speed.Font = Enum.Font.SourceSans
+speed.Text = "1"
+speed.TextColor3 = Color3.fromRGB(0, 0, 0)
+speed.TextScaled = true
+speed.TextSize = 14.000
+speed.TextWrapped = true
+ 
+mine.Name = "mine"
+mine.Parent = Frame
+mine.BackgroundColor3 = Color3.fromRGB(123, 255, 247)
+mine.Position = UDim2.new(0.231578946, 0, 0.491228074, 0)
+mine.Size = UDim2.new(0, 45, 0, 29)
+mine.Font = Enum.Font.SourceSans
+mine.Text = "-"
+mine.TextColor3 = Color3.fromRGB(0, 0, 0)
+mine.TextScaled = true
+mine.TextSize = 14.000
+mine.TextWrapped = true
+ 
+closebutton.Name = "Close"
+closebutton.Parent = main.Frame
+closebutton.BackgroundColor3 = Color3.fromRGB(225, 25, 0)
+closebutton.Font = "SourceSans"
+closebutton.Size = UDim2.new(0, 45, 0, 28)
+closebutton.Text = "X"
+closebutton.TextSize = 30
+closebutton.Position =  UDim2.new(0, 0, -1, 27)
+ 
+mini.Name = "minimize"
+mini.Parent = main.Frame
+mini.BackgroundColor3 = Color3.fromRGB(192, 150, 230)
+mini.Font = "SourceSans"
+mini.Size = UDim2.new(0, 45, 0, 28)
+mini.Text = "-"
+mini.TextSize = 40
+mini.Position = UDim2.new(0, 44, -1, 27)
+ 
+mini2.Name = "minimize2"
+mini2.Parent = main.Frame
+mini2.BackgroundColor3 = Color3.fromRGB(192, 150, 230)
+mini2.Font = "SourceSans"
+mini2.Size = UDim2.new(0, 45, 0, 28)
+mini2.Text = "+"
+mini2.TextSize = 40
+mini2.Position = UDim2.new(0, 44, -1, 57)
+mini2.Visible = false
+ 
+speeds = 1
+ 
+local speaker = game:GetService("Players").LocalPlayer
+ 
+local chr = game.Players.LocalPlayer.Character
+local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+ 
+nowe = false
+ 
+game:GetService("StarterGui"):SetCore("SendNotification", { 
+    Title = "Fly GUI V3";
+    Text = "By me_ozone and Quandale The Dinglish XII#3550";
+    Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
+Duration = 5;
+ 
+Frame.Active = true -- main = gui
+Frame.Draggable = true
+ 
+onof.MouseButton1Down:connect(function()
+ 
+    if nowe == true then
+        nowe = false
+ 
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Climbing,true)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,true)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Flying,true)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall,true)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.GettingUp,true)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping,true)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Landed,true)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics,true)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.PlatformStanding,true)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Ragdoll,true)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Running,true)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.RunningNoPhysics,true)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated,true)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.StrafingNoPhysics,true)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Swimming,true)
+        speaker.Character.Humanoid:ChangeState(Enum.HumanoidStateType.RunningNoPhysics)
+    else 
+        nowe = true
+ 
+ 
+ 
+        for i = 1, speeds do
+            spawn(function()
+ 
+                local hb = game:GetService("RunService").Heartbeat    
+ 
+ 
+                tpwalking = true
+                local chr = game.Players.LocalPlayer.Character
+                local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+                while tpwalking and hb:Wait() and chr and hum and hum.Parent do
+                    if hum.MoveDirection.Magnitude > 0 then
+                        chr:TranslateBy(hum.MoveDirection)
+                    end
+                end
+ 
+            end)
+        end
+        game.Players.LocalPlayer.Character.Animate.Disabled = true
+        local Char = game.Players.LocalPlayer.Character
+        local Hum = Char:FindFirstChildOfClass("Humanoid") or Char:FindFirstChildOfClass("AnimationController")
+ 
+        for i,v in next, Hum:GetPlayingAnimationTracks() do
+            v:AdjustSpeed(0)
+        end
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Climbing,false)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Flying,false)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall,false)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.GettingUp,false)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping,false)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Landed,false)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics,false)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.PlatformStanding,false)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Ragdoll,false)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Running,false)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.RunningNoPhysics,false)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated,false)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.StrafingNoPhysics,false)
+        speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Swimming,false)
+        speaker.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Swimming)
+    end
+ 
+ 
+ 
+ 
+    if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").RigType == Enum.HumanoidRigType.R6 then
+ 
+ 
+ 
+        local plr = game.Players.LocalPlayer
+        local torso = plr.Character.Torso
+        local flying = true
+        local deb = true
+        local ctrl = {f = 0, b = 0, l = 0, r = 0}
+        local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+        local maxspeed = 50
+        local speed = 0
+ 
+ 
+        local bg = Instance.new("BodyGyro", torso)
+        bg.P = 9e4
+        bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+        bg.cframe = torso.CFrame
+        local bv = Instance.new("BodyVelocity", torso)
+        bv.velocity = Vector3.new(0,0.1,0)
+        bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+        if nowe == true then
+            plr.Character.Humanoid.PlatformStand = true
+        end
+        while nowe == true or game:GetService("Players").LocalPlayer.Character.Humanoid.Health == 0 do
+            game:GetService("RunService").RenderStepped:Wait()
+ 
+            if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
+                speed = speed+.5+(speed/maxspeed)
+                if speed > maxspeed then
+                    speed = maxspeed
+                end
+            elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
+                speed = speed-1
+                if speed < 0 then
+                    speed = 0
+                end
+            end
+            if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
+                bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+                lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+            elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
+                bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+            else
+                bv.velocity = Vector3.new(0,0,0)
+            end
+            --    game.Players.LocalPlayer.Character.Animate.Disabled = true
+            bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
+        end
+        ctrl = {f = 0, b = 0, l = 0, r = 0}
+        lastctrl = {f = 0, b = 0, l = 0, r = 0}
+        speed = 0
+        bg:Destroy()
+        bv:Destroy()
+        plr.Character.Humanoid.PlatformStand = false
+        game.Players.LocalPlayer.Character.Animate.Disabled = false
+        tpwalking = false
+ 
+ 
+ 
+ 
+    else
+        local plr = game.Players.LocalPlayer
+        local UpperTorso = plr.Character.UpperTorso
+        local flying = true
+        local deb = true
+        local ctrl = {f = 0, b = 0, l = 0, r = 0}
+        local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+        local maxspeed = 50
+        local speed = 0
+ 
+ 
+        local bg = Instance.new("BodyGyro", UpperTorso)
+        bg.P = 9e4
+        bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+        bg.cframe = UpperTorso.CFrame
+        local bv = Instance.new("BodyVelocity", UpperTorso)
+        bv.velocity = Vector3.new(0,0.1,0)
+        bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+        if nowe == true then
+            plr.Character.Humanoid.PlatformStand = true
+        end
+        while nowe == true or game:GetService("Players").LocalPlayer.Character.Humanoid.Health == 0 do
+            wait()
+ 
+            if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
+                speed = speed+.5+(speed/maxspeed)
+                if speed > maxspeed then
+                    speed = maxspeed
+                end
+            elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
+                speed = speed-1
+                if speed < 0 then
+                    speed = 0
+                end
+            end
+            if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
+                bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+                lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+            elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
+                bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+            else
+                bv.velocity = Vector3.new(0,0,0)
+            end
+ 
+            bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
+        end
+        ctrl = {f = 0, b = 0, l = 0, r = 0}
+        lastctrl = {f = 0, b = 0, l = 0, r = 0}
+        speed = 0
+        bg:Destroy()
+        bv:Destroy()
+        plr.Character.Humanoid.PlatformStand = false
+        game.Players.LocalPlayer.Character.Animate.Disabled = false
+        tpwalking = false
+ 
+ 
+ 
+    end
+ 
+ 
+ 
+ 
+ 
+end)
+ 
+local tis
+ 
+up.MouseButton1Down:connect(function()
+    tis = up.MouseEnter:connect(function()
+        while tis do
+            wait()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,1,0)
+        end
+    end)
+end)
+ 
+up.MouseLeave:connect(function()
+    if tis then
+        tis:Disconnect()
+        tis = nil
+    end
+end)
+ 
+local dis
+ 
+down.MouseButton1Down:connect(function()
+    dis = down.MouseEnter:connect(function()
+        while dis do
+            wait()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-1,0)
+        end
+    end)
+end)
+ 
+down.MouseLeave:connect(function()
+    if dis then
+        dis:Disconnect()
+        dis = nil
+    end
+end)
+ 
+ 
+game:GetService("Players").LocalPlayer.CharacterAdded:Connect(function(char)
+    wait(0.7)
+    game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+    game.Players.LocalPlayer.Character.Animate.Disabled = false
+ 
+end)
+ 
+ 
+plus.MouseButton1Down:connect(function()
+    speeds = speeds + 1
+    speed.Text = speeds
+    if nowe == true then
+ 
+ 
+        tpwalking = false
+        for i = 1, speeds do
+            spawn(function()
+ 
+                local hb = game:GetService("RunService").Heartbeat    
+ 
+ 
+                tpwalking = true
+                local chr = game.Players.LocalPlayer.Character
+                local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+                while tpwalking and hb:Wait() and chr and hum and hum.Parent do
+                    if hum.MoveDirection.Magnitude > 0 then
+                        chr:TranslateBy(hum.MoveDirection)
+                    end
+                end
+ 
+            end)
+        end
+    end
+end)
+mine.MouseButton1Down:connect(function()
+    if speeds == 1 then
+        speed.Text = 'cannot be less than 1'
+        wait(1)
+        speed.Text = speeds
+    else
+        speeds = speeds - 1
+        speed.Text = speeds
+        if nowe == true then
+            tpwalking = false
+            for i = 1, speeds do
+                spawn(function()
+ 
+                    local hb = game:GetService("RunService").Heartbeat    
+ 
+ 
+                    tpwalking = true
+                    local chr = game.Players.LocalPlayer.Character
+                    local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+                    while tpwalking and hb:Wait() and chr and hum and hum.Parent do
+                        if hum.MoveDirection.Magnitude > 0 then
+                            chr:TranslateBy(hum.MoveDirection)
+                        end
+                    end
+ 
+                end)
+            end
+        end
+    end
+end)
+ 
+closebutton.MouseButton1Click:Connect(function()
+    main:Destroy()
+end)
+ 
+mini.MouseButton1Click:Connect(function()
+    up.Visible = false
+    down.Visible = false
+    onof.Visible = false
+    plus.Visible = false
+    speed.Visible = false
+    mine.Visible = false
+    mini.Visible = false
+    mini2.Visible = true
+    main.Frame.BackgroundTransparency = 1
+    closebutton.Position =  UDim2.new(0, 0, -1, 57)
+end)
+ 
+mini2.MouseButton1Click:Connect(function()
+    up.Visible = true
+    down.Visible = true
+    onof.Visible = true
+    plus.Visible = true
+    speed.Visible = true
+    mine.Visible = true
+    mini.Visible = true
+    mini2.Visible = false
+    main.Frame.BackgroundTransparency = 0 
+    closebutton.Position =  UDim2.new(0, 0, -1, 27)
+end)
