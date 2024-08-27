@@ -137,7 +137,7 @@ nowe = false
  
 game:GetService("StarterGui"):SetCore("SendNotification", { 
     Title = "Fly GUI V3";
-    Text = "By me_ozone and Quandale The Dinglish XII#3550";
+    Text = "GUI Active";
     Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
 Duration = 5;
  
